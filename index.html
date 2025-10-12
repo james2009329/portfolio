@@ -6,10 +6,7 @@
     <title>James Lin - Projects Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script type="module">
-        import { STLLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/STLLoader.js';
-        window.STLLoader = STLLoader;
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
     <style>
         * {
             margin: 0;
@@ -656,9 +653,9 @@
 
         // Model URLs
         const modelUrls = {
-            'dragster': 'https://raw.githubusercontent.com/james2009329/portfolio/main/Wind%20tunnel%20Dragster.stl',
-            'robotdog': 'https://raw.githubusercontent.com/james2009329/portfolio/main/Robo%20Dog.stl',
-            'printer': 'https://raw.githubusercontent.com/james2009329/portfolio/main/3D-Printer.stl'
+            'dragster': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wind%20tunnel%20Dragster.stl',
+            'robotdog': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Robo%20Dog.stl',
+            'printer': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/3D-Printer.stl'
         };
 
         function open3DViewer(modelType) {
