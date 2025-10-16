@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James Lin - Projects Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://threejs.org/examples/js/loaders/STLLoader.js"></script>
     <style>
         * {
             margin: 0;
@@ -21,7 +19,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 20px;
@@ -53,7 +50,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -66,15 +62,6 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
         .hero-content {
             position: relative;
             z-index: 1;
@@ -85,13 +72,11 @@
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
         }
 
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero-cta {
@@ -103,7 +88,6 @@
             border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s;
-            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .hero-cta:hover {
@@ -112,18 +96,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Main Content */
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -155,7 +127,6 @@
             border-radius: 2px;
         }
 
-        /* Project Cards */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -184,14 +155,6 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         .image-placeholder {
@@ -239,7 +202,6 @@
             text-decoration: underline;
         }
 
-        /* 3D Viewer Button */
         .view-3d-btn {
             display: inline-block;
             margin-top: 1rem;
@@ -263,7 +225,6 @@
             margin-right: 0.5rem;
         }
 
-        /* 3D Viewer Modal */
         .viewer-modal {
             display: none;
             position: fixed;
@@ -355,7 +316,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* About Section */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -372,7 +332,6 @@
             text-align: center;
         }
 
-        /* Contact Section */
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
@@ -405,7 +364,6 @@
             text-decoration: underline;
         }
 
-        /* Footer */
         footer {
             background: #2c3e50;
             color: white;
@@ -413,38 +371,17 @@
             padding: 2rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            nav {
-                flex-direction: column;
-                padding: 0.5rem;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-
             .project-grid {
                 grid-template-columns: 1fr;
-            }
-
-            h2 {
-                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="#home"><i class="fas fa-home"></i> Home</a>
         <a href="#about"><i class="fas fa-user"></i> About</a>
@@ -453,7 +390,6 @@
         <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>James Lin</h1>
@@ -463,21 +399,17 @@
     </section>
 
     <main>
-        <!-- About Section -->
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
                 <p><strong>[Add your introduction here]</strong></p>
-                <p>Write about your background, education, interests, and what drives your passion for engineering and design. Share your story and what makes you unique.</p>
-                <p>[You can add more paragraphs about your skills, experience, or goals]</p>
+                <p>Write about your background, education, interests, and what drives your passion for engineering and design.</p>
             </div>
         </section>
 
-        <!-- Past Projects -->
         <section id="past-projects">
             <h2>Past Projects</h2>
             <div class="project-grid">
-                <!-- NASA SEES -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder">Add Project Image</div>
@@ -494,77 +426,25 @@
                     </div>
                 </div>
 
-                <!-- Nitinol Claw -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Nitinol-Driven Compliant Claw</h3>
-                        <p>Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.</p>
-                        <p><strong>[Add more details, challenges faced, and outcomes]</strong></p>
-                    </div>
-                </div>
-
-                <!-- Solar Sprint -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Senior Solar Sprint - Solar RC Car</h3>
-                        <p>Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement. Learned resourcefulness under prototyping constraints.</p>
-                        <p><strong>[Add specifications, performance results, or lessons learned]</strong></p>
-                    </div>
-                </div>
-
-                <!-- Dragster -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder">Add Project Image</div>
                     </div>
                     <div class="project-content">
                         <h3>Dragster</h3>
-                        <p><strong>Materials:</strong> Steel axles, graphite lubricant, glass fiber impregnated PETG body and wheels</p>
-                        <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.</p>
-                        <p><strong>[Add performance results and competition outcomes]</strong></p>
+                        <p><strong>Materials:</strong> Steel axles, graphite lubricant, glass fiber impregnated PETG</p>
+                        <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels.</p>
                         <button class="view-3d-btn" onclick="open3DViewer('dragster')">
                             <i class="fas fa-cube"></i> View 3D Model
                         </button>
                     </div>
                 </div>
-
-                <!-- Specialized Cell -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Specialized Cell Project</h3>
-                        <p>Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.</p>
-                        <p><strong>[Add technical details and what you learned]</strong></p>
-                    </div>
-                </div>
-
-                <!-- Air Filter -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>2-Stage Carbon Air Filter</h3>
-                        <p>Designed and 3D printed a model housing activated charcoal pellets to trap VOCs and improve air quality.</p>
-                        <p><strong>[Add testing results and efficiency measurements]</strong></p>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- Current Projects -->
         <section id="current-projects">
             <h2>Current Projects</h2>
             <div class="project-grid">
-                <!-- Robot Dog -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder">Add Project Image</div>
@@ -572,32 +452,19 @@
                     <div class="project-content">
                         <h3>Robot Dog</h3>
                         <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
-                        <p><strong>[Add current progress, technologies used, and goals]</strong></p>
-                        <ul>
-                            <li>[Feature or component 1]</li>
-                            <li>[Feature or component 2]</li>
-                            <li>[Feature or component 3]</li>
-                        </ul>
                         <button class="view-3d-btn" onclick="open3DViewer('robotdog')">
                             <i class="fas fa-cube"></i> View 3D Model
                         </button>
                     </div>
                 </div>
 
-                <!-- Custom 3D Printer -->
                 <div class="project-card">
                     <div class="project-image">
                         <div class="image-placeholder">Add Project Image</div>
                     </div>
                     <div class="project-content">
                         <h3>Custom 3D Printer</h3>
-                        <p>Building and modifying a 3D printer from scratch with upgraded mechanical components, firmware tuning, and custom features.</p>
-                        <p><strong>[Add specifications, modifications, and improvements]</strong></p>
-                        <ul>
-                            <li>[Upgrade or modification 1]</li>
-                            <li>[Upgrade or modification 2]</li>
-                            <li>[Upgrade or modification 3]</li>
-                        </ul>
+                        <p>Building and modifying a 3D printer from scratch with upgraded mechanical components.</p>
                         <button class="view-3d-btn" onclick="open3DViewer('printer')">
                             <i class="fas fa-cube"></i> View 3D Model
                         </button>
@@ -606,7 +473,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Me</h2>
             <div class="contact-container">
@@ -618,10 +484,6 @@
                     <i class="fab fa-linkedin"></i>
                     <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a>
                 </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/yourprofile" target="_blank">github.com/yourprofile</a>
-                </div>
             </div>
         </section>
     </main>
@@ -630,7 +492,6 @@
         <p>&copy; 2024 James Lin. All rights reserved.</p>
     </footer>
 
-    <!-- 3D Viewer Modal -->
     <div id="viewer-modal" class="viewer-modal">
         <div class="viewer-container">
             <button class="close-viewer" onclick="close3DViewer()">
@@ -639,19 +500,120 @@
             <div class="loading-text" id="loading-text">
                 <div class="spinner"></div>
                 <div>Loading 3D model...</div>
-                <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">This may take 10-30 seconds</div>
+                <div style="font-size: 0.9rem; margin-top: 0.5rem;">Please wait (316 KB file)</div>
             </div>
             <canvas id="viewer-canvas" class="viewer-canvas"></canvas>
             <div class="viewer-instructions">
-                <i class="fas fa-mouse"></i> Left click & drag to rotate | Scroll to zoom
+                <i class="fas fa-mouse"></i> Drag to rotate | Scroll to zoom
             </div>
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // STLLoader code embedded directly
+        THREE.STLLoader = function(manager) {
+            this.manager = (manager !== undefined) ? manager : THREE.DefaultLoadingManager;
+        };
+
+        THREE.STLLoader.prototype = {
+            constructor: THREE.STLLoader,
+            load: function(url, onLoad, onProgress, onError) {
+                var scope = this;
+                var loader = new THREE.FileLoader(scope.manager);
+                loader.setResponseType('arraybuffer');
+                loader.load(url, function(data) {
+                    onLoad(scope.parse(data));
+                }, onProgress, onError);
+            },
+            parse: function(data) {
+                function isBinary(data) {
+                    var expect, face_size, n_faces, reader;
+                    reader = new DataView(data);
+                    face_size = (32 / 8 * 3) + ((32 / 8 * 3) * 3) + (16 / 8);
+                    n_faces = reader.getUint32(80, true);
+                    expect = 80 + (32 / 8) + (n_faces * face_size);
+                    return expect === reader.byteLength;
+                }
+
+                function parseBinary(data) {
+                    var reader = new DataView(data);
+                    var faces = reader.getUint32(80, true);
+                    var r, g, b, hasColors = false, colors;
+                    var defaultR, defaultG, defaultB, alpha;
+
+                    for (var index = 0; index < 80 - 10; index++) {
+                        if ((reader.getUint32(index, false) == 0x434F4C4F) &&
+                            (reader.getUint8(index + 4) == 0x52) &&
+                            (reader.getUint8(index + 5) == 0x3D)) {
+                            hasColors = true;
+                            colors = new Float32Array(faces * 3 * 3);
+                            defaultR = reader.getUint8(index + 6) / 255;
+                            defaultG = reader.getUint8(index + 7) / 255;
+                            defaultB = reader.getUint8(index + 8) / 255;
+                            alpha = reader.getUint8(index + 9) / 255;
+                        }
+                    }
+
+                    var dataOffset = 84;
+                    var faceLength = 12 * 4 + 2;
+                    var geometry = new THREE.BufferGeometry();
+                    var vertices = new Float32Array(faces * 3 * 3);
+                    var normals = new Float32Array(faces * 3 * 3);
+
+                    for (var face = 0; face < faces; face++) {
+                        var start = dataOffset + face * faceLength;
+                        var normalX = reader.getFloat32(start, true);
+                        var normalY = reader.getFloat32(start + 4, true);
+                        var normalZ = reader.getFloat32(start + 8, true);
+
+                        if (hasColors) {
+                            var packedColor = reader.getUint16(start + 48, true);
+                            if ((packedColor & 0x8000) === 0) {
+                                r = (packedColor & 0x1F) / 31;
+                                g = ((packedColor >> 5) & 0x1F) / 31;
+                                b = ((packedColor >> 10) & 0x1F) / 31;
+                            } else {
+                                r = defaultR;
+                                g = defaultG;
+                                b = defaultB;
+                            }
+                        }
+
+                        for (var i = 1; i <= 3; i++) {
+                            var vertexstart = start + i * 12;
+                            var index = (face * 3 * 3) + ((i - 1) * 3);
+                            vertices[index] = reader.getFloat32(vertexstart, true);
+                            vertices[index + 1] = reader.getFloat32(vertexstart + 4, true);
+                            vertices[index + 2] = reader.getFloat32(vertexstart + 8, true);
+                            normals[index] = normalX;
+                            normals[index + 1] = normalY;
+                            normals[index + 2] = normalZ;
+
+                            if (hasColors) {
+                                colors[index] = r;
+                                colors[index + 1] = g;
+                                colors[index + 2] = b;
+                            }
+                        }
+                    }
+
+                    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+                    geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
+                    if (hasColors) {
+                        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                    }
+
+                    return geometry;
+                }
+
+                return isBinary(data) ? parseBinary(data) : null;
+            }
+        };
+
+        // Main viewer code
         let scene, camera, renderer, currentModel, animationId;
 
-        // Model URLs
         const modelUrls = {
             'dragster': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wind%20tunnel%20Dragster.stl',
             'robotdog': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Robo%20Dog.stl',
@@ -659,200 +621,110 @@
         };
 
         function open3DViewer(modelType) {
+            console.log('Opening viewer for:', modelType);
             const modal = document.getElementById('viewer-modal');
-            const loadingText = document.getElementById('loading-text');
             modal.classList.add('active');
-            loadingText.style.display = 'block';
-            
-            // Initialize Three.js scene
+            document.getElementById('loading-text').style.display = 'block';
             initViewer(modelType);
         }
 
         function close3DViewer() {
             const modal = document.getElementById('viewer-modal');
             modal.classList.remove('active');
-            
-            // Clean up
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-            if (renderer) {
-                renderer.dispose();
-            }
-            if (scene && currentModel) {
-                scene.remove(currentModel);
-            }
+            if (animationId) cancelAnimationFrame(animationId);
+            if (renderer) renderer.dispose();
+            if (scene && currentModel) scene.remove(currentModel);
         }
 
         function initViewer(modelType) {
             const canvas = document.getElementById('viewer-canvas');
             const container = canvas.parentElement;
             const loadingText = document.getElementById('loading-text');
-            
-            // Scene setup
+
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0x1a1a1a);
-            
-            // Camera
-            camera = new THREE.PerspectiveCamera(
-                75,
-                container.clientWidth / container.clientHeight,
-                0.1,
-                1000
-            );
+
+            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 10000);
             camera.position.z = 150;
-            
-            // Renderer
+
             renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
-            
-            // Lights
+
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
             scene.add(ambientLight);
-            
             const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
             directionalLight.position.set(5, 5, 5);
             scene.add(directionalLight);
+
+            const loader = new THREE.STLLoader();
+            console.log('Loading from:', modelUrls[modelType]);
             
-            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
-            directionalLight2.position.set(-5, -5, -5);
-            scene.add(directionalLight2);
-            
-            const directionalLight3 = new THREE.DirectionalLight(0xffffff, 0.3);
-            directionalLight3.position.set(0, -5, 0);
-            scene.add(directionalLight3);
-            
-            // Load STL model
-            if (THREE.STLLoader) {
-                const loader = new THREE.STLLoader();
-                
-                // Add timeout warning
-                const timeoutWarning = setTimeout(() => {
-                    loadingText.innerHTML = `
-                        <div class="spinner"></div>
-                        <div>Still loading...</div>
-                        <div style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Large file detected. Please wait.</div>
-                    `;
-                }, 10000);
-                
-                loader.load(
-                    modelUrls[modelType],
-                    function(geometry) {
-                        clearTimeout(timeoutWarning);
-                        loadingText.style.display = 'none';
-                        
-                        // Center the geometry
-                        geometry.computeBoundingBox();
-                        const center = new THREE.Vector3();
-                        geometry.boundingBox.getCenter(center);
-                        geometry.translate(-center.x, -center.y, -center.z);
-                        
-                        // Create material based on model type
-                        let material;
-                        if (modelType === 'dragster') {
-                            material = new THREE.MeshStandardMaterial({ 
-                                color: 0x3498db,
-                                metalness: 0.6,
-                                roughness: 0.4
-                            });
-                        } else if (modelType === 'robotdog') {
-                            material = new THREE.MeshStandardMaterial({ 
-                                color: 0xe74c3c,
-                                metalness: 0.5,
-                                roughness: 0.5
-                            });
-                        } else if (modelType === 'printer') {
-                            material = new THREE.MeshStandardMaterial({ 
-                                color: 0x95a5a6,
-                                metalness: 0.7,
-                                roughness: 0.3
-                            });
-                        }
-                        
-                        currentModel = new THREE.Mesh(geometry, material);
-                        scene.add(currentModel);
-                        
-                        // Auto-adjust camera based on model size
-                        const bbox = geometry.boundingBox;
-                        const size = bbox.getSize(new THREE.Vector3());
-                        const maxDim = Math.max(size.x, size.y, size.z);
-                        camera.position.z = maxDim * 2;
-                    },
-                    function(xhr) {
-                        // Progress callback - may not work with all servers
-                        if (xhr.lengthComputable) {
-                            const percent = (xhr.loaded / xhr.total * 100).toFixed(0);
-                            loadingText.innerHTML = `
-                                <div class="spinner"></div>
-                                <div>Loading 3D model... ${percent}%</div>
-                            `;
-                        }
-                    },
-                    function(error) {
-                        clearTimeout(timeoutWarning);
-                        console.error('Error loading model:', error);
-                        loadingText.innerHTML = `
-                            <div style="color: #e74c3c;">
-                                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                                <div>Error loading model</div>
-                                <div style="font-size: 0.9rem; margin-top: 0.5rem;">Check browser console for details</div>
-                            </div>
-                        `;
-                    }
-                );
-            }
-            
-            // Mouse controls
+            loader.load(
+                modelUrls[modelType],
+                function(geometry) {
+                    console.log('Model loaded!', geometry);
+                    loadingText.style.display = 'none';
+
+                    geometry.computeBoundingBox();
+                    const center = new THREE.Vector3();
+                    geometry.boundingBox.getCenter(center);
+                    geometry.translate(-center.x, -center.y, -center.z);
+
+                    const material = new THREE.MeshStandardMaterial({ 
+                        color: 0x3498db,
+                        metalness: 0.6,
+                        roughness: 0.4
+                    });
+
+                    currentModel = new THREE.Mesh(geometry, material);
+                    scene.add(currentModel);
+
+                    const bbox = geometry.boundingBox;
+                    const size = bbox.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    camera.position.z = maxDim * 2.5;
+                    console.log('Camera positioned at z:', camera.position.z);
+                },
+                function(xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                function(error) {
+                    console.error('Load error:', error);
+                    loadingText.innerHTML = '<div style="color:#e74c3c;">Error loading model. Check console.</div>';
+                }
+            );
+
             let isDragging = false;
             let previousMousePosition = { x: 0, y: 0 };
-            
+
             canvas.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 previousMousePosition = { x: e.clientX, y: e.clientY };
             });
-            
+
             canvas.addEventListener('mousemove', (e) => {
                 if (isDragging && currentModel) {
                     const deltaX = e.clientX - previousMousePosition.x;
                     const deltaY = e.clientY - previousMousePosition.y;
-                    
                     currentModel.rotation.y += deltaX * 0.01;
                     currentModel.rotation.x += deltaY * 0.01;
-                    
                     previousMousePosition = { x: e.clientX, y: e.clientY };
                 }
             });
-            
-            canvas.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-            
+
+            canvas.addEventListener('mouseup', () => { isDragging = false; });
             canvas.addEventListener('wheel', (e) => {
                 e.preventDefault();
-                const zoomSpeed = camera.position.z * 0.001;
-                camera.position.z += e.deltaY * zoomSpeed;
-                camera.position.z = Math.max(10, Math.min(500, camera.position.z));
+                camera.position.z += e.deltaY * 0.1;
+                camera.position.z = Math.max(10, Math.min(1000, camera.position.z));
             });
-            
-            // Animation loop
+
             function animate() {
                 animationId = requestAnimationFrame(animate);
-                
-                // Auto-rotate when not dragging
-                if (!isDragging && currentModel) {
-                    currentModel.rotation.y += 0.005;
-                }
-                
+                if (!isDragging && currentModel) currentModel.rotation.y += 0.005;
                 renderer.render(scene, camera);
             }
             animate();
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            });
         }
     </script>
 </body>
