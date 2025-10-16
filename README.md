@@ -5,7 +5,6 @@
 ## Skills
 - **CAD Software:** Onshape, SolidWorks, Fusion360, TinkerCAD
 - **3D Printing:** Prototyping, troubleshooting, and design optimization
-- **Research Experience:** NASA SEES project participant
 
 ## Connect with Me
 - [LinkedIn](https://www.linkedin.com/in/james-lin-72927a278/)
