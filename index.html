@@ -346,6 +346,12 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
+        .modal-images video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
         .modal-detail-section {
             margin: 2rem 0;
         }
@@ -841,7 +847,12 @@
             if (project.images && project.images.length > 0) {
                 imagesHTML = '<div class="modal-images">';
                 project.images.forEach(img => {
-                    imagesHTML += `<img src="${img}" alt="${project.title}">`;
+                    // Check if it's a video file
+                    if (img.endsWith('.mp4') || img.endsWith('.mov') || img.endsWith('.MOV')) {
+                        imagesHTML += `<video controls><source src="${img}" type="video/mp4">Your browser does not support video.</video>`;
+                    } else {
+                        imagesHTML += `<img src="${img}" alt="${project.title}">`;
+                    }
                 });
                 imagesHTML += '</div>';
             }
