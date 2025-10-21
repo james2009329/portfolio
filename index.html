@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Lin - Projects Portfolio</title>
+    <title>James Lin - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,233 +13,328 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            scroll-behavior: smooth;
+            background: #fff;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(44, 62, 80, 0.95);
-            padding: 0.8rem;
-            border-radius: 10px;
-            display: flex;
-            gap: 0.5rem;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 3rem;
+            border-bottom: 1px solid #eee;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
-            padding: 0.5rem 1rem;
-            color: #fff;
+        .nav-brand {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #666;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
 
-        nav a:hover {
-            background: #1abc9c;
-            transform: translateY(-2px);
+        .nav-links a:hover {
+            color: #000;
         }
 
+        /* Hero */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-top: 80px;
+            padding: 6rem 3rem;
             text-align: center;
-            color: white;
-        }
-
-        .hero-content {
             max-width: 800px;
-            padding: 2rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: #000;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            color: #666;
             margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
-        .hero-cta {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: #1abc9c;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .hero-cta:hover {
-            background: #16a085;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
+        /* Main Content */
         main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 3rem;
         }
 
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
         }
 
         h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: #000;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .about-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
         }
 
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .project-image {
+        .about-image-placeholder {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            max-width: 600px;
+            height: 400px;
+            background: #f5f5f5;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            overflow: hidden;
+            color: #999;
+            font-size: 1rem;
+            margin: 2rem auto;
+            border: 2px dashed #ddd;
         }
 
-        .project-image img {
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .project-item {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 350px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ddd;
+        }
+
+        .project-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .image-placeholder {
-            color: rgba(255,255,255,0.3);
-            font-style: italic;
-            font-size: 1rem;
+        .project-placeholder {
+            color: #999;
+            font-size: 0.9rem;
+            text-align: center;
         }
 
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .project-content p {
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: #667eea;
-            text-decoration: none;
+        .project-item h3 {
+            font-size: 1.3rem;
             font-weight: 600;
-            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+            color: #000;
         }
 
-        .project-link:hover {
-            color: #764ba2;
-            text-decoration: underline;
+        .project-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .view-3d-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .view-3d-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .view-3d-btn i {
-            margin-right: 0.5rem;
-        }
-
-        .viewer-modal, .project-modal {
+        /* Modal */
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 2000;
             overflow-y: auto;
-            padding: 2rem;
         }
 
-        .viewer-modal.active, .project-modal.active {
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            margin: 4rem auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .modal-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border: 2px dashed #ddd;
+        }
+
+        .modal-images img, .modal-images video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal-section {
+            margin: 2rem 0;
+        }
+
+        .modal-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .modal-section p, .modal-section ul {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .view-3d-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .view-3d-btn:hover {
+            background: #333;
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        /* 3D Viewer Modal */
+        .viewer-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+        }
+
+        .viewer-modal.active {
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .project-modal.active {
-            display: block;
         }
 
         .viewer-container {
@@ -247,46 +342,8 @@
             max-width: 1200px;
             height: 80%;
             background: #1a1a1a;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-modal-content {
-            max-width: 1000px;
-            margin: 2rem auto;
-            background: white;
-            border-radius: 15px;
-            padding: 3rem;
-            position: relative;
-        }
-
-        .close-viewer, .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 24px;
             border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            z-index: 10;
-            transition: all 0.3s;
-        }
-
-        .close-modal {
-            background: #e74c3c;
-        }
-
-        .close-viewer:hover {
-            background: #764ba2;
-        }
-
-        .close-modal:hover {
-            background: #c0392b;
+            position: relative;
         }
 
         .viewer-canvas {
@@ -294,16 +351,17 @@
             height: 100%;
         }
 
-        .viewer-instructions {
+        .close-viewer {
             position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px 24px;
-            border-radius: 8px;
-            color: #333;
-            font-size: 0.9rem;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
             z-index: 10;
         }
 
@@ -313,19 +371,17 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 1.2rem;
-            z-index: 5;
             text-align: center;
         }
 
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #667eea;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #fff;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 1rem auto;
+            margin: 0 auto 1rem;
         }
 
         @keyframes spin {
@@ -333,313 +389,260 @@
             100% { transform: rotate(360deg); }
         }
 
-        .modal-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .modal-images img, .modal-images video {
-            max-width: calc(50% - 0.75rem);
-            max-height: 400px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .modal-images img, .modal-images video {
-                max-width: 100%;
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
             }
-        }
 
-        .modal-detail-section {
-            margin: 2rem 0;
-        }
+            .hero {
+                padding: 4rem 1.5rem;
+            }
 
-        .modal-detail-section h3 {
-            color: #2c3e50;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .modal-detail-section p, .modal-detail-section ul {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .modal-detail-section ul {
-            padding-left: 2rem;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .contact-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .contact-item {
-            margin: 1.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        .contact-item i {
-            color: #667eea;
-            margin-right: 0.5rem;
-        }
-
-        .contact-item a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: #764ba2;
-            text-decoration: underline;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
+
+            main {
+                padding: 1.5rem;
+            }
+
             .project-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .modal-content {
+                margin: 2rem 1rem;
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav>
-        <a href="#home"><i class="fas fa-home"></i> Home</a>
-        <a href="#about"><i class="fas fa-user"></i> About</a>
-        <a href="#past-projects"><i class="fas fa-archive"></i> Past</a>
-        <a href="#current-projects"><i class="fas fa-cogs"></i> Current</a>
-        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        <div class="nav-brand">James Lin</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>James Lin</h1>
-            <p>Design & Engineering Portfolio</p>
-            <a href="#past-projects" class="hero-cta">View My Work</a>
-        </div>
-    </section>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>James Lin</h1>
+        <p>High school student interested in Mechanical Engineering, 3D Printing, and Design</p>
+    </div>
 
     <main>
+        <!-- About Section -->
         <section id="about">
-            <h2>About Me</h2>
+            <h2>About</h2>
             <div class="about-content">
-                <p><strong>Hey! I'm James, a highschool student interested in Mechanical engineering, 3D printing, and Design</strong></p>
                 <p>What drives me most is the opportunity to explore, create, and iterate. I'm motivated by projects that challenge me to think critically, collaborate effectively, and push the boundaries of what's possible. Aside from engineering, I enjoy drinking hot teas, playing tennis with my little sister, and taking walks with my dog Tofu!</p>
-                <div style="margin-top: 2rem;">
-                    <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Yippie.PNG" alt="DECA Celebration" style="max-width: 400px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.9rem; color: #888; margin-top: 0.5rem;">Celebrating with Rizwan after DECA competition</p>
+                
+                <div class="about-image-placeholder">
+                    <!-- Replace this div with: <img src="YOUR_IMAGE_URL" alt="About Me"> -->
+                    [Add your photo here - Replace this placeholder]
                 </div>
-                <p style="font-size: 0.9rem; color: #888; margin-top: 2rem; font-style: italic;">Site layout assisted by AI, all projects and insights are my own.</p>
             </div>
         </section>
 
-        <section id="past-projects">
-            <h2>Past Projects</h2>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
             <div class="project-grid">
-                <div class="project-card" onclick="openProjectModal('nasa')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
+                <!-- NASA SEES -->
+                <div class="project-item" onclick="openModal('nasa')">
+                    <div class="project-image-container">
+                        <div class="project-placeholder">[Add project image]</div>
                     </div>
-                    <div class="project-content">
-                        <h3>NASA SEES - High-Altitude Airship</h3>
-                        <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
+                    <h3>NASA SEES - High-Altitude Airship</h3>
+                    <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation</p>
                 </div>
 
-                <div class="project-card" onclick="openProjectModal('nitinol')">
-                    <div class="project-image">
+                <!-- Nitinol Claw -->
+                <div class="project-item" onclick="openModal('nitinol')">
+                    <div class="project-image-container">
                         <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ArmPic.png" alt="Nitinol Claw">
                     </div>
-                    <div class="project-content">
-                        <h3>Nitinol-Driven Compliant Claw</h3>
-                        <p>Collaborating on a nitinol-driven compliant claw mechanism.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
+                    <h3>Nitinol-Driven Compliant Claw</h3>
+                    <p>Nitinol-driven compliant claw mechanism researching efficiency and strength</p>
                 </div>
 
-                <div class="project-card" onclick="openProjectModal('solar')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Senior Solar Sprint</h3>
-                        <p>Solar-powered RC car with custom 3D-printed switch replacement.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
-                </div>
-
-                <div class="project-card" onclick="openProjectModal('dragster')">
-                    <div class="project-image">
+                <!-- Dragster -->
+                <div class="project-item" onclick="openModal('dragster')">
+                    <div class="project-image-container">
                         <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/DragsterReal.png" alt="Dragster">
                     </div>
-                    <div class="project-content">
-                        <h3>Dragster</h3>
-                        <p>Aerodynamic dragster with optimized weight and wheel design.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
+                    <h3>Dragster</h3>
+                    <p>Aerodynamic dragster with optimized weight and wheel design</p>
                 </div>
 
-                <div class="project-card" onclick="openProjectModal('cell')">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG" alt="Specialized Cell">
-                    </div>
-                    <div class="project-content">
-                        <h3>Specialized Cell Project</h3>
-                        <p>Remote-controlled model with gearbox-driven motion.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
-                </div>
-
-                <div class="project-card" onclick="openProjectModal('filter')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>2-Stage Carbon Air Filter</h3>
-                        <p>3D printed air filter housing for VOC removal.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
-                </div>
-
-                <div class="project-card" onclick="openProjectModal('mods')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
-                    </div>
-                    <div class="project-content">
-                        <h3>3D Printer Modifications</h3>
-                        <p>Repaired and modified QIDI X-plus printer.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
-                </div>
-
-                <div class="project-card" onclick="openProjectModal('biology')">
-                    <div class="project-image">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG" alt="Macromolecule Project">
-                    </div>
-                    <div class="project-content">
-                        <h3>Macromolecule Biology Project</h3>
-                        <p>Custom modular packaging design for biology class.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="current-projects">
-            <h2>Current Projects</h2>
-            <div class="project-grid">
-                <div class="project-card" onclick="openProjectModal('robotdog')">
-                    <div class="project-image">
+                <!-- Robot Dog -->
+                <div class="project-item" onclick="openModal('robotdog')">
+                    <div class="project-image-container">
                         <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/RoboDog.png" alt="Robot Dog">
                     </div>
-                    <div class="project-content">
-                        <h3>Robot Dog</h3>
-                        <p>Quadrupedal robot with autonomous movement capabilities.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
-                    </div>
+                    <h3>Robot Dog</h3>
+                    <p>Quadrupedal robot with autonomous movement capabilities</p>
                 </div>
 
-                <div class="project-card" onclick="openProjectModal('printer')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Add Project Image</div>
+                <!-- Cell Project -->
+                <div class="project-item" onclick="openModal('cell')">
+                    <div class="project-image-container">
+                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG" alt="Cell Project">
                     </div>
-                    <div class="project-content">
-                        <h3>Custom 3D Printer</h3>
-                        <p>Building from scratch with custom upgrades.</p>
-                        <p style="font-size: 0.9rem; color: #667eea; margin-top: 1rem;">Click for details →</p>
+                    <h3>Specialized Cell Project</h3>
+                    <p>Remote-controlled model with gearbox-driven motion</p>
+                </div>
+
+                <!-- Biology Project -->
+                <div class="project-item" onclick="openModal('biology')">
+                    <div class="project-image-container">
+                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG" alt="Biology Project">
                     </div>
+                    <h3>Chicken Cannedwich</h3>
+                    <p>Mock product packaging for biology class project</p>
+                </div>
+
+                <!-- Solar Sprint -->
+                <div class="project-item" onclick="openModal('solar')">
+                    <div class="project-image-container">
+                        <div class="project-placeholder">[Add project image]</div>
+                    </div>
+                    <h3>Senior Solar Sprint</h3>
+                    <p>Solar-powered RC car with custom 3D-printed components</p>
+                </div>
+
+                <!-- Air Filter -->
+                <div class="project-item" onclick="openModal('filter')">
+                    <div class="project-image-container">
+                        <div class="project-placeholder">[Add project image]</div>
+                    </div>
+                    <h3>2-Stage Carbon Air Filter</h3>
+                    <p>3D printed air filter housing for VOC removal</p>
+                </div>
+
+                <!-- 3D Printer Mods -->
+                <div class="project-item" onclick="openModal('mods')">
+                    <div class="project-image-container">
+                        <div class="project-placeholder">[Add project image]</div>
+                    </div>
+                    <h3>3D Printer Modifications</h3>
+                    <p>Repaired and modified QIDI X-plus printer</p>
+                </div>
+
+                <!-- Custom Printer -->
+                <div class="project-item" onclick="openModal('printer')">
+                    <div class="project-image-container">
+                        <div class="project-placeholder">[Add project image]</div>
+                    </div>
+                    <h3>Custom 3D Printer</h3>
+                    <p>Building from scratch with custom upgrades</p>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:james2009329@gmail.com">james2009329@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank">linkedin.com/in/james-lin-72927a278</a>
-                </div>
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="mailto:james2009329@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank">LinkedIn</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2024 James Lin. All rights reserved.</p>
-        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Site layout assisted by AI, all projects and insights are my own.</p>
+        <p style="margin-top: 0.5rem;">Site layout assisted by AI, all projects and insights are my own.</p>
     </footer>
 
-    <div id="project-modal" class="project-modal">
-        <div class="project-modal-content">
-            <button class="close-modal" onclick="closeProjectModal()">
-                <i class="fas fa-times"></i> Close
-            </button>
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
             <div id="modal-body"></div>
         </div>
     </div>
 
+    <!-- 3D Viewer -->
     <div id="viewer-modal" class="viewer-modal">
         <div class="viewer-container">
-            <button class="close-viewer" onclick="close3DViewer()">
-                <i class="fas fa-times"></i> Close
-            </button>
+            <button class="close-viewer" onclick="close3DViewer()">Close</button>
             <div class="loading-text" id="loading-text">
                 <div class="spinner"></div>
                 <div>Loading 3D model...</div>
             </div>
             <canvas id="viewer-canvas" class="viewer-canvas"></canvas>
-            <div class="viewer-instructions">
-                <i class="fas fa-mouse"></i> Drag to rotate | Scroll to zoom
-            </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const projectDetails = {
+        const projectData = {
+            'nasa': {
+                title: 'NASA SEES - High-Altitude Airship',
+                images: [
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Flight!.mp4',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Swift%20Turn.mp4',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/MotorTest.mp4'
+                ],
+                content: `
+                    <div class="modal-section">
+                        <h3>Project Role</h3>
+                        <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Responsibilities</h3>
+                        <ul>
+                            <li>Designed main gondola, rear vectoring propeller, and skis in Fusion360</li>
+                            <li>Ensured electronics fit and created presentation animations</li>
+                            <li>Conducted CFD modeling simulating Earth and Titan conditions</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Testing & Results</h3>
+                        <p>Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests including turning maneuvers.</p>
+                        <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" target="_blank" style="color: #000; text-decoration: underline;">Watch Full Presentation</a></p>
+                    </div>
+                `
+            },
+            'nitinol': {
+                title: 'Nitinol-Driven Compliant Claw',
+                images: [
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ArmPic.png',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Gears!.png'
+                ],
+                content: `
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Mechanical Design</h3>
+                        <p>The underside of the arm features an intricate gear system that drives the claw's directional movement. The gears provide precise control and mechanical advantage for the nitinol actuators.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Nitinol wire actuation for shape memory effect</li>
+                            <li>Compliant mechanism design for smooth motion</li>
+                            <li>Gear-driven directional control system</li>
+                            <li>Integration of mechanical and electrical systems</li>
+                        </ul>
+                    </div>
+                `
+            },
             'dragster': {
                 title: 'Dragster',
                 images: [
@@ -650,54 +653,27 @@
                     'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Single%20Wheel%20Weight.png'
                 ],
                 content: `
-                    <h3>Materials & Specifications</h3>
-                    <ul>
-                        <li>Steel axles with graphite lubricant</li>
-                        <li>Glass fiber impregnated PETG body and wheels</li>
-                        <li>Clear spray paint finish</li>
-                    </ul>
+                    <div class="modal-section">
+                        <h3>Materials</h3>
+                        <ul>
+                            <li>Steel axles with graphite lubricant</li>
+                            <li>Glass fiber impregnated PETG body and wheels</li>
+                            <li>Clear spray paint finish</li>
+                        </ul>
+                    </div>
                     
-                    <h3>Design Rationale</h3>
-                    <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.</p>
+                    <div class="modal-section">
+                        <h3>Design</h3>
+                        <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.</p>
+                    </div>
                     
-                    <h3>Weight Optimization</h3>
-                    <p><strong>Current Weight:</strong> 70 grams</p>
-                    <p><strong>Target Weight:</strong> 50 grams</p>
-                    <p>Currently reprinting with optimizations to meet target weight requirements.</p>
+                    <div class="modal-section">
+                        <h3>Weight Optimization</h3>
+                        <p><strong>Current:</strong> 70 grams | <strong>Target:</strong> 50 grams</p>
+                        <p>Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight.</p>
+                    </div>
                     
-                    <h3>Wheel Design Optimization</h3>
-                    <p>Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity.</p>
-                    <ul>
-                        <li>Multiple wheel set: 6 grams</li>
-                        <li>Single wheel (old design): 6 grams</li>
-                        <li>Achieved same weight with improved performance</li>
-                    </ul>
-                    
-                    <button class="view-3d-btn" onclick="closeProjectModal(); open3DViewer('dragster')">
-                        <i class="fas fa-cube"></i> View 3D Model
-                    </button>
-                `
-            },
-            'nitinol': {
-                title: 'Nitinol-Driven Compliant Claw',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ArmPic.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Gears!.png'
-                ],
-                content: `
-                    <h3>Project Overview</h3>
-                    <p>Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.</p>
-                    
-                    <h3>Mechanical Design</h3>
-                    <p>The underside of the arm features an intricate gear system that drives the claw's directional movement. The gears provide precise control and mechanical advantage for the nitinol actuators.</p>
-                    
-                    <h3>Key Features</h3>
-                    <ul>
-                        <li>Nitinol wire actuation for shape memory effect</li>
-                        <li>Compliant mechanism design for smooth motion</li>
-                        <li>Gear-driven directional control system</li>
-                        <li>Integration of mechanical and electrical systems</li>
-                    </ul>
+                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('dragster')">View 3D Model</button>
                 `
             },
             'robotdog': {
@@ -706,54 +682,12 @@
                     'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/RoboDog.png'
                 ],
                 content: `
-                    <h3>Project Overview</h3>
-                    <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
+                    </div>
                     
-                    <h3>Technologies</h3>
-                    <p><strong>[Add details about components and technologies used]</strong></p>
-                    
-                    <button class="view-3d-btn" onclick="closeProjectModal(); open3DViewer('robotdog')">
-                        <i class="fas fa-cube"></i> View 3D Model
-                    </button>
-                `
-            },
-            'nasa': {
-                title: 'NASA SEES - High-Altitude Airship',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Flight!.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Swift%20Turn.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/MotorTest.mp4'
-                ],
-                content: `
-                    <h3>Project Role</h3>
-                    <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation.</p>
-                    
-                    <h3>Responsibilities</h3>
-                    <ul>
-                        <li>Designed main gondola, rear vectoring propeller, and skis in Fusion360</li>
-                        <li>Ensured electronics fit and created presentation animations</li>
-                        <li>Conducted CFD modeling simulating Earth and Titan conditions</li>
-                    </ul>
-                    
-                    <h3>Testing & Results</h3>
-                    <p>Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests including turning maneuvers.</p>
-                    
-                    <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" class="project-link" target="_blank">Watch Full Presentation <i class="fas fa-external-link-alt"></i></a></p>
-                `
-            },
-            'solar': {
-                title: 'Senior Solar Sprint - Solar RC Car',
-                images: [],
-                content: `
-                    <h3>Project Overview</h3>
-                    <p>Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.</p>
-                    
-                    <h3>Key Achievements</h3>
-                    <ul>
-                        <li>Reverse-engineered missing component</li>
-                        <li>3D-printed custom SPDT switch replacement</li>
-                        <li>Integrated solar power system</li>
-                    </ul>
+                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('robotdog')">View 3D Model</button>
                 `
             },
             'cell': {
@@ -764,87 +698,92 @@
                     'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Spin!.mp4'
                 ],
                 content: `
-                    <h3>Project Overview</h3>
-                    <p>Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.</p>
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.</p>
+                    </div>
                     
-                    <h3>Technical Features</h3>
-                    <ul>
-                        <li>Custom gearbox for flagellum rotation mechanism</li>
-                        <li>Hidden wheel and motor system for navigation</li>
-                        <li>Remote control integration</li>
-                        <li>Spinning and directional movement capabilities</li>
-                    </ul>
+                    <div class="modal-section">
+                        <h3>Technical Features</h3>
+                        <ul>
+                            <li>Custom gearbox for flagellum rotation mechanism</li>
+                            <li>Hidden wheel and motor system for navigation</li>
+                            <li>Remote control integration</li>
+                            <li>Spinning and directional movement capabilities</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'biology': {
+                title: 'Chicken Cannedwich',
+                images: [
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macromolecule%20project.PNG',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG'
+                ],
+                content: `
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project.</p>
+                    </div>
                     
-                    <h3>Testing</h3>
-                    <p>Successfully demonstrated flagellum movement and full spinning capabilities of the mobile unit.</p>
+                    <div class="modal-section">
+                        <h3>Product Design</h3>
+                        <ul>
+                            <li>Mock Instagram promotional posts</li>
+                            <li>3D printed packaging prototypes</li>
+                            <li>Multiple flavor variants including grilled version</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'solar': {
+                title: 'Senior Solar Sprint',
+                images: [],
+                content: `
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.</p>
+                    </div>
                 `
             },
             'filter': {
                 title: '2-Stage Carbon Air Filter',
                 images: [],
                 content: `
-                    <h3>Project Overview</h3>
-                    <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs.</p>
-                    
-                    <ul>
-                        <li>Two-stage filtration system</li>
-                        <li>3D printed custom enclosure</li>
-                        <li>Optimized for VOC capture</li>
-                    </ul>
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality.</p>
+                    </div>
                 `
             },
             'mods': {
                 title: '3D Printer Modifications',
                 images: [],
                 content: `
-                    <h3>Project Overview</h3>
-                    <ul>
-                        <li>Repaired QIDI X-plus from garage sale</li>
-                        <li>Modified printer extensively</li>
-                        <li>Hardware troubleshooting and repair experience</li>
-                    </ul>
-                `
-            },
-            'biology': {
-                title: 'Macromolecule Biology Project - Chicken Cannedwich',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macromolecule%20project.PNG',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG'
-                ],
-                content: `
-                    <h3>Project Overview</h3>
-                    <p>Designed custom modular packaging using CAD and 3D printing for a biology class project. Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers.</p>
-                    
-                    <h3>Product Design</h3>
-                    <ul>
-                        <li>Mock Instagram promotional posts showcasing the product</li>
-                        <li>3D printed packaging prototypes</li>
-                        <li>Marketing materials and branding</li>
-                        <li>Multiple flavor variants (including grilled version)</li>
-                    </ul>
-                    
-                    <h3>Team Collaboration</h3>
-                    <p>Created engaging promotional content to market the innovative concept of a convenient, portable meal solution for long-haul truckers.</p>
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Repaired QIDI X-plus from garage sale and extensively modified the printer for improved performance.</p>
+                    </div>
                 `
             },
             'printer': {
                 title: 'Custom 3D Printer',
                 images: [],
                 content: `
-                    <h3>Project Overview</h3>
-                    <p>Building and modifying a 3D printer from scratch with upgraded components.</p>
+                    <div class="modal-section">
+                        <h3>Overview</h3>
+                        <p>Building and modifying a 3D printer from scratch with upgraded mechanical components.</p>
+                    </div>
                     
-                    <button class="view-3d-btn" onclick="closeProjectModal(); open3DViewer('printer')">
-                        <i class="fas fa-cube"></i> View 3D Model
-                    </button>
+                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('printer')">View 3D Model</button>
                 `
             }
         };
 
-        function openProjectModal(projectId) {
+        function openModal(projectId) {
             const modal = document.getElementById('project-modal');
             const modalBody = document.getElementById('modal-body');
-            const project = projectDetails[projectId];
+            const project = projectData[projectId];
             
             if (!project) return;
             
@@ -852,9 +791,8 @@
             if (project.images && project.images.length > 0) {
                 imagesHTML = '<div class="modal-images">';
                 project.images.forEach(img => {
-                    // Check if it's a video file
-                    if (img.endsWith('.mp4') || img.endsWith('.mov') || img.endsWith('.MOV')) {
-                        imagesHTML += `<video controls><source src="${img}" type="video/mp4">Your browser does not support video.</video>`;
+                    if (img.endsWith('.mp4') || img.endsWith('.mov')) {
+                        imagesHTML += `<video controls><source src="${img}" type="video/mp4"></video>`;
                     } else {
                         imagesHTML += `<img src="${img}" alt="${project.title}">`;
                     }
@@ -865,16 +803,14 @@
             modalBody.innerHTML = `
                 <h2>${project.title}</h2>
                 ${imagesHTML}
-                <div class="modal-detail-section">
-                    ${project.content}
-                </div>
+                ${project.content}
             `;
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeProjectModal() {
+        function closeModal() {
             const modal = document.getElementById('project-modal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -906,151 +842,4 @@
 
                 function parseBinary(data) {
                     var reader = new DataView(data);
-                    var faces = reader.getUint32(80, true);
-                    var dataOffset = 84;
-                    var faceLength = 12 * 4 + 2;
-                    var geometry = new THREE.BufferGeometry();
-                    var vertices = new Float32Array(faces * 3 * 3);
-                    var normals = new Float32Array(faces * 3 * 3);
-
-                    for (var face = 0; face < faces; face++) {
-                        var start = dataOffset + face * faceLength;
-                        var normalX = reader.getFloat32(start, true);
-                        var normalY = reader.getFloat32(start + 4, true);
-                        var normalZ = reader.getFloat32(start + 8, true);
-
-                        for (var i = 1; i <= 3; i++) {
-                            var vertexstart = start + i * 12;
-                            var index = (face * 3 * 3) + ((i - 1) * 3);
-                            vertices[index] = reader.getFloat32(vertexstart, true);
-                            vertices[index + 1] = reader.getFloat32(vertexstart + 4, true);
-                            vertices[index + 2] = reader.getFloat32(vertexstart + 8, true);
-                            normals[index] = normalX;
-                            normals[index + 1] = normalY;
-                            normals[index + 2] = normalZ;
-                        }
-                    }
-
-                    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-                    geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
-                    return geometry;
-                }
-
-                return isBinary(data) ? parseBinary(data) : null;
-            }
-        };
-
-        // 3D Viewer
-        let scene, camera, renderer, currentModel, animationId;
-
-        const modelUrls = {
-            'dragster': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wind%20tunnel%20Dragster.stl',
-            'robotdog': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Robo%20Dog.stl',
-            'printer': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/3D-Printer.stl'
-        };
-
-        function open3DViewer(modelType) {
-            const modal = document.getElementById('viewer-modal');
-            modal.classList.add('active');
-            document.getElementById('loading-text').style.display = 'block';
-            initViewer(modelType);
-        }
-
-        function close3DViewer() {
-            const modal = document.getElementById('viewer-modal');
-            modal.classList.remove('active');
-            if (animationId) cancelAnimationFrame(animationId);
-            if (renderer) renderer.dispose();
-            if (scene && currentModel) scene.remove(currentModel);
-        }
-
-        function initViewer(modelType) {
-            const canvas = document.getElementById('viewer-canvas');
-            const container = canvas.parentElement;
-            const loadingText = document.getElementById('loading-text');
-
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x1a1a1a);
-
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 10000);
-            camera.position.z = 150;
-
-            renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(5, 5, 5);
-            scene.add(directionalLight);
-
-            const loader = new THREE.STLLoader();
-            
-            loader.load(
-                modelUrls[modelType],
-                function(geometry) {
-                    loadingText.style.display = 'none';
-
-                    geometry.computeBoundingBox();
-                    const center = new THREE.Vector3();
-                    geometry.boundingBox.getCenter(center);
-                    geometry.translate(-center.x, -center.y, -center.z);
-
-                    const material = new THREE.MeshStandardMaterial({ 
-                        color: 0x3498db,
-                        metalness: 0.6,
-                        roughness: 0.4
-                    });
-
-                    currentModel = new THREE.Mesh(geometry, material);
-                    scene.add(currentModel);
-
-                    const bbox = geometry.boundingBox;
-                    const size = bbox.getSize(new THREE.Vector3());
-                    const maxDim = Math.max(size.x, size.y, size.z);
-                    camera.position.z = maxDim * 2.5;
-                },
-                function(xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
-                function(error) {
-                    console.error('Load error:', error);
-                    loadingText.innerHTML = '<div style="color:#e74c3c;">Error loading model</div>';
-                }
-            );
-
-            let isDragging = false;
-            let previousMousePosition = { x: 0, y: 0 };
-
-            canvas.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            });
-
-            canvas.addEventListener('mousemove', (e) => {
-                if (isDragging && currentModel) {
-                    const deltaX = e.clientX - previousMousePosition.x;
-                    const deltaY = e.clientY - previousMousePosition.y;
-                    currentModel.rotation.y += deltaX * 0.01;
-                    currentModel.rotation.x += deltaY * 0.01;
-                    previousMousePosition = { x: e.clientX, y: e.clientY };
-                }
-            });
-
-            canvas.addEventListener('mouseup', () => { isDragging = false; });
-            canvas.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                camera.position.z += e.deltaY * 0.1;
-                camera.position.z = Math.max(10, Math.min(1000, camera.position.z));
-            });
-
-            function animate() {
-                animationId = requestAnimationFrame(animate);
-                if (!isDragging && currentModel) currentModel.rotation.y += 0.005;
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-    </script>
-</body>
-</html>
+                    var faces = reader
