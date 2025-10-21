@@ -231,9 +231,15 @@
 
         .modal-images {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .modal-images {
+                grid-template-columns: 1fr;
+            }
         }
 
         .modal-image-placeholder {
@@ -433,9 +439,10 @@
     </nav>
 
     <!-- Hero -->
-    <div class="hero">
-        <h1>James Lin</h1>
-        <p>High school student interested in Mechanical Engineering, 3D Printing, and Design</p>
+    <div class="hero" style="background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: cover; background-position: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div style="text-align: center; padding: 2rem; background: rgba(255, 255, 255, 0.85); border-radius: 8px; backdrop-filter: blur(10px);">
+            <h1 style="font-size: 4rem; font-weight: 700; color: #000; text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8), -2px -2px 4px rgba(255, 255, 255, 0.8), 2px -2px 4px rgba(255, 255, 255, 0.8), -2px 2px 4px rgba(255, 255, 255, 0.8); margin-bottom: 0;">PROJECT PORTFOLIO</h1>
+        </div>
     </div>
 
     <main>
@@ -933,9 +940,9 @@
                     geometry.translate(-center.x, -center.y, -center.z);
 
                     const material = new THREE.MeshStandardMaterial({ 
-                        color: 0x333333,
-                        metalness: 0.6,
-                        roughness: 0.4
+                        color: 0xcccccc,
+                        metalness: 0.3,
+                        roughness: 0.5
                     });
 
                     currentModel = new THREE.Mesh(geometry, material);
