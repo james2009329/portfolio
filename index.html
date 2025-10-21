@@ -334,16 +334,16 @@
         }
 
         .modal-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
             margin: 2rem 0;
+            align-items: center;
         }
 
         .modal-images img, .modal-images video {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
+            max-width: 100%;
+            height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
