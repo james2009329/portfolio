@@ -335,17 +335,23 @@
 
         .modal-images {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
             gap: 1.5rem;
             margin: 2rem 0;
-            align-items: center;
+            justify-content: center;
         }
 
         .modal-images img, .modal-images video {
-            max-width: 100%;
+            width: calc(50% - 0.75rem);
             height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .modal-images img, .modal-images video {
+                width: 100%;
+            }
         }
 
         .modal-detail-section {
