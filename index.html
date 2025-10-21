@@ -342,15 +342,18 @@
         }
 
         .modal-images img, .modal-images video {
-            width: calc(50% - 0.75rem);
+            max-width: calc(50% - 0.75rem);
+            max-height: 400px;
+            width: auto;
             height: auto;
+            object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
             .modal-images img, .modal-images video {
-                width: 100%;
+                max-width: 100%;
             }
         }
 
