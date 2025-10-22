@@ -17,6 +17,86 @@
             line-height: 1.6;
             color: #333;
             background: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode nav {
+            background: rgba(26, 26, 26, 0.98);
+            border-bottom: 1px solid #333;
+        }
+
+        body.dark-mode .nav-brand {
+            color: #fff;
+        }
+
+        body.dark-mode .nav-links a {
+            color: #aaa;
+        }
+
+        body.dark-mode .nav-links a:hover {
+            color: #fff;
+        }
+
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode .project-item h3 {
+            color: #fff;
+        }
+
+        body.dark-mode .project-item p,
+        body.dark-mode p {
+            color: #aaa;
+        }
+
+        body.dark-mode .project-image-container {
+            background: #2a2a2a;
+            border-color: #444;
+        }
+
+        body.dark-mode .about-content,
+        body.dark-mode .contact-links a {
+            color: #aaa;
+        }
+
+        body.dark-mode .contact-links a:hover {
+            color: #fff;
+        }
+
+        body.dark-mode .modal-content {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .modal-close {
+            color: #aaa;
+        }
+
+        body.dark-mode .modal-close:hover {
+            color: #fff;
+        }
+
+        body.dark-mode footer {
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        body.dark-mode .modal-section p,
+        body.dark-mode .modal-section ul {
+            color: #aaa;
+        }
+
+        body.dark-mode .view-3d-btn {
+            background: #fff;
+            color: #000;
+        }
+
+        body.dark-mode .view-3d-btn:hover {
+            background: #e0e0e0;
         }
 
         /* Navigation */
@@ -441,10 +521,10 @@
     </nav>
 
     <!-- Hero -->
-    <div class="hero" style="background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: cover; background-position: center top; min-height: 85vh; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3rem;">
-        <div style="text-align: center; padding: 1.5rem 3rem; background: rgba(255, 255, 255, 0.95); border-radius: 8px; backdrop-filter: blur(10px); max-width: 700px;">
-            <h1 style="font-size: 2.5rem; font-weight: 700; color: #000; margin-bottom: 1rem;">PROJECT PORTFOLIO</h1>
-            <p style="font-size: 1.1rem; color: #333; margin: 0; line-height: 1.6;">Hi! I'm James, a high school student interested in Mechanical Engineering, 3D Printing, and Design</p>
+    <div class="hero" style="background-image: url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: cover; background-position: center top; min-height: 85vh; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3rem;">
+        <div style="text-align: center; padding: 1.5rem 3rem; max-width: 700px;">
+            <h1 style="font-size: 2.5rem; font-weight: 700; color: #000; margin-bottom: 1rem; -webkit-text-stroke: 3px white; paint-order: stroke fill;">PROJECT PORTFOLIO</h1>
+            <p style="font-size: 1.1rem; color: #000; margin: 0; line-height: 1.6; -webkit-text-stroke: 2px white; paint-order: stroke fill; font-weight: 600;">Hi! I'm James, a high school student interested in Mechanical Engineering, 3D Printing, and Design</p>
         </div>
     </div>
 
@@ -582,6 +662,9 @@
     <footer>
         <p>&copy; 2024 James Lin. All rights reserved.</p>
         <p style="margin-top: 0.5rem;">Site layout assisted by AI, all projects and insights are my own.</p>
+        <button id="theme-toggle" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
+            <i class="fas fa-sun"></i> Light Mode
+        </button>
     </footer>
 
     <!-- Project Modal -->
@@ -1008,6 +1091,22 @@
             }
             animate();
         }
+    </script>
+    <script>
+        // Dark mode toggle - Default to dark mode
+        document.body.classList.add('dark-mode');
+        
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        });
     </script>
 </body>
 </html>
