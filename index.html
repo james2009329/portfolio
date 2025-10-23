@@ -1154,8 +1154,8 @@
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
             
-            // Calculate opacity based on scroll (fades out as you scroll down)
-            const opacity = Math.max(0, 1 - (scrollPosition / windowHeight));
+            // Calculate opacity based on scroll (fades out 2x faster)
+            const opacity = Math.max(0, 1 - (scrollPosition / (windowHeight * 0.5)));
             
             if (heroSection && heroContent) {
                 heroSection.style.opacity = opacity;
