@@ -105,101 +105,6 @@
 .modal-images img:hover {
     transform: scale(1.02);
 }
-
-
-<!-- ADD THIS HTML BEFORE YOUR CLOSING </body> TAG -->
-
-<!-- Image Lightbox -->
-<div id="image-lightbox" class="image-lightbox">
-    <div class="lightbox-image-content">
-        <button class="lightbox-close" onclick="closeImageLightbox()">&times;</button>
-        <img id="lightbox-main-img" src="" alt="">
-        <button class="lightbox-arrow lightbox-arrow-left" onclick="changeImageLightbox(-1)">&#10094;</button>
-        <button class="lightbox-arrow lightbox-arrow-right" onclick="changeImageLightbox(1)">&#10095;</button>
-        <div class="lightbox-counter" id="lightbox-counter"></div>
-    </div>
-</div>
-
-
-<!-- ADD THIS JAVASCRIPT TO YOUR EXISTING <script> SECTION -->
-
-// Image Lightbox Functionality
-let currentImageIndex = 0;
-let currentImageArray = [];
-
-function initImageLightbox() {
-    // Get all images in modal-images containers
-    const modalImages = document.querySelectorAll('.modal-images img');
-    
-    modalImages.forEach((img, index) => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Get all images in the same modal-images container
-            const container = img.closest('.modal-images');
-            currentImageArray = Array.from(container.querySelectorAll('img'));
-            currentImageIndex = currentImageArray.indexOf(img);
-            openImageLightbox();
-        });
-    });
-}
-
-function openImageLightbox() {
-    const lightbox = document.getElementById('image-lightbox');
-    lightbox.classList.add('active');
-    updateImageLightbox();
-}
-
-function closeImageLightbox() {
-    const lightbox = document.getElementById('image-lightbox');
-    lightbox.classList.remove('active');
-}
-
-function changeImageLightbox(direction) {
-    currentImageIndex += direction;
-    
-    // Loop around
-    if (currentImageIndex >= currentImageArray.length) {
-        currentImageIndex = 0;
-    } else if (currentImageIndex < 0) {
-        currentImageIndex = currentImageArray.length - 1;
-    }
-    
-    updateImageLightbox();
-}
-
-function updateImageLightbox() {
-    const lightboxImg = document.getElementById('lightbox-main-img');
-    const counter = document.getElementById('lightbox-counter');
-    
-    lightboxImg.src = currentImageArray[currentImageIndex].src;
-    lightboxImg.alt = currentImageArray[currentImageIndex].alt;
-    counter.textContent = `${currentImageIndex + 1} / ${currentImageArray.length}`;
-}
-
-// Close on background click
-document.getElementById('image-lightbox').addEventListener('click', (e) => {
-    if (e.target.id === 'image-lightbox') {
-        closeImageLightbox();
-    }
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('image-lightbox');
-    if (!lightbox.classList.contains('active')) return;
-    
-    if (e.key === 'Escape') closeImageLightbox();
-    if (e.key === 'ArrowLeft') changeImageLightbox(-1);
-    if (e.key === 'ArrowRight') changeImageLightbox(1);
-});
-
-// Initialize when modal opens
-const originalOpenModal = openModal;
-openModal = function(projectId) {
-    originalOpenModal(projectId);
-    // Wait for modal to render, then initialize lightbox
-    setTimeout(initImageLightbox, 100);
-};
         }
 
         body {
@@ -736,6 +641,15 @@ openModal = function(projectId) {
         }
     </style>
 </head>
+    <div id="image-lightbox" class="image-lightbox">
+    <div class="lightbox-image-content">
+        <button class="lightbox-close" onclick="closeImageLightbox()">&times;</button>
+        <img id="lightbox-main-img" src="" alt="">
+        <button class="lightbox-arrow lightbox-arrow-left" onclick="changeImageLightbox(-1)">&#10094;</button>
+        <button class="lightbox-arrow lightbox-arrow-right" onclick="changeImageLightbox(1)">&#10095;</button>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+</div>
 <body>
     <!-- Navigation -->
     <nav>
@@ -1377,6 +1291,83 @@ openModal = function(projectId) {
                 heroContent.style.transform = `translateY(${scrollPosition * 0.5}px)`;
             }
         });
+        // Image Lightbox Functionality
+let currentImageIndex = 0;
+let currentImageArray = [];
+
+function initImageLightbox() {
+    // Get all images in modal-images containers
+    const modalImages = document.querySelectorAll('.modal-images img');
+    
+    modalImages.forEach((img, index) => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Get all images in the same modal-images container
+            const container = img.closest('.modal-images');
+            currentImageArray = Array.from(container.querySelectorAll('img'));
+            currentImageIndex = currentImageArray.indexOf(img);
+            openImageLightbox();
+        });
+    });
+}
+
+function openImageLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.add('active');
+    updateImageLightbox();
+}
+
+function closeImageLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.remove('active');
+}
+
+function changeImageLightbox(direction) {
+    currentImageIndex += direction;
+    
+    // Loop around
+    if (currentImageIndex >= currentImageArray.length) {
+        currentImageIndex = 0;
+    } else if (currentImageIndex < 0) {
+        currentImageIndex = currentImageArray.length - 1;
+    }
+    
+    updateImageLightbox();
+}
+
+function updateImageLightbox() {
+    const lightboxImg = document.getElementById('lightbox-main-img');
+    const counter = document.getElementById('lightbox-counter');
+    
+    lightboxImg.src = currentImageArray[currentImageIndex].src;
+    lightboxImg.alt = currentImageArray[currentImageIndex].alt;
+    counter.textContent = `${currentImageIndex + 1} / ${currentImageArray.length}`;
+}
+
+// Close on background click
+document.getElementById('image-lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'image-lightbox') {
+        closeImageLightbox();
+    }
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('image-lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') closeImageLightbox();
+    if (e.key === 'ArrowLeft') changeImageLightbox(-1);
+    if (e.key === 'ArrowRight') changeImageLightbox(1);
+});
+
+// Initialize when modal opens
+const originalOpenModal = openModal;
+openModal = function(projectId) {
+    originalOpenModal(projectId);
+    // Wait for modal to render, then initialize lightbox
+    setTimeout(initImageLightbox, 100);
+};
     </script>
 </body>
 </html>
