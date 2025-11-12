@@ -704,6 +704,24 @@
             background: #1a1a1a;
         }
 
+        body.dark-mode #skills > div > div,
+        body.dark-mode #awards > div > div,
+        body.dark-mode #certificates > div > div {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode #skills h3,
+        body.dark-mode #awards h3,
+        body.dark-mode #certificates h3 {
+            color: #fff;
+        }
+
+        body.dark-mode #skills ul li,
+        body.dark-mode #awards p,
+        body.dark-mode #certificates p {
+            color: #aaa;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -902,11 +920,114 @@
                     </div>
                     <h3>Custom 3D Printer</h3>
                     <p>Building from scratch with custom upgrades</p>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-cube"></i> CAD & Design</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">• Fusion360</li>
+                            <li style="margin-bottom: 0.5rem;">• Onshape</li>
+                            <li style="margin-bottom: 0.5rem;">• CFD Simulation</li>
+                            <li style="margin-bottom: 0.5rem;">• Technical Drawing</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-print"></i> Manufacturing</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">• FDM 3D Printing</li>
+                            <li style="margin-bottom: 0.5rem;">• Slicing Optimization</li>
+                            <li style="margin-bottom: 0.5rem;">• Material Selection</li>
+                            <li style="margin-bottom: 0.5rem;">• Prototyping</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-code"></i> Programming</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">• Arduino</li>
+                            <li style="margin-bottom: 0.5rem;">• ESP32</li>
+                            <li style="margin-bottom: 0.5rem;">• Python</li>
+                            <li style="margin-bottom: 0.5rem;">• Circuit Design</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-wrench"></i> Engineering</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">• Mechanical Design</li>
+                            <li style="margin-bottom: 0.5rem;">• Assembly</li>
+                            <li style="margin-bottom: 0.5rem;">• Testing & Iteration</li>
+                            <li style="margin-bottom: 0.5rem;">• Documentation</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Awards & Recognition Section -->
+        <section id="awards">
+            <h2>Awards & Recognition</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-rocket"></i> NASA SEES | 2025</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">NASA | University of Texas at Austin & Center for Space Research</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-trophy"></i> ICDC | 2025</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">HTDM International Qualifier</p>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">3rd at Regionals & State Champion (Top 5)</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">DECA</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-medal"></i> Future Cities | 2022</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">2nd Place at Internationals</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">National Engineering Competition</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-star"></i> National Recognition</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">First-Generation Students</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">College Board</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-award"></i> Kalbach Award</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">Best Essay (top essay out of 100+ students)</p>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">High Honor Roll (2×)</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">Downingtown STEM Academy</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-sun"></i> TSA Regionals Finalist</h3>
+                        <p style="color: #666; margin-bottom: 0.3rem; font-size: 0.95rem;">Senior Solar Sprint Event</p>
+                        <p style="color: #999; font-size: 0.85rem; font-style: italic;">Technology Student Association</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates Section -->
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> NASA SEES | 2025</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
+                    </div>
+                    
+                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> Onshape | 2025</h3>
+                        <p style="color: #666; font-size: 0.95rem;">CAD Fundamentals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="contact">
             <h2>Contact</h2>
             <div class="about-content">
@@ -1165,7 +1286,11 @@
             },
             'mods': {
                 title: 'Side projects',
-                images: [],
+                images: [
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SideProjects.png',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/PhoneStand.png',
+                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/CFDWing.png'
+                ],
                 content: `
                     <div class="modal-section">
                         <h3>Overview</h3>
