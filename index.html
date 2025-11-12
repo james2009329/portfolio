@@ -7,228 +7,10 @@
     <title>James Lin - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Resume Viewer Styles */
-.resume-viewer {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 3500;
-    justify-content: center;
-    align-items: center;
-}
-
-.resume-viewer.active {
-    display: flex;
-}
-
-.resume-viewer-content {
-    width: 90%;
-    max-width: 1000px;
-    height: 90%;
-    background: #fff;
-    border-radius: 8px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.resume-viewer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background: #f5f5f5;
-    border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.resume-viewer-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-}
-
-.resume-viewer-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.resume-download-btn {
-    padding: 0.6rem 1.2rem;
-    background: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.3s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.resume-download-btn:hover {
-    background: #0052a3;
-}
-
-.resume-close-btn {
-    padding: 0.6rem 1.2rem;
-    background: #666;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: background 0.3s;
-}
-
-.resume-close-btn:hover {
-    background: #444;
-}
-
-.resume-viewer-iframe {
-    flex: 1;
-    border: none;
-    border-radius: 0 0 8px 8px;
-}
-
-/* Dark mode styles */
-body.dark-mode .resume-viewer-header {
-    background: #2a2a2a;
-    border-bottom: 1px solid #444;
-}
-
-body.dark-mode .resume-viewer-header h3 {
-    color: #fff;
-}
-
-body.dark-mode .resume-viewer-content {
-    background: #1a1a1a;
-}
-
-@media (max-width: 768px) {
-    .resume-viewer-content {
-        width: 95%;
-        height: 95%;
-    }
-    
-    .resume-viewer-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .resume-viewer-actions {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Image Lightbox Styles */
-.image-lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 3500;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-lightbox.active {
-    display: flex;
-}
-
-.lightbox-image-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lightbox-image-content img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 8px;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: -50px;
-    right: 0;
-    font-size: 40px;
-    color: white;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 5px 15px;
-    transition: color 0.3s;
-}
-
-.lightbox-close:hover {
-    color: #ccc;
-}
-
-.lightbox-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 50px;
-    color: white;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 20px 25px;
-    user-select: none;
-    transition: background 0.3s;
-    border-radius: 4px;
-}
-
-.lightbox-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.lightbox-arrow-left {
-    left: 30px;
-}
-
-.lightbox-arrow-right {
-    right: 30px;
-}
-
-.lightbox-counter {
-    color: white;
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Make modal images clickable */
-.modal-images img {
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.modal-images img:hover {
-    transform: scale(1.02);
-}
         }
 
         body {
@@ -570,12 +352,6 @@ body.dark-mode .resume-viewer-content {
             margin: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .modal-images {
-                grid-template-columns: 1fr;
-            }
-        }
-
         .modal-image-placeholder {
             width: 100%;
             height: 250px;
@@ -729,6 +505,205 @@ body.dark-mode .resume-viewer-content {
             100% { transform: rotate(360deg); }
         }
 
+        /* Image Lightbox Styles */
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3500;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-image-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-image-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px 15px;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 20px 25px;
+            user-select: none;
+            transition: background 0.3s;
+            border-radius: 4px;
+        }
+
+        .lightbox-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-arrow-left {
+            left: 30px;
+        }
+
+        .lightbox-arrow-right {
+            right: 30px;
+        }
+
+        .lightbox-counter {
+            color: white;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .modal-images img {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-images img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Resume Viewer Styles */
+        .resume-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3500;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .resume-viewer.active {
+            display: flex;
+        }
+
+        .resume-viewer-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 90%;
+            background: #fff;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resume-viewer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: #f5f5f5;
+            border-radius: 8px 8px 0 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .resume-viewer-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .resume-viewer-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .resume-download-btn {
+            padding: 0.6rem 1.2rem;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resume-download-btn:hover {
+            background: #0052a3;
+        }
+
+        .resume-close-btn {
+            padding: 0.6rem 1.2rem;
+            background: #666;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .resume-close-btn:hover {
+            background: #444;
+        }
+
+        .resume-viewer-iframe {
+            flex: 1;
+            border: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        body.dark-mode .resume-viewer-header {
+            background: #2a2a2a;
+            border-bottom: 1px solid #444;
+        }
+
+        body.dark-mode .resume-viewer-header h3 {
+            color: #fff;
+        }
+
+        body.dark-mode .resume-viewer-content {
+            background: #1a1a1a;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -759,22 +734,44 @@ body.dark-mode .resume-viewer-content {
                 padding: 2rem;
             }
 
+            .modal-images {
+                grid-template-columns: 1fr;
+            }
+
             #about .about-content {
                 flex-direction: column !important;
+            }
+
+            .resume-viewer-content {
+                width: 95%;
+                height: 95%;
+            }
+            
+            .resume-viewer-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .resume-viewer-actions {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
 </head>
-    <div id="image-lightbox" class="image-lightbox">
-    <div class="lightbox-image-content">
-        <button class="lightbox-close" onclick="closeImageLightbox()">&times;</button>
-        <img id="lightbox-main-img" src="" alt="">
-        <button class="lightbox-arrow lightbox-arrow-left" onclick="changeImageLightbox(-1)">&#10094;</button>
-        <button class="lightbox-arrow lightbox-arrow-right" onclick="changeImageLightbox(1)">&#10095;</button>
-        <div class="lightbox-counter" id="lightbox-counter"></div>
-    </div>
-</div>
 <body>
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="image-lightbox">
+        <div class="lightbox-image-content">
+            <button class="lightbox-close" onclick="closeImageLightbox()">&times;</button>
+            <img id="lightbox-main-img" src="" alt="">
+            <button class="lightbox-arrow lightbox-arrow-left" onclick="changeImageLightbox(-1)">&#10094;</button>
+            <button class="lightbox-arrow lightbox-arrow-right" onclick="changeImageLightbox(1)">&#10095;</button>
+            <div class="lightbox-counter" id="lightbox-counter"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-brand">
@@ -785,7 +782,7 @@ body.dark-mode .resume-viewer-content {
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#" onclick="openResumeViewer('https://githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a></li>
+            <li><a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a></li>
             <li><a href="#contact">Email</a></li>
             <li><a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank">LinkedIn</a></li>
         </ul>
@@ -961,6 +958,22 @@ body.dark-mode .resume-viewer-content {
         </div>
     </div>
 
+    <!-- Resume Viewer Modal -->
+    <div id="resume-viewer" class="resume-viewer">
+        <div class="resume-viewer-content">
+            <div class="resume-viewer-header">
+                <h3>James Lin - Resume</h3>
+                <div class="resume-viewer-actions">
+                    <a id="resume-download-link" href="" download="James-Lin-Resume.pdf" class="resume-download-btn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                    <button class="resume-close-btn" onclick="closeResumeViewer()">Close</button>
+                </div>
+            </div>
+            <iframe id="resume-iframe" class="resume-viewer-iframe" src=""></iframe>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         const projectData = {
@@ -991,7 +1004,7 @@ body.dark-mode .resume-viewer-content {
                     <div class="modal-section">
                         <h3>Testing & Results</h3>
                         <p>Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data.</p>
-                        <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" target="_blank" style="color: #00066cc; text-decoration: underline;">Watch Full Presentation</a></p>
+                        <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" target="_blank" style="color: #0066cc; text-decoration: underline;">Watch Full Presentation</a></p>
                     </div>
                 `
             },
@@ -1026,7 +1039,7 @@ body.dark-mode .resume-viewer-content {
                             <li>Gear-driven stepper motor directional control system</li>
                             <li>ESP 32 + Servos</li>
                         </ul>
-                        <p><a href="https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b" target="_blank" style="color: #00066cc; text-decoration: underline;">View Onshape CAD</a></p>
+                        <p><a href="https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
                     </div>
                 `
             },
@@ -1058,7 +1071,7 @@ body.dark-mode .resume-viewer-content {
                         <h3>Weight Optimization</h3>
                         <p><strong>Current:</strong> 70 grams | <strong>Target:</strong> 50 grams</p>
                         <p>Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.</p>
-                        <p><a href="https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c" target="_blank" style="color: #00066cc; text-decoration: underline;">View Onshape CAD</a></p>
+                        <p><a href="https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
                     </div>
                     
                     <button class="view-3d-btn" onclick="closeModal(); open3DViewer('dragster')">View 3D Model</button>
@@ -1076,7 +1089,7 @@ body.dark-mode .resume-viewer-content {
                     <div class="modal-section">
                         <h3>Overview</h3>
                         <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
-                        <p><a href="https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad" target="_blank" style="color: #00066cc; text-decoration: underline;">View Onshape CAD</a></p>
+                        <p><a href="https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
                     </div>
                     
                     <button class="view-3d-btn" onclick="closeModal(); open3DViewer('robotdog')">View 3D Model</button>
@@ -1148,7 +1161,7 @@ body.dark-mode .resume-viewer-content {
                 content: `
                     <div class="modal-section">
                         <h3>Overview</h3>
-                        <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a seperate air filtration system with carbon and HEPA filters. </p>
+                        <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a seperate air filtration system with carbon and HEPA filters.</p>
                     </div>
                 `
             },
@@ -1158,7 +1171,7 @@ body.dark-mode .resume-viewer-content {
                 content: `
                     <div class="modal-section">
                         <h3>Overview</h3>
-                        <p>Here are some projects I made for fun and to learn new skills! </p>
+                        <p>Here are some projects I made for fun and to learn new skills!</p>
                         <ul>
                             <li>Gear driven phone stand</li>
                             <li>CFD flight tests</li>
@@ -1214,6 +1227,9 @@ body.dark-mode .resume-viewer-content {
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Initialize lightbox after modal content is rendered
+            setTimeout(initImageLightbox, 100);
         }
 
         function closeModal() {
@@ -1393,8 +1409,7 @@ body.dark-mode .resume-viewer-content {
             }
             animate();
         }
-    </script>
-    <script>
+
         // Dark mode toggle - Default to dark mode
         document.body.classList.add('dark-mode');
         
@@ -1417,7 +1432,6 @@ body.dark-mode .resume-viewer-content {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
             
-            // Calculate opacity based on scroll (fades out 2x faster)
             const opacity = Math.max(0, 1 - (scrollPosition / (windowHeight * 0.5)));
             
             if (heroSection && heroContent) {
@@ -1425,137 +1439,109 @@ body.dark-mode .resume-viewer-content {
                 heroContent.style.transform = `translateY(${scrollPosition * 0.5}px)`;
             }
         });
+
         // Image Lightbox Functionality
-let currentImageIndex = 0;
-let currentImageArray = [];
+        let currentImageIndex = 0;
+        let currentImageArray = [];
 
-function initImageLightbox() {
-    // Get all images in modal-images containers
-    const modalImages = document.querySelectorAll('.modal-images img');
-    
-    modalImages.forEach((img, index) => {
-        img.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Get all images in the same modal-images container
-            const container = img.closest('.modal-images');
-            currentImageArray = Array.from(container.querySelectorAll('img'));
-            currentImageIndex = currentImageArray.indexOf(img);
-            openImageLightbox();
+        function initImageLightbox() {
+            const modalImages = document.querySelectorAll('.modal-images img');
+            
+            modalImages.forEach((img, index) => {
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const container = img.closest('.modal-images');
+                    currentImageArray = Array.from(container.querySelectorAll('img'));
+                    currentImageIndex = currentImageArray.indexOf(img);
+                    openImageLightbox();
+                });
+            });
+        }
+
+        function openImageLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            lightbox.classList.add('active');
+            updateImageLightbox();
+        }
+
+        function closeImageLightbox() {
+            const lightbox = document.getElementById('image-lightbox');
+            lightbox.classList.remove('active');
+        }
+
+        function changeImageLightbox(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex >= currentImageArray.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentImageArray.length - 1;
+            }
+            
+            updateImageLightbox();
+        }
+
+        function updateImageLightbox() {
+            const lightboxImg = document.getElementById('lightbox-main-img');
+            const counter = document.getElementById('lightbox-counter');
+            
+            lightboxImg.src = currentImageArray[currentImageIndex].src;
+            lightboxImg.alt = currentImageArray[currentImageIndex].alt;
+            counter.textContent = `${currentImageIndex + 1} / ${currentImageArray.length}`;
+        }
+
+        document.getElementById('image-lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'image-lightbox') {
+                closeImageLightbox();
+            }
         });
-    });
-}
 
-function openImageLightbox() {
-    const lightbox = document.getElementById('image-lightbox');
-    lightbox.classList.add('active');
-    updateImageLightbox();
-}
-
-function closeImageLightbox() {
-    const lightbox = document.getElementById('image-lightbox');
-    lightbox.classList.remove('active');
-}
-
-function changeImageLightbox(direction) {
-    currentImageIndex += direction;
-    
-    // Loop around
-    if (currentImageIndex >= currentImageArray.length) {
-        currentImageIndex = 0;
-    } else if (currentImageIndex < 0) {
-        currentImageIndex = currentImageArray.length - 1;
-    }
-    
-    updateImageLightbox();
-}
-
-function updateImageLightbox() {
-    const lightboxImg = document.getElementById('lightbox-main-img');
-    const counter = document.getElementById('lightbox-counter');
-    
-    lightboxImg.src = currentImageArray[currentImageIndex].src;
-    lightboxImg.alt = currentImageArray[currentImageIndex].alt;
-    counter.textContent = `${currentImageIndex + 1} / ${currentImageArray.length}`;
-}
-
-// Close on background click
-document.getElementById('image-lightbox').addEventListener('click', (e) => {
-    if (e.target.id === 'image-lightbox') {
-        closeImageLightbox();
-    }
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('image-lightbox');
-    if (!lightbox.classList.contains('active')) return;
-    
-    if (e.key === 'Escape') closeImageLightbox();
-    if (e.key === 'ArrowLeft') changeImageLightbox(-1);
-    if (e.key === 'ArrowRight') changeImageLightbox(1);
-});
-
-// Initialize when modal opens
-const originalOpenModal = openModal;
-openModal = function(projectId) {
-    originalOpenModal(projectId);
-    // Wait for modal to render, then initialize lightbox
-    setTimeout(initImageLightbox, 100);
-};
+        document.addEventListener('keydown', (e) => {
+            const lightbox = document.getElementById('image-lightbox');
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeImageLightbox();
+            if (e.key === 'ArrowLeft') changeImageLightbox(-1);
+            if (e.key === 'ArrowRight') changeImageLightbox(1);
+        });
 
         // Resume Viewer Functionality
-function openResumeViewer(resumeUrl) {
-    const viewer = document.getElementById('resume-viewer');
-    const iframe = document.getElementById('resume-iframe');
-    const downloadLink = document.getElementById('resume-download-link');
-    
-    // Set the PDF URL
-    iframe.src = resumeUrl;
-    downloadLink.href = resumeUrl;
-    
-    viewer.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
+        function openResumeViewer(resumeUrl) {
+            const viewer = document.getElementById('resume-viewer');
+            const iframe = document.getElementById('resume-iframe');
+            const downloadLink = document.getElementById('resume-download-link');
+            
+            // Use PDF.js viewer to display the PDF
+            const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(resumeUrl)}`;
+            
+            iframe.src = pdfViewerUrl;
+            downloadLink.href = resumeUrl;
+            
+            viewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-function closeResumeViewer() {
-    const viewer = document.getElementById('resume-viewer');
-    const iframe = document.getElementById('resume-iframe');
-    
-    viewer.classList.remove('active');
-    iframe.src = ''; // Clear iframe
-    document.body.style.overflow = 'auto';
-}
+        function closeResumeViewer() {
+            const viewer = document.getElementById('resume-viewer');
+            const iframe = document.getElementById('resume-iframe');
+            
+            viewer.classList.remove('active');
+            iframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
 
-// Close on background click
-document.getElementById('resume-viewer').addEventListener('click', (e) => {
-    if (e.target.id === 'resume-viewer') {
-        closeResumeViewer();
-    }
-});
+        document.getElementById('resume-viewer').addEventListener('click', (e) => {
+            if (e.target.id === 'resume-viewer') {
+                closeResumeViewer();
+            }
+        });
 
-// Keyboard support
-document.addEventListener('keydown', (e) => {
-    const viewer = document.getElementById('resume-viewer');
-    if (viewer.classList.contains('active') && e.key === 'Escape') {
-        closeResumeViewer();
-    }
-});
+        document.addEventListener('keydown', (e) => {
+            const viewer = document.getElementById('resume-viewer');
+            if (viewer.classList.contains('active') && e.key === 'Escape') {
+                closeResumeViewer();
+            }
+        });
     </script>
-    <!-- Resume Viewer Modal -->
-<div id="resume-viewer" class="resume-viewer">
-    <div class="resume-viewer-content">
-        <div class="resume-viewer-header">
-            <h3>James Lin - Resume</h3>
-            <div class="resume-viewer-actions">
-                <a id="resume-download-link" href="" download="James-Lin-Resume.pdf" class="resume-download-btn">
-                    <i class="fas fa-download"></i> Download PDF
-                </a>
-                <button class="resume-close-btn" onclick="closeResumeViewer()">Close</button>
-            </div>
-        </div>
-        <iframe id="resume-iframe" class="resume-viewer-iframe" src=""></iframe>
-    </div>
-</div>
-
 </body>
 </html>
