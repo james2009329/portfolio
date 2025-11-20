@@ -1,1674 +1,623 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" type="image/png" href="JamesFavicon.png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Lin - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.dark-mode nav {
-            background: rgba(26, 26, 26, 0.9);
-            border-bottom: 1px solid #333;
-        }
-
-        body.dark-mode .nav-brand {
-            color: #fff;
-        }
-
-        body.dark-mode .nav-links a {
-            color: #aaa;
-        }
-
-        body.dark-mode .nav-links a:hover {
-            color: #fff;
-        }
-
-        body.dark-mode h2,
-        body.dark-mode h3,
-        body.dark-mode .project-item h3 {
-            color: #fff;
-        }
-
-        body.dark-mode .project-item p,
-        body.dark-mode p {
-            color: #aaa;
-        }
-
-        body.dark-mode .project-image-container {
-            background: #2a2a2a;
-            border-color: #444;
-        }
-
-        body.dark-mode .about-content,
-        body.dark-mode .contact-links a {
-            color: #aaa;
-        }
-
-        body.dark-mode .contact-links a:hover {
-            color: #fff;
-        }
-
-        body.dark-mode .modal-content {
-            background: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.dark-mode .modal-close {
-            color: #aaa;
-        }
-
-        body.dark-mode .modal-close:hover {
-            color: #fff;
-        }
-
-        body.dark-mode footer {
-            border-top: 1px solid #333;
-            color: #666;
-        }
-
-        body.dark-mode .modal-section p,
-        body.dark-mode .modal-section ul {
-            color: #aaa;
-        }
-
-        body.dark-mode .view-3d-btn {
-            background: #fff;
-            color: #000;
-        }
-
-        body.dark-mode .view-3d-btn:hover {
-            background: #e0e0e0;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 3rem;
-            border-bottom: 1px solid #eee;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .nav-brand small {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #666;
-            margin-top: 0.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #000;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #000;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero */
-        .hero {
-            margin-top: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #000;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem;
-        }
-
-        section {
-            margin-bottom: 6rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            color: #000;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.9;
-        }
-
-        .about-image-placeholder {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1rem;
-            margin: 2rem auto;
-            border: 2px dashed #ddd;
-        }
-
-        /* Project Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .project-item {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .project-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-image-container {
-            width: 100%;
-            height: 350px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #ddd;
-        }
-
-        .project-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-placeholder {
-            color: #999;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .project-item h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #000;
-        }
-
-        .project-item p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .modal.active {
-            display: block;
-        }
-
-        .modal-content {
-            max-width: 900px;
-            margin: 4rem auto;
-            background: #fff;
-            border-radius: 8px;
-            padding: 3rem;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: #000;
-        }
-
-        .modal h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .modal-images {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .modal-image-placeholder {
-            width: 100%;
-            height: 250px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            border: 2px dashed #ddd;
-        }
-
-        .modal-images img, .modal-images video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .modal-section {
-            margin: 2rem 0;
-        }
-
-        .modal-section h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #000;
-        }
-
-        .modal-section p, .modal-section ul {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .modal-section ul {
-            padding-left: 1.5rem;
-        }
-
-        .view-3d-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: #000;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-        }
-
-        .view-3d-btn:hover {
-            background: #333;
-        }
-
-        /* Contact */
-        .contact-links {
-            display: flex;
-            gap: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-links a {
-            color: #666; 
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-links a:hover {
-            color: #000;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: #999;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-        }
-
-        /* 3D Viewer Modal */
-        .viewer-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-        }
-
-        .viewer-modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .viewer-container {
-            width: 90%;
-            max-width: 1200px;
-            height: 80%;
-            background: #1a1a1a;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .viewer-canvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        .close-viewer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            z-index: 10;
-        }
-
-        .loading-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-        }
-
-        .spinner {
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-top: 3px solid #fff;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Image Lightbox Styles */
-        .image-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3500;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-image-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .lightbox-image-content img {
-            max-width: 100%;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            font-size: 40px;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 5px 15px;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: #ccc;
-        }
-
-        .lightbox-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            padding: 20px 25px;
-            user-select: none;
-            transition: background 0.3s;
-            border-radius: 4px;
-        }
-
-        .lightbox-arrow:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .lightbox-arrow-left {
-            left: 30px;
-        }
-
-        .lightbox-arrow-right {
-            right: 30px;
-        }
-
-        .lightbox-counter {
-            color: white;
-            font-size: 18px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .modal-images img {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .modal-images img:hover {
-            transform: scale(1.02);
-        }
-
-        /* Resume Viewer Styles */
-        .resume-viewer {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3500;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .resume-viewer.active {
-            display: flex;
-        }
-
-        .resume-viewer-content {
-            width: 90%;
-            max-width: 1000px;
-            height: 90%;
-            background: #fff;
-            border-radius: 8px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .resume-viewer-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1.5rem;
-            background: #f5f5f5;
-            border-radius: 8px 8px 0 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .resume-viewer-header h3 {
-            margin: 0;
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .resume-viewer-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .resume-download-btn {
-            padding: 0.6rem 1.2rem;
-            background: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: background 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .resume-download-btn:hover {
-            background: #0052a3;
-        }
-
-        .resume-close-btn {
-            padding: 0.6rem 1.2rem;
-            background: #666;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: background 0.3s;
-        }
-
-        .resume-close-btn:hover {
-            background: #444;
-        }
-
-        .resume-viewer-iframe {
-            flex: 1;
-            border: none;
-            border-radius: 0 0 8px 8px;
-        }
-
-        body.dark-mode .resume-viewer-header {
-            background: #2a2a2a;
-            border-bottom: 1px solid #444;
-        }
-
-        body.dark-mode .resume-viewer-header h3 {
-            color: #fff;
-        }
-
-        body.dark-mode .resume-viewer-content {
-            background: #1a1a1a;
-        }
-
-        body.dark-mode #skills > div > div,
-        body.dark-mode #awards > div > div,
-        body.dark-mode #certificates > div > div {
-            background: #2a2a2a;
-        }
-
-        body.dark-mode #skills h3,
-        body.dark-mode #awards h3,
-        body.dark-mode #certificates h3 {
-            color: #fff;
-        }
-
-        body.dark-mode #skills ul li,
-        body.dark-mode #awards p,
-        body.dark-mode #certificates p {
-            color: #aaa;
-        }
-
-        #skills > div,
-        #awards > div,
-        #certificates > div {
-            background: transparent;
-        }
-
-        /* Responsive */
+import React, { useState, useEffect } from 'react';
+
+const Portfolio = () => {
+  const [darkMode, setDarkMode] = useState(true);
+  const [currentPage, setCurrentPage] = useState('home');
+  const [activeModal, setActiveModal] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [resumeOpen, setResumeOpen] = useState(false);
+
+  const projectData = {
+    'nasa': {
+      title: 'NASA SEES - High-Altitude Airship',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Flight!.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/MotorTest.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ResearchPoster.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/GondolaDrawing.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Swift%20Turn.mp4'
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Project Role</h3>
+            <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation.</p>
+          </div>
+          <div className="modal-section">
+            <h3>Responsibilities</h3>
+            <ul>
+              <li>Designed main gondola, rear vectoring propeller, and skis in Fusion360</li>
+              <li>Ensured electronics fit and created presentation animations</li>
+              <li>Conducted CFD modeling simulating Earth and Titan conditions with teammate</li>
+            </ul>
+          </div>
+          <div className="modal-section">
+            <h3>Testing & Results</h3>
+            <p>Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: airpressure, gas concentration, magnetosphere field strength, and altitude.</p>
+            <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>Watch Full Presentation</a></p>
+          </div>
+        </>
+      )
+    },
+    'nitinol': {
+      title: 'Nitinol-Driven Compliant Claw',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ArmPic.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ExplodedClaw.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo13.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo14.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo15.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo16.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Gears!.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ProtoClaw!.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ClawTest.mp4',
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Overview</h3>
+            <p>Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.</p>
+          </div>
+          <div className="modal-section">
+            <h3>Mechanical Design</h3>
+            <p>The underside of the arm features a gear system that drives the claw's shoulder axis. The gears provide precise control and mechanical advantage for the nitinol actuators.</p>
+          </div>
+          <div className="modal-section">
+            <h3>Key Features</h3>
+            <ul>
+              <li>Compliant claw</li>
+              <li>Gear-driven stepper motor directional control system</li>
+              <li>ESP 32 + Servos</li>
+            </ul>
+            <p><a href="https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>View Onshape CAD</a></p>
+          </div>
+        </>
+      )
+    },
+    'dragster': {
+      title: 'Dragster',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wheel%20Weight.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Single%20Wheel%20Weight.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/DragsterViews.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/CFDDragster.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Dragster%20Weight.png',
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Materials</h3>
+            <ul>
+              <li>Steel axles with graphite lubricant</li>
+              <li>Glass fiber impregnated PETG body and wheels</li>
+              <li>Clear spray paint finish</li>
+            </ul>
+          </div>
+          <div className="modal-section">
+            <h3>Design</h3>
+            <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.</p>
+          </div>
+          <div className="modal-section">
+            <h3>Weight Optimization</h3>
+            <p><strong>Current:</strong> 70 grams | <strong>Target:</strong> 50 grams</p>
+            <p>Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.</p>
+            <p><a href="https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>View Onshape CAD</a></p>
+          </div>
+        </>
+      )
+    },
+    'robotdog': {
+      title: 'Robot Dog',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/RoboDog.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/LegJump.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/FrontTest.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/LegTest.mp4'
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Overview</h3>
+            <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
+            <p><a href="https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad" target="_blank" rel="noopener noreferrer" style={{color: '#0066cc', textDecoration: 'underline'}}>View Onshape CAD</a></p>
+          </div>
+        </>
+      )
+    },
+    'cell': {
+      title: 'Specialized Cell Project',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/SignsOfLife.mp4',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Spin!.mp4'
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Overview</h3>
+            <p>Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.</p>
+          </div>
+          <div className="modal-section">
+            <h3>Technical Features</h3>
+            <ul>
+              <li>Custom gearbox for flagellum rotation mechanism</li>
+              <li>Hidden wheel and motor system for navigation</li>
+              <li>Remote control integration</li>
+              <li>Spinning and directional movement capabilities</li>
+            </ul>
+          </div>
+        </>
+      )
+    },
+    'biology': {
+      title: 'Chicken Cannedwich',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Chicken.PNG',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macromolecule%20project.PNG'
+      ],
+      content: (
+        <>
+          <div className="modal-section">
+            <h3>Overview</h3>
+            <p>Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project. Chicken is preserved in pickle juice, with a print-in-place drying mechanism. Modular packaging to keep buns and chicken fresh and tasty!</p>
+          </div>
+          <div className="modal-section">
+            <h3>Product Design</h3>
+            <ul>
+              <li>Mock Instagram promotional posts</li>
+              <li>3D printed packaging prototypes</li>
+              <li>Multiple flavor variants including grilled version</li>
+            </ul>
+          </div>
+        </>
+      )
+    },
+    'solar': {
+      title: 'Senior Solar Sprint',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/SPDTSWITCH.png'
+      ],
+      content: (
+        <div className="modal-section">
+          <h3>Overview</h3>
+          <p>Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.</p>
+        </div>
+      )
+    },
+    'filter': {
+      title: '2-Stage Carbon Air Filter',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ExplodedAirFilter.png'
+      ],
+      content: (
+        <div className="modal-section">
+          <h3>Overview</h3>
+          <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a seperate air filtration system with carbon and HEPA filters.</p>
+        </div>
+      )
+    },
+    'mods': {
+      title: 'Side projects',
+      images: [
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/PhoneStand1.png',
+        'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/PhoneStand2.png'
+      ],
+      content: (
+        <div className="modal-section">
+          <h3>Overview</h3>
+          <p>Here are some projects I made for fun and to learn new skills!</p>
+          <ul>
+            <li>Gear driven phone stand</li>
+            <li>Vise inspired phone stand</li>
+            <li>CFD flight tests</li>
+            <li>Sheet metal design - stamp holder</li>
+            <li>Marble Maze</li>
+            <li>Galactide Keychain, a 3D printing business I cofounded</li>
+            <li>Passive speaker project - Freshman year engineering</li>
+            <li>CNC machine - In progress, tolerances were off</li>
+            <li>Bi-Stable Point Absorber - Also in progress</li>
+          </ul>
+        </div>
+      )
+    },
+    'printer': {
+      title: 'Custom 3D Printer',
+      images: [],
+      content: (
+        <div className="modal-section">
+          <h3>Overview</h3>
+          <p>Building and modifying a 3D printer from scratch with upgraded mechanical components.</p>
+        </div>
+      )
+    }
+  };
+
+  const projects = [
+    { id: 'nasa', title: 'NASA SEES - High-Altitude Airship', desc: 'CAD lead for prototype airship with sensors for Titan atmospheric investigation', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Airship.png' },
+    { id: 'nitinol', title: 'Nitinol-Driven Compliant Claw', desc: 'Nitinol-driven compliant claw mechanism researching efficiency and strength', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Claw.png' },
+    { id: 'dragster', title: 'Dragster', desc: 'Aerodynamic dragster with optimized weight and wheel design', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Dragster.png' },
+    { id: 'robotdog', title: 'Robot Dog', desc: 'Quadrupedal robot with autonomous movement capabilities', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Robodog.png' },
+    { id: 'cell', title: 'Specialized Cell Project', desc: 'Remote-controlled model with gearbox-driven motion', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG' },
+    { id: 'biology', title: 'Chicken Cannedwich', desc: 'Mock product packaging for biology class project', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Packaging.png' },
+    { id: 'solar', title: 'Senior Solar Sprint', desc: 'Solar-powered RC car with custom 3D-printed components', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SSS.png' },
+    { id: 'filter', title: '2-Stage Carbon Air Filter', desc: '3D printed air filter housing for VOC removal', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Filter.png' },
+    { id: 'mods', title: 'Side Projects', desc: 'Projects I made for fun and to learn new skills!', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SideProjects.png' },
+    { id: 'printer', title: 'Custom 3D Printer', desc: 'Building from scratch with custom upgrades', img: 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-3DPrinter.png' }
+  ];
+
+  const openModal = (projectId) => {
+    setActiveModal(projectId);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+    document.body.style.overflow = 'auto';
+  };
+
+  const openLightbox = (images, index) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const changeLightboxImage = (direction) => {
+    let newIndex = lightboxIndex + direction;
+    if (newIndex >= lightboxImages.length) newIndex = 0;
+    if (newIndex < 0) newIndex = lightboxImages.length - 1;
+    setLightboxIndex(newIndex);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxOpen) {
+        if (e.key === 'Escape') setLightboxOpen(false);
+        if (e.key === 'ArrowLeft') changeLightboxImage(-1);
+        if (e.key === 'ArrowRight') changeLightboxImage(1);
+      }
+      if (resumeOpen && e.key === 'Escape') setResumeOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, resumeOpen, lightboxIndex, lightboxImages]);
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home':
+        return (
+          <div className="hero">
+            <div style={{textAlign: 'center', padding: '2rem 3rem', maxWidth: '900px'}}>
+              <h1>James Lin | Engineering & Design Portfolio</h1>
+              <p>Hi! I'm James, a high school student passionate about Mechanical Engineering, 3D Printing, and Design</p>
+              <button className="hero-btn" onClick={() => setCurrentPage('projects')}>See My Projects ↓</button>
+            </div>
+          </div>
+        );
+      
+      case 'about':
+        return (
+          <main>
+            <section>
+              <h2>About</h2>
+              <div className="about-content">
+                <div>
+                  <p>Exploring, creating, and iterating solutions is what started my love for engineering. I'm motivated by projects that challenge me to think critically, collaborate effectively, and push the boundaries of what's possible. Aside from engineering, I enjoy drinking hot teas, playing tennis with my little sister, and taking walks with my dog Tofu!</p>
+                </div>
+                <div>
+                  <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Yippie.PNG" alt="Celebrating with Rizwan after DECA" />
+                  <p style={{fontSize: '0.9rem', color: '#999', marginTop: '0.5rem', textAlign: 'center'}}>Celebrating with Rizwan after DECA competition</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2>Skills</h2>
+              <div className="skills-grid">
+                <div className="skill-card">
+                  <h3>CAD</h3>
+                  <ul>
+                    <li>Fusion360</li>
+                    <li>Onshape</li>
+                    <li>SOLIDWORKS</li>
+                    <li>TinkerCAD</li>
+                  </ul>
+                </div>
+                <div className="skill-card">
+                  <h3>3D printing</h3>
+                  <ul>
+                    <li>FDM 3D Printing</li>
+                    <li>BambuSlicer</li>
+                    <li>Ultimaker Cura</li>
+                    <li>Material Selection</li>
+                  </ul>
+                </div>
+                <div className="skill-card">
+                  <h3>Programming</h3>
+                  <ul>
+                    <li>Arduino</li>
+                    <li>ESP32</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>Swift</li>
+                  </ul>
+                </div>
+                <div className="skill-card">
+                  <h3>Simulation</h3>
+                  <ul>
+                    <li>Autodesk FEA</li>
+                    <li>Autodesk CFD</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2>Awards & Recognition</h2>
+              <div className="awards-grid">
+                <div className="award-card">
+                  <h3>NASA SEES | 2025</h3>
+                  <p>Earth & Space Science and Python Certificate</p>
+                </div>
+                <div className="award-card">
+                  <h3>ICDC | 2025</h3>
+                  <p>HTDM International Qualifier</p>
+                </div>
+                <div className="award-card">
+                  <h3>Future Cities | 2022</h3>
+                  <p>2nd Place at Internationals</p>
+                </div>
+                <div className="award-card">
+                  <h3>Kalbach Award | 2024</h3>
+                  <p>Best Essay (top essay out of 100+ students)</p>
+                </div>
+                <div className="award-card">
+                  <h3>TSA Regionals Finalist | 2024</h3>
+                  <p>Senior Solar Sprint Event</p>
+                </div>
+                <div className="award-card">
+                  <h3>College Board | 2025</h3>
+                  <p>National Recognition for First-Generation Students</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2>Certificates</h2>
+              <div className="certs-grid">
+                <div className="cert-card">
+                  <h3>NASA SEES | 2025</h3>
+                  <p>Earth & Space Science and Python Certificate</p>
+                </div>
+                <div className="cert-card">
+                  <h3>Onshape | 2025</h3>
+                  <p>CAD Fundamentals</p>
+                </div>
+              </div>
+            </section>
+          </main>
+        );
+      
+      case 'projects':
+        return (
+          <main>
+            <section>
+              <h2>Projects</h2>
+              <div className="project-grid">
+                {projects.map(proj => (
+                  <div key={proj.id} className="project-item" onClick={() => openModal(proj.id)}>
+                    <div className="project-image-container">
+                      <img src={proj.img} alt={proj.title} />
+                    </div>
+                    <h3>{proj.title}</h3>
+                    <p>{proj.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </main>
+        );
+      
+      case 'contact':
+        return (
+          <main>
+            <section>
+              <h2>Contact</h2>
+              <div className="about-content">
+                <div>
+                  <h3>Email Addresses</h3>
+                  <div style={{background: '#f5f5f5', padding: '2rem', borderRadius: '8px', marginBottom: '1.5rem'}}>
+                    <p style={{marginBottom: '1rem'}}><strong>Primary (Preferred):</strong></p>
+                    <p style={{fontSize: '1.1rem', marginBottom: '2rem'}}><a href="mailto:james2009329@gmail.com" style={{color: '#000', textDecoration: 'underline'}}>james2009329@gmail.com</a></p>
+                    <p style={{marginBottom: '1rem'}}><strong>School Email:</strong></p>
+                    <p style={{fontSize: '1.1rem', marginBottom: '1rem'}}><a href="mailto:Jlin02@student.dasd.org" style={{color: '#000', textDecoration: 'underline'}}>Jlin02@student.dasd.org</a></p>
+                    <p style={{fontSize: '0.9rem', color: '#666', fontStyle: 'italic'}}>Note: Some emails may be blocked if sent to my school email due to school filtering. Please use my personal email above for reliable contact.</p>
+                  </div>
+                  <div style={{display: 'flex', gap: '2rem'}}>
+                    <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a onClick={() => setResumeOpen(true)} style={{cursor: 'pointer'}}>Resume</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        );
+      
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className={darkMode ? 'dark-mode' : ''}>
+      <style>{`
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #fff; transition: all 0.3s; }
+        .dark-mode { background: #1a1a1a; color: #e0e0e0; }
+        .dark-mode nav { background: rgba(26, 26, 26, 0.9); border-bottom: 1px solid #333; }
+        .dark-mode h2, .dark-mode h3 { color: #fff; }
+        .dark-mode p, .dark-mode li { color: #aaa; }
+        .dark-mode .skill-card, .dark-mode .award-card, .dark-mode .cert-card { background: #2a2a2a; }
+        .dark-mode .modal-content { background: #1a1a1a; color: #e0e0e0; }
+        .dark-mode .project-image-container { background: #2a2a2a; border-color: #444; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1.5rem 3rem; border-bottom: 1px solid #eee; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand { font-size: 1.2rem; font-weight: 600; cursor: pointer; }
+        .nav-brand small { display: block; font-size: 0.75rem; font-weight: 400; color: #666; margin-top: 0.2rem; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: #666; text-decoration: none; font-size: 0.95rem; transition: color 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: #000; }
+        .nav-links a.active { color: #000; font-weight: 600; }
+        .dark-mode .nav-links a { color: #aaa; }
+        .dark-mode .nav-links a:hover, .dark-mode .nav-links a.active { color: #fff; }
+        .dark-mode .nav-brand { color: #fff; }
+        
+        .hero { margin-top: 0; height: 100vh; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3%; background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: 120% auto; background-position: center 20%; }
+        .hero h1 { font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+        .hero p { font-size: 1.2rem; margin: 0 0 2rem 0; line-height: 1.8; background: rgba(255, 255, 255, 0.95); color: #333; padding: 1.5rem 2.5rem; border-radius: 8px; display: inline-block; }
+        .hero-btn { display: inline-block; padding: 1rem 2rem; background: #fff; color: #000; text-decoration: none; border: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; }
+        .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.4); }
+        
+        main { max-width: 1200px; margin: 6rem auto 0; padding: 3rem; min-height: calc(100vh - 6rem); }
+        section { margin-bottom: 6rem; }
+        h2 { font-size: 2rem; font-weight: 600; margin-bottom: 3rem; }
+        
+        .about-content { max-width: 1000px; margin: 0 auto; display: flex; gap: 3rem; align-items: flex-start; margin-bottom: 4rem; }
+        .about-content > div { flex: 1; }
+        .about-content img { width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 2rem; }
+        .project-item { cursor: pointer; transition: transform 0.3s; }
+        .project-item:hover { transform: translateY(-5px); }
+        .project-image-container { width: 100%; height: 350px; background: #f5f5f5; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; border: 2px dashed #ddd; }
+        .project-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .project-item h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .project-item p { color: #666; font-size: 0.95rem; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; overflow-y: auto; }
+        .modal.active { display: block; }
+        .modal-content { max-width: 900px; margin: 4rem auto; background: #fff; border-radius: 8px; padding: 3rem; position: relative; }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; transition: color 0.3s; }
+        .modal-close:hover { color: #000; }
+        .dark-mode .modal-close:hover { color: #fff; }
+        .modal-images { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin: 2rem 0; }
+        .modal-images img, .modal-images video { width: 100%; height: auto; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
+        .modal-images img:hover { transform: scale(1.02); }
+        .modal-section { margin: 2rem 0; }
+        .modal-section h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; }
+        .modal-section ul { padding-left: 1.5rem; }
+        
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 3500; justify-content: center; align-items: center; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+        .lightbox-content img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+        .lightbox-close { position: absolute; top: -50px; right: 0; font-size: 40px; color: white; cursor: pointer; background: none; border: none; padding: 5px 15px; }
+        .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 50px; color: white; cursor: pointer; background: rgba(0, 0, 0, 0.5); border: none; padding: 20px 25px; border-radius: 4px; }
+        .lightbox-arrow:hover { background: rgba(0, 0, 0, 0.8); }
+        .lightbox-arrow-left { left: 30px; }
+        .lightbox-arrow-right { right: 30px; }
+        .lightbox-counter { color: white; font-size: 18px; margin-top: 20px; text-align: center; }
+        
+        .resume-viewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 3500; justify-content: center; align-items: center; }
+        .resume-viewer.active { display: flex; }
+        .resume-viewer-content { width: 90%; max-width: 1000px; height: 90%; background: #fff; border-radius: 8px; display: flex; flex-direction: column; }
+        .resume-viewer-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: #f5f5f5; border-radius: 8px 8px 0 0; }
+        .resume-viewer-actions { display: flex; gap: 1rem; }
+        .resume-btn { padding: 0.6rem 1.2rem; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; text-decoration: none; }
+        .resume-download-btn { background: #0066cc; }
+        .resume-close-btn { background: #666; }
+        .resume-iframe { flex: 1; border: none; border-radius: 0 0 8px 8px; }
+        
+        .skill-card, .award-card, .cert-card { background: #f5f5f5; padding: 1.5rem; border-radius: 8px; }
+        .skills-grid, .awards-grid, .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+        
+        footer { text-align: center; padding: 3rem; color: #999; font-size: 0.9rem; border-top: 1px solid #eee; }
+        .theme-toggle { margin-top: 1rem; padding: 0.5rem 1rem; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        
         @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            .project-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .modal-content {
-                margin: 2rem 1rem;
-                padding: 2rem;
-            }
-
-            .modal-images {
-                grid-template-columns: 1fr;
-            }
-
-            #about .about-content {
-                flex-direction: column !important;
-            }
-
-            .resume-viewer-content {
-                width: 95%;
-                height: 95%;
-            }
-            
-            .resume-viewer-header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            
-            .resume-viewer-actions {
-                width: 100%;
-                justify-content: center;
-            }
+          nav { padding: 1rem 1.5rem; flex-direction: column; gap: 1rem; }
+          .hero h1 { font-size: 2rem; }
+          main { padding: 1.5rem; margin-top: 8rem; }
+          .project-grid { grid-template-columns: 1fr; }
+          .about-content { flex-direction: column; }
+          .modal-images { grid-template-columns: 1fr; }
         }
-    </style>
-</head>
-<body>
-    <!-- Image Lightbox -->
-    <div id="image-lightbox" class="image-lightbox">
-        <div class="lightbox-image-content">
-            <button class="lightbox-close" onclick="closeImageLightbox()">&times;</button>
-            <img id="lightbox-main-img" src="" alt="">
-            <button class="lightbox-arrow lightbox-arrow-left" onclick="changeImageLightbox(-1)">&#10094;</button>
-            <button class="lightbox-arrow lightbox-arrow-right" onclick="changeImageLightbox(1)">&#10095;</button>
-            <div class="lightbox-counter" id="lightbox-counter"></div>
-        </div>
-    </div>
+      `}</style>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-brand">
-            James Lin
-            <small>Mechanical Engineering | Maker | 3D Printing</small>
+      <nav>
+        <div className="nav-brand" onClick={() => setCurrentPage('home')}>
+          James Lin
+          <small>Mechanical Engineering | Maker | 3D Printing</small>
         </div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a></li>
+        <ul className="nav-links">
+          <li><a className={currentPage === 'about' ? 'active' : ''} onClick={() => setCurrentPage('about')}>About</a></li>
+          <li><a className={currentPage === 'projects' ? 'active' : ''} onClick={() => setCurrentPage('projects')}>Projects</a></li>
+          <li><a className={currentPage === 'contact' ? 'active' : ''} onClick={() => setCurrentPage('contact')}>Contact</a></li>
+          <li><a onClick={() => setResumeOpen(true)}>Resume</a></li>
         </ul>
-    </nav>
+      </nav>
 
-    <!-- Hero -->
-    <div class="hero" id="hero-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: 120% auto; background-position: center 20%; height: 100vh; display: flex; align-items: flex-end; justify-content: center; margin-top: 0; padding-bottom: 3%; transition: opacity 0.3s;">
-        <div style="text-align: center; padding: 2rem 3rem; max-width: 900px;" id="hero-content">
-            <h1 style="font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">James Lin | Engineering & Design Portfolio</h1>
-            <p style="font-size: 1.2rem; margin: 0 0 2rem 0; line-height: 1.8; font-weight: 400; background: rgba(255, 255, 255, 0.95); color: #333; padding: 1.5rem 2.5rem; border-radius: 8px; display: inline-block;">Hi! I'm James, a high school student passionate about Mechanical Engineering, 3D Printing, and Design</p>
-            <a href="#projects" style="display: inline-block; padding: 1rem 2rem; background: #fff; color: #000; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">See My Projects ↓</a>
-        </div>
-    </div>
+      {renderPage()}
 
-    <main>
-        <!-- About Section -->
-        <section id="about">
-            <h2>About</h2>
-            <div class="about-content" style="display: flex; gap: 3rem; align-items: flex-start; max-width: 1000px;">
-                <div style="flex: 1;">
-                    <p>Exploring, creating, and iterating solutions is what started my love for engineering. I'm motivated by projects that challenge me to think critically, collaborate effectively, and push the boundaries of what's possible. Aside from engineering, I enjoy drinking hot teas, playing tennis with my little sister, and taking walks with my dog Tofu!</p>
-                </div>
-                <div style="flex: 1;">
-                    <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Yippie.PNG" alt="Celebrating with Rizwan after DECA" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem; text-align: center;">Celebrating with Rizwan after DECA competition</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <!-- NASA SEES -->
-                <div class="project-item" onclick="openModal('nasa')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Airship.png" alt="Airship">
-                    </div>
-                    <h3>NASA SEES - High-Altitude Airship</h3>
-                    <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation</p>
-                </div>
-
-                <!-- Nitinol Claw -->
-                <div class="project-item" onclick="openModal('nitinol')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Claw.png" alt="Nitinol Claw">
-                    </div>
-                    <h3>Nitinol-Driven Compliant Claw</h3>
-                    <p>Nitinol-driven compliant claw mechanism researching efficiency and strength</p>
-                </div>
-
-                <!-- Dragster -->
-                <div class="project-item" onclick="openModal('dragster')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Dragster.png" alt="Dragster">
-                    </div>
-                    <h3>Dragster</h3>
-                    <p>Aerodynamic dragster with optimized weight and wheel design</p>
-                </div>
-
-                <!-- Robot Dog -->
-                <div class="project-item" onclick="openModal('robotdog')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Robodog.png" alt="Robot Dog">
-                    </div>
-                    <h3>Robot Dog</h3>
-                    <p>Quadrupedal robot with autonomous movement capabilities</p>
-                </div>
-
-                <!-- Cell Project -->
-                <div class="project-item" onclick="openModal('cell')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG" alt="Cell Project">
-                    </div>
-                    <h3>Specialized Cell Project</h3>
-                    <p>Remote-controlled model with gearbox-driven motion</p>
-                </div>
-
-                <!-- Biology Project -->
-                <div class="project-item" onclick="openModal('biology')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Packaging.png" alt="Biology Project">
-                    </div>
-                    <h3>Chicken Cannedwich</h3>
-                    <p>Mock product packaging for biology class project</p>
-                </div>
-
-                <!-- Solar Sprint -->
-                <div class="project-item" onclick="openModal('solar')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SSS.png" alt="Senior Solar Sprint">
-                    </div>
-                    <h3>Senior Solar Sprint</h3>
-                    <p>Solar-powered RC car with custom 3D-printed components</p>
-                </div>
-
-                <!-- Air Filter -->
-                <div class="project-item" onclick="openModal('filter')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Filter.png" alt="Air Filter Project">
-                    </div>
-                    <h3>2-Stage Carbon Air Filter</h3>
-                    <p>3D printed air filter housing for VOC removal</p>
-                </div>
-
-                <!-- 3D Printer Mods -->
-                <div class="project-item" onclick="openModal('mods')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SideProjects.png" alt="SideProjects">
-                    </div>
-                    <h3>Side Projects</h3>
-                    <p>Projects I made for fun and to learn new skills!</p>
-                </div>
-
-                <!-- Custom Printer -->
-                <div class="project-item" onclick="openModal('printer')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-3DPrinter.png" alt="3D Printer">
-                    </div>
-                    <h3>Custom 3D Printer</h3>
-                    <p>Building from scratch with custom upgrades</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-cube"></i> CAD</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Fusion360</li>
-                            <li style="margin-bottom: 0.5rem;">• Onshape</li>
-                            <li style="margin-bottom: 0.5rem;">• SOLIDWORKS</li>
-                            <li style="margin-bottom: 0.5rem;">• TinkerCAD</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-print"></i> 3D printing</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• FDM 3D Printing</li>
-                            <li style="margin-bottom: 0.5rem;">• BambuSlicer</li>
-                            <li style="margin-bottom: 0.5rem;">• Ultimaker Cura</li>
-                            <li style="margin-bottom: 0.5rem;">• Material Selection</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-code"></i> Programming</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Arduino</li>
-                            <li style="margin-bottom: 0.5rem;">• ESP32</li>
-                            <li style="margin-bottom: 0.5rem;">• Python</li>
-                            <li style="margin-bottom: 0.5rem;">• Java</li>
-                            <li style="margin-bottom: 0.5rem;">• Swift</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-wrench"></i> Simulation</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Autodesk FEA</li>
-                            <li style="margin-bottom: 0.5rem;">• Autodesk CFD</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Awards & Recognition Section -->
-        <section id="awards">
-            <h2>Awards & Recognition</h2>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-rocket"></i> NASA SEES | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">NASA | University of Texas at Austin & Center for Space Research</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-trophy"></i> ICDC | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">HTDM International Qualifier</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">3rd at Regionals & State Champion (Top 5)</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-medal"></i> Future Cities | 2022</h3>
-                        <p style="color: #666; font-size: 0.95rem;">2nd Place at Internationals</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">Team Engineering - Future Renewable City Model</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-award"></i> Kalbach Award | 2024</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Best Essay (top essay out of 100+ students)</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">High Honor Roll (2×) | Downingtown STEM Academy</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-star"></i> TSA Regionals Finalist | 2024</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Senior Solar Sprint Event</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">Technology Student Association</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-graduation-cap"></i> College Board | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">National Recognition for First-Generation Students</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">National Recognition Award</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificates Section -->
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> NASA SEES | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> Onshape | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">CAD Fundamentals</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="about-content">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Email Addresses</h3>
-                <div style="background: #f5f5f5; padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <p style="margin-bottom: 1rem;"><strong>Primary (Preferred):</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;"><a href="mailto:james2009329@gmail.com" style="color: #000; text-decoration: underline;">james2009329@gmail.com</a></p>
-                    
-                    <p style="margin-bottom: 1rem;"><strong>School Email:</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="mailto:Jlin02@student.dasd.org" style="color: #000; text-decoration: underline;">Jlin02@student.dasd.org</a></p>
-                    <p style="font-size: 0.9rem; color: #666; font-style: italic;">Note: Some emails may be blocked if sent to my school email due to school filtering. Please use my personal email above for reliable contact.</p>
-                </div>
-                
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank">LinkedIn</a>
-                    <a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+      <footer>
         <p>&copy; 2024 James Lin. All rights reserved.</p>
-        <p style="margin-top: 0.5rem;">Site layout assisted by AI, all projects and insights are my own.</p>
-        <button id="theme-toggle" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
-            <i class="fas fa-sun"></i> Light Mode
+        <p style={{marginTop: '0.5rem'}}>Site layout assisted by AI, all projects and insights are my own.</p>
+        <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? '☀ Light Mode' : '🌙 Dark Mode'}
         </button>
-    </footer>
+      </footer>
 
-    <!-- Project Modal -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div id="modal-body"></div>
+      {activeModal && (
+        <div className="modal active" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>×</button>
+            <h2>{projectData[activeModal].title}</h2>
+            {projectData[activeModal].images.length > 0 && (
+              <div className="modal-images">
+                {projectData[activeModal].images.map((img, idx) => (
+                  img.endsWith('.mp4') || img.endsWith('.mov') ? (
+                    <video key={idx} controls><source src={img} type="video/mp4" /></video>
+                  ) : (
+                    <img key={idx} src={img} alt={projectData[activeModal].title} onClick={() => openLightbox(projectData[activeModal].images.filter(i => !i.endsWith('.mp4') && !i.endsWith('.mov')), projectData[activeModal].images.filter(i => !i.endsWith('.mp4') && !i.endsWith('.mov')).indexOf(img))} />
+                  )
+                ))}
+              </div>
+            )}
+            {projectData[activeModal].content}
+          </div>
         </div>
-    </div>
+      )}
 
-    <!-- 3D Viewer -->
-    <div id="viewer-modal" class="viewer-modal">
-        <div class="viewer-container">
-            <button class="close-viewer" onclick="close3DViewer()">Close</button>
-            <div class="loading-text" id="loading-text">
-                <div class="spinner"></div>
-                <div>Loading 3D model...</div>
+      {lightboxOpen && (
+        <div className="lightbox active" onClick={() => setLightboxOpen(false)}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setLightboxOpen(false)}>×</button>
+            <img src={lightboxImages[lightboxIndex]} alt="Lightbox" />
+            <button className="lightbox-arrow lightbox-arrow-left" onClick={() => changeLightboxImage(-1)}>‹</button>
+            <button className="lightbox-arrow lightbox-arrow-right" onClick={() => changeLightboxImage(1)}>›</button>
+            <div className="lightbox-counter">{lightboxIndex + 1} / {lightboxImages.length}</div>
+          </div>
+        </div>
+      )}
+
+      {resumeOpen && (
+        <div className="resume-viewer active" onClick={() => setResumeOpen(false)}>
+          <div className="resume-viewer-content" onClick={(e) => e.stopPropagation()}>
+            <div className="resume-viewer-header">
+              <h3>James Lin - Resume</h3>
+              <div className="resume-viewer-actions">
+                <a href="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf" download="James-Lin-Resume.pdf" className="resume-btn resume-download-btn">Download PDF</a>
+                <button className="resume-btn resume-close-btn" onClick={() => setResumeOpen(false)}>Close</button>
+              </div>
             </div>
-            <canvas id="viewer-canvas" class="viewer-canvas"></canvas>
+            <iframe className="resume-iframe" src={`https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf')}`} />
+          </div>
         </div>
+      )}
     </div>
+  );
+};
 
-    <!-- Resume Viewer Modal -->
-    <div id="resume-viewer" class="resume-viewer">
-        <div class="resume-viewer-content">
-            <div class="resume-viewer-header">
-                <h3>James Lin - Resume</h3>
-                <div class="resume-viewer-actions">
-                    <a id="resume-download-link" href="" download="James-Lin-Resume.pdf" class="resume-download-btn">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
-                    <button class="resume-close-btn" onclick="closeResumeViewer()">Close</button>
-                </div>
-            </div>
-            <iframe id="resume-iframe" class="resume-viewer-iframe" src=""></iframe>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        const projectData = {
-            'nasa': {
-                title: 'NASA SEES - High-Altitude Airship',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Flight!.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/MotorTest.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ResearchPoster.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/GondolaDrawing.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Swift%20Turn.mp4'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Project Role</h3>
-                        <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation.</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Responsibilities</h3>
-                        <ul>
-                            <li>Designed main gondola, rear vectoring propeller, and skis in Fusion360</li>
-                            <li>Ensured electronics fit and created presentation animations</li>
-                            <li>Conducted CFD modeling simulating Earth and Titan conditions with teammate</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Testing & Results</h3>
-                        <p>Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: airpressure, gas concentration, magnetosphere field strength, and altitude.</p>
-                        <p><a href="https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15" target="_blank" style="color: #0066cc; text-decoration: underline;">Watch Full Presentation</a></p>
-                    </div>
-                `
-            },
-            'nitinol': {
-                title: 'Nitinol-Driven Compliant Claw',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ArmPic.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ExplodedClaw.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo13.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo14.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo15.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Evo16.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Gears!.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ProtoClaw!.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ClawTest.mp4',
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Mechanical Design</h3>
-                        <p>The underside of the arm features a gear system that drives the claw's shoulder axis. The gears provide precise control and mechanical advantage for the nitinol actuators.</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Key Features</h3>
-                        <ul>
-                            <li>Compliant claw</li>
-                            <li>Gear-driven stepper motor directional control system</li>
-                            <li>ESP 32 + Servos</li>
-                        </ul>
-                        <p><a href="https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
-                    </div>
-                `
-            },
-            'dragster': {
-                title: 'Dragster',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wheel%20Weight.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Single%20Wheel%20Weight.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/DragsterViews.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/CFDDragster.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Dragster%20Weight.png',
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Materials</h3>
-                        <ul>
-                            <li>Steel axles with graphite lubricant</li>
-                            <li>Glass fiber impregnated PETG body and wheels</li>
-                            <li>Clear spray paint finish</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Design</h3>
-                        <p>Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Weight Optimization</h3>
-                        <p><strong>Current:</strong> 70 grams | <strong>Target:</strong> 50 grams</p>
-                        <p>Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.</p>
-                        <p><a href="https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
-                    </div>
-                    
-                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('dragster')">View 3D Model</button>
-                `
-            },
-            'robotdog': {
-                title: 'Robot Dog',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/RoboDog.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/LegJump.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/FrontTest.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/LegTest.mp4'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.</p>
-                        <p><a href="https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad" target="_blank" style="color: #0066cc; text-decoration: underline;">View Onshape CAD</a></p>
-                    </div>
-                    
-                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('robotdog')">View 3D Model</button>
-                `
-            },
-            'cell': {
-                title: 'Specialized Cell Project',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/SignsOfLife.mp4',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Spin!.mp4'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Technical Features</h3>
-                        <ul>
-                            <li>Custom gearbox for flagellum rotation mechanism</li>
-                            <li>Hidden wheel and motor system for navigation</li>
-                            <li>Remote control integration</li>
-                            <li>Spinning and directional movement capabilities</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'biology': {
-                title: 'Chicken Cannedwich',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macro%20Molecule%20projectGrill.PNG',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Chicken.PNG',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Macromolecule%20project.PNG'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project. Chicken is preserved in pickle juice, with a print-in-place drying mechanism. Modular packaging to keep buns and chicken fresh and tasty!</p>
-                    </div>
-                    
-                    <div class="modal-section">
-                        <h3>Product Design</h3>
-                        <ul>
-                            <li>Mock Instagram promotional posts</li>
-                            <li>3D printed packaging prototypes</li>
-                            <li>Multiple flavor variants including grilled version</li>
-                        </ul>
-                    </div>
-                `
-            },
-            'solar': {
-                title: 'Senior Solar Sprint',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/SPDTSWITCH.png'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.</p>
-                    </div>
-                `
-            },
-            'filter': {
-                title: '2-Stage Carbon Air Filter',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/ExplodedAirFilter.png'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a seperate air filtration system with carbon and HEPA filters.</p>
-                    </div>
-                `
-            },
-            'mods': {
-                title: 'Side projects',
-                images: [
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/PhoneStand1.png',
-                    'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/PhoneStand2.png'
-                ],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Here are some projects I made for fun and to learn new skills!</p>
-                        <ul>
-                            <li>Gear driven phone stand</li>
-                            <li>Vise inspired phone stand</li>
-                            <li>CFD flight tests</li>
-                            <li>Sheet metal design - stamp holder</li>
-                            <li>Marble Maze</li>
-                            <li>Galactide Keychain, a 3D printing business I cofounded</li>
-                            <li>Passive speaker project - Freshman year engineering</li>
-                            <li>CNC machine - In progress, tolerances were off</li>
-                            <li>Bi-Stable Point Absorber - Also in progress</li>                            
-                        </ul>
-                    </div>
-                `
-            },
-            'printer': {
-                title: 'Custom 3D Printer',
-                images: [],
-                content: `
-                    <div class="modal-section">
-                        <h3>Overview</h3>
-                        <p>Building and modifying a 3D printer from scratch with upgraded mechanical components.</p>
-                    </div>
-                    
-                    <button class="view-3d-btn" onclick="closeModal(); open3DViewer('printer')">View 3D Model</button>
-                `
-            }
-        };
-
-        function openModal(projectId) {
-            const modal = document.getElementById('project-modal');
-            const modalBody = document.getElementById('modal-body');
-            const project = projectData[projectId];
-            
-            if (!project) return;
-            
-            let imagesHTML = '';
-            if (project.images && project.images.length > 0) {
-                imagesHTML = '<div class="modal-images">';
-                project.images.forEach(img => {
-                    if (img.endsWith('.mp4') || img.endsWith('.mov')) {
-                        imagesHTML += `<video controls><source src="${img}" type="video/mp4"></video>`;
-                    } else {
-                        imagesHTML += `<img src="${img}" alt="${project.title}">`;
-                    }
-                });
-                imagesHTML += '</div>';
-            }
-            
-            modalBody.innerHTML = `
-                <h2>${project.title}</h2>
-                ${imagesHTML}
-                ${project.content}
-            `;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Initialize lightbox after modal content is rendered
-            setTimeout(initImageLightbox, 100);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('project-modal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // STLLoader
-        THREE.STLLoader = function(manager) {
-            this.manager = (manager !== undefined) ? manager : THREE.DefaultLoadingManager;
-        };
-
-        THREE.STLLoader.prototype = {
-            constructor: THREE.STLLoader,
-            load: function(url, onLoad, onProgress, onError) {
-                var scope = this;
-                var loader = new THREE.FileLoader(scope.manager);
-                loader.setResponseType('arraybuffer');
-                loader.load(url, function(data) {
-                    onLoad(scope.parse(data));
-                }, onProgress, onError);
-            },
-            parse: function(data) {
-                function isBinary(data) {
-                    var reader = new DataView(data);
-                    var face_size = (32 / 8 * 3) + ((32 / 8 * 3) * 3) + (16 / 8);
-                    var n_faces = reader.getUint32(80, true);
-                    var expect = 80 + (32 / 8) + (n_faces * face_size);
-                    return expect === reader.byteLength;
-                }
-
-                function parseBinary(data) {
-                    var reader = new DataView(data);
-                    var faces = reader.getUint32(80, true);
-                    var dataOffset = 84;
-                    var faceLength = 12 * 4 + 2;
-                    var geometry = new THREE.BufferGeometry();
-                    var vertices = new Float32Array(faces * 3 * 3);
-                    var normals = new Float32Array(faces * 3 * 3);
-
-                    for (var face = 0; face < faces; face++) {
-                        var start = dataOffset + face * faceLength;
-                        var normalX = reader.getFloat32(start, true);
-                        var normalY = reader.getFloat32(start + 4, true);
-                        var normalZ = reader.getFloat32(start + 8, true);
-
-                        for (var i = 1; i <= 3; i++) {
-                            var vertexstart = start + i * 12;
-                            var index = (face * 3 * 3) + ((i - 1) * 3);
-                            vertices[index] = reader.getFloat32(vertexstart, true);
-                            vertices[index + 1] = reader.getFloat32(vertexstart + 4, true);
-                            vertices[index + 2] = reader.getFloat32(vertexstart + 8, true);
-                            normals[index] = normalX;
-                            normals[index + 1] = normalY;
-                            normals[index + 2] = normalZ;
-                        }
-                    }
-
-                    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-                    geometry.setAttribute('normal', new THREE.BufferAttribute(normals, 3));
-                    return geometry;
-                }
-
-                return isBinary(data) ? parseBinary(data) : null;
-            }
-        };
-
-        // 3D Viewer
-        let scene, camera, renderer, currentModel, animationId;
-
-        const modelUrls = {
-            'dragster': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Wind%20tunnel%20Dragster.stl',
-            'robotdog': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Robo%20Dog.stl',
-            'printer': 'https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/3D-Printer.stl'
-        };
-
-        function open3DViewer(modelType) {
-            const modal = document.getElementById('viewer-modal');
-            modal.classList.add('active');
-            document.getElementById('loading-text').style.display = 'block';
-            initViewer(modelType);
-        }
-
-        function close3DViewer() {
-            const modal = document.getElementById('viewer-modal');
-            modal.classList.remove('active');
-            if (animationId) cancelAnimationFrame(animationId);
-            if (renderer) renderer.dispose();
-            if (scene && currentModel) scene.remove(currentModel);
-        }
-
-        function initViewer(modelType) {
-            const canvas = document.getElementById('viewer-canvas');
-            const container = canvas.parentElement;
-            const loadingText = document.getElementById('loading-text');
-
-            scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x1a1a1a);
-
-            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 10000);
-            camera.position.z = 150;
-
-            renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-            scene.add(ambientLight);
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-            directionalLight.position.set(5, 5, 5);
-            scene.add(directionalLight);
-
-            const loader = new THREE.STLLoader();
-            
-            loader.load(
-                modelUrls[modelType],
-                function(geometry) {
-                    loadingText.style.display = 'none';
-
-                    geometry.computeBoundingBox();
-                    const center = new THREE.Vector3();
-                    geometry.boundingBox.getCenter(center);
-                    geometry.translate(-center.x, -center.y, -center.z);
-
-                    const material = new THREE.MeshStandardMaterial({ 
-                        color: 0xcccccc,
-                        metalness: 0.3,
-                        roughness: 0.5
-                    });
-
-                    currentModel = new THREE.Mesh(geometry, material);
-                    scene.add(currentModel);
-
-                    const bbox = geometry.boundingBox;
-                    const size = bbox.getSize(new THREE.Vector3());
-                    const maxDim = Math.max(size.x, size.y, size.z);
-                    camera.position.z = maxDim * 2.5;
-                },
-                function(xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
-                function(error) {
-                    console.error('Load error:', error);
-                    loadingText.innerHTML = '<div style="color:#fff;">Error loading model</div>';
-                }
-            );
-
-            let isDragging = false;
-            let previousMousePosition = { x: 0, y: 0 };
-
-            canvas.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            });
-
-            canvas.addEventListener('mousemove', (e) => {
-                if (isDragging && currentModel) {
-                    const deltaX = e.clientX - previousMousePosition.x;
-                    const deltaY = e.clientY - previousMousePosition.y;
-                    currentModel.rotation.y += deltaX * 0.01;
-                    currentModel.rotation.x += deltaY * 0.01;
-                    previousMousePosition = { x: e.clientX, y: e.clientY };
-                }
-            });
-
-            canvas.addEventListener('mouseup', () => { isDragging = false; });
-            canvas.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                camera.position.z += e.deltaY * 0.1;
-                camera.position.z = Math.max(10, Math.min(1000, camera.position.z));
-            });
-
-            function animate() {
-                animationId = requestAnimationFrame(animate);
-                if (!isDragging && currentModel) currentModel.rotation.y += 0.005;
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-
-        // Dark mode toggle - Default to dark mode
-        document.body.classList.add('dark-mode');
-        
-        const themeToggle = document.getElementById('theme-toggle');
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-            }
-        });
-
-        // Hero fade on scroll
-        window.addEventListener('scroll', () => {
-            const heroSection = document.getElementById('hero-section');
-            const heroContent = document.getElementById('hero-content');
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            
-            const opacity = Math.max(0, 1 - (scrollPosition / (windowHeight * 0.5)));
-            
-            if (heroSection && heroContent) {
-                heroSection.style.opacity = opacity;
-                heroContent.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-            }
-        });
-
-        // Image Lightbox Functionality
-        let currentImageIndex = 0;
-        let currentImageArray = [];
-
-        function initImageLightbox() {
-            const modalImages = document.querySelectorAll('.modal-images img');
-            
-            modalImages.forEach((img, index) => {
-                img.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const container = img.closest('.modal-images');
-                    currentImageArray = Array.from(container.querySelectorAll('img'));
-                    currentImageIndex = currentImageArray.indexOf(img);
-                    openImageLightbox();
-                });
-            });
-        }
-
-        function openImageLightbox() {
-            const lightbox = document.getElementById('image-lightbox');
-            lightbox.classList.add('active');
-            updateImageLightbox();
-        }
-
-        function closeImageLightbox() {
-            const lightbox = document.getElementById('image-lightbox');
-            lightbox.classList.remove('active');
-        }
-
-        function changeImageLightbox(direction) {
-            currentImageIndex += direction;
-            
-            if (currentImageIndex >= currentImageArray.length) {
-                currentImageIndex = 0;
-            } else if (currentImageIndex < 0) {
-                currentImageIndex = currentImageArray.length - 1;
-            }
-            
-            updateImageLightbox();
-        }
-
-        function updateImageLightbox() {
-            const lightboxImg = document.getElementById('lightbox-main-img');
-            const counter = document.getElementById('lightbox-counter');
-            
-            lightboxImg.src = currentImageArray[currentImageIndex].src;
-            lightboxImg.alt = currentImageArray[currentImageIndex].alt;
-            counter.textContent = `${currentImageIndex + 1} / ${currentImageArray.length}`;
-        }
-
-        document.getElementById('image-lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'image-lightbox') {
-                closeImageLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('image-lightbox');
-            if (!lightbox.classList.contains('active')) return;
-            
-            if (e.key === 'Escape') closeImageLightbox();
-            if (e.key === 'ArrowLeft') changeImageLightbox(-1);
-            if (e.key === 'ArrowRight') changeImageLightbox(1);
-        });
-
-        // Resume Viewer Functionality
-        function openResumeViewer(resumeUrl) {
-            const viewer = document.getElementById('resume-viewer');
-            const iframe = document.getElementById('resume-iframe');
-            const downloadLink = document.getElementById('resume-download-link');
-            
-            // Use PDF.js viewer to display the PDF
-            const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(resumeUrl)}`;
-            
-            iframe.src = pdfViewerUrl;
-            downloadLink.href = resumeUrl;
-            
-            viewer.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeResumeViewer() {
-            const viewer = document.getElementById('resume-viewer');
-            const iframe = document.getElementById('resume-iframe');
-            
-            viewer.classList.remove('active');
-            iframe.src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('resume-viewer').addEventListener('click', (e) => {
-            if (e.target.id === 'resume-viewer') {
-                closeResumeViewer();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const viewer = document.getElementById('resume-viewer');
-            if (viewer.classList.contains('active') && e.key === 'Escape') {
-                closeResumeViewer();
-            }
-        });
-    </script>
-</body>
-</html>
+export default Portfolio;
