@@ -19,6 +19,7 @@
             color: #333;
             background: #fff;
             transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
         }
 
         body.dark-mode {
@@ -39,7 +40,8 @@
             color: #aaa;
         }
 
-        body.dark-mode .nav-links a:hover {
+        body.dark-mode .nav-links a:hover,
+        body.dark-mode .nav-links a.active {
             color: #fff;
         }
 
@@ -52,6 +54,10 @@
         body.dark-mode .project-item p,
         body.dark-mode p {
             color: #aaa;
+        }
+
+        body.dark-mode .hero p {
+            color: #111;
         }
 
         body.dark-mode .project-image-container {
@@ -100,6 +106,32 @@
             background: #e0e0e0;
         }
 
+        body.dark-mode #skills > div > div,
+        body.dark-mode #awards > div > div,
+        body.dark-mode #certificates > div > div {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .grid-item {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode #skills h3,
+        body.dark-mode #awards h3,
+        body.dark-mode #certificates h3 {
+            color: #fff;
+        }
+
+        body.dark-mode #skills ul li,
+        body.dark-mode #awards p,
+        body.dark-mode #certificates p {
+            color: #ddd;
+        }
+
+        body.dark-mode .grid-item ul li {
+            color: #ddd;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -120,6 +152,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: #333;
+            cursor: pointer;
         }
 
         .nav-brand small {
@@ -142,6 +175,7 @@
             font-size: 0.95rem;
             transition: color 0.3s;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-links a::after {
@@ -155,38 +189,31 @@
             transition: width 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: #000;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a.active::after {
             width: 100%;
         }
 
-        /* Hero */
-        .hero {
-            margin-top: 0;
-            padding: 0;
-            text-align: center;
+        body.dark-mode .nav-links a::after {
+            background: #fff;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #000;
-            animation: fadeInUp 1s ease;
+        /* Page Sections */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            animation: fadeIn 0.4s ease;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease 0.2s both;
+        .page-section.active {
+            display: block;
         }
 
-        @keyframes fadeInUp {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -197,6 +224,85 @@
             }
         }
 
+        /* Hero */
+        .hero {
+            margin-top: 0;
+            padding: 0;
+            text-align: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png');
+            background-size: 120% auto;
+            background-position: center 20%;
+            height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 3%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 2rem 3rem;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 0 0 2rem 0;
+            line-height: 1.8;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.95);
+            color: #222;
+            padding: 1.5rem 2.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.2s both;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero a {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero a:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
         /* Main Content */
         main {
             max-width: 1200px;
@@ -205,7 +311,7 @@
         }
 
         section {
-            margin-bottom: 6rem;
+            margin-bottom: 4rem;
         }
 
         h2 {
@@ -228,19 +334,28 @@
             line-height: 1.9;
         }
 
-        .about-image-placeholder {
-            width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background: #f5f5f5;
-            border-radius: 8px;
+        .about-flex {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 3rem;
+            align-items: flex-start;
+            max-width: 1000px;
+        }
+
+        .about-flex > div {
+            flex: 1;
+        }
+
+        .about-flex img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .about-flex p:last-child {
+            font-size: 0.9rem;
             color: #999;
-            font-size: 1rem;
-            margin: 2rem auto;
-            border: 2px dashed #ddd;
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
         /* Project Grid */
@@ -253,11 +368,18 @@
 
         .project-item {
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .project-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .project-item:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .project-image-container {
@@ -271,18 +393,22 @@
             align-items: center;
             justify-content: center;
             border: 2px dashed #ddd;
+            transition: all 0.3s;
+        }
+
+        .project-item:hover .project-image-container {
+            transform: scale(1.05);
         }
 
         .project-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
         }
 
-        .project-placeholder {
-            color: #999;
-            font-size: 0.9rem;
-            text-align: center;
+        .project-item:hover .project-image-container img {
+            transform: scale(1.1);
         }
 
         .project-item h3 {
@@ -296,6 +422,142 @@
             color: #666;
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+
+        /* Skills, Awards, Certificates */
+        .grid-layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-item {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #000;
+        }
+
+        body.dark-mode .grid-item:hover {
+            border-color: #fff;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .grid-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .grid-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .grid-item ul li {
+            margin-bottom: 0.5rem;
+            color: #222;
+        }
+
+        .grid-item p {
+            color: #333;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-item p:last-child {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-box {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .contact-box {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .about-flex > div > div {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode .about-flex > div > div h3 {
+            color: #fff;
+        }
+
+        body.dark-mode .about-flex > div > div p {
+            color: #ddd;
+        }
+
+        body.dark-mode .about-flex > div > div a {
+            color: #4da6ff;
+        }
+
+        body.dark-mode #projects-section > main > section > div:first-of-type {
+            background: #2a2a2a;
+        }
+
+        body.dark-mode #projects-section > main > section > div:first-of-type h3 {
+            color: #fff;
+        }
+
+        body.dark-mode #projects-section > main > section > div:first-of-type p {
+            color: #fff;
+        }
+
+        body.dark-mode #projects-section > main > section > div:first-of-type a {
+            color: #4da6ff;
+        }
+
+        .contact-box p {
+            margin-bottom: 1rem;
+        }
+
+        .contact-box a {
+            color: #000;
+            text-decoration: underline;
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .contact-box a {
+            color: #fff;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #000;
         }
 
         /* Modal */
@@ -352,22 +614,16 @@
             margin: 2rem 0;
         }
 
-        .modal-image-placeholder {
-            width: 100%;
-            height: 250px;
-            background: #f5f5f5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            border: 2px dashed #ddd;
-        }
-
         .modal-images img, .modal-images video {
             width: 100%;
             height: auto;
             border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-images img:hover {
+            transform: scale(1.02);
         }
 
         .modal-section {
@@ -409,23 +665,6 @@
             background: #333;
         }
 
-        /* Contact */
-        .contact-links {
-            display: flex;
-            gap: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-links a {
-            color: #666; 
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-links a:hover {
-            color: #000;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -433,6 +672,18 @@
             color: #999;
             font-size: 0.9rem;
             border-top: 1px solid #eee;
+            margin-top: 4rem;
+        }
+
+        #theme-toggle {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
         }
 
         /* 3D Viewer Modal */
@@ -505,7 +756,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Image Lightbox Styles */
+        /* Image Lightbox */
         .image-lightbox {
             display: none;
             position: fixed;
@@ -590,16 +841,7 @@
             text-align: center;
         }
 
-        .modal-images img {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .modal-images img:hover {
-            transform: scale(1.02);
-        }
-
-        /* Resume Viewer Styles */
+        /* Resume Viewer */
         .resume-viewer {
             display: none;
             position: fixed;
@@ -704,30 +946,6 @@
             background: #1a1a1a;
         }
 
-        body.dark-mode #skills > div > div,
-        body.dark-mode #awards > div > div,
-        body.dark-mode #certificates > div > div {
-            background: #2a2a2a;
-        }
-
-        body.dark-mode #skills h3,
-        body.dark-mode #awards h3,
-        body.dark-mode #certificates h3 {
-            color: #fff;
-        }
-
-        body.dark-mode #skills ul li,
-        body.dark-mode #awards p,
-        body.dark-mode #certificates p {
-            color: #aaa;
-        }
-
-        #skills > div,
-        #awards > div,
-        #certificates > div {
-            background: transparent;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -736,12 +954,13 @@
                 gap: 1rem;
             }
 
-            .hero {
-                padding: 4rem 1.5rem;
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero p {
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
             }
 
             main {
@@ -762,8 +981,8 @@
                 grid-template-columns: 1fr;
             }
 
-            #about .about-content {
-                flex-direction: column !important;
+            .about-flex {
+                flex-direction: column;
             }
 
             .resume-viewer-content {
@@ -780,6 +999,10 @@
             .resume-viewer-actions {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -798,264 +1021,288 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="nav-brand">
+        <div class="nav-brand" onclick="showSection('home')">
             James Lin
             <small>Mechanical Engineering | Maker | 3D Printing</small>
         </div>
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a></li>
+            <li><a onclick="showSection('home')">About</a></li>
+            <li><a onclick="showSection('projects')">Projects</a></li>
+            <li><a onclick="showSection('skills')">Skills & Awards</a></li>
+            <li><a onclick="showSection('contact')">Contact</a></li>
+            <li><a onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf')">Resume</a></li>
         </ul>
     </nav>
 
-    <!-- Hero -->
-    <div class="hero" id="hero-section" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/TheAirshipTeam.png'); background-size: 120% auto; background-position: center 20%; height: 100vh; display: flex; align-items: flex-end; justify-content: center; margin-top: 0; padding-bottom: 3%; transition: opacity 0.3s;">
-        <div style="text-align: center; padding: 2rem 3rem; max-width: 900px;" id="hero-content">
-            <h1 style="font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">James Lin | Engineering & Design Portfolio</h1>
-            <p style="font-size: 1.2rem; margin: 0 0 2rem 0; line-height: 1.8; font-weight: 400; background: rgba(255, 255, 255, 0.95); color: #333; padding: 1.5rem 2.5rem; border-radius: 8px; display: inline-block;">Hi! I'm James, a high school student passionate about Mechanical Engineering, 3D Printing, and Design</p>
-            <a href="#projects" style="display: inline-block; padding: 1rem 2rem; background: #fff; color: #000; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">See My Projects ↓</a>
+    <!-- Home/About Section -->
+    <div id="home-section" class="page-section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>James Lin | Engineering & Design Portfolio</h1>
+                <p>Hi! I'm James, a high school student passionate about Mechanical Engineering, 3D Printing, and Design</p>
+                <a onclick="showSection('projects')">See My Projects ↓</a>
+            </div>
         </div>
+        <main>
+            <section>
+                <h2>About</h2>
+                <div class="about-content">
+                    <div class="about-flex">
+                        <div>
+                            <p>Exploring, creating, and iterating solutions is what started my love for engineering. I'm motivated by projects that challenge me to think critically, collaborate effectively, and push the boundaries of what's possible. Aside from engineering, I enjoy drinking hot teas, playing tennis with my little sister, and taking walks with my dog Tofu!</p>
+                        </div>
+                        <div>
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Yippie.PNG" alt="Celebrating with Rizwan after DECA">
+                            <p>Celebrating with Rizwan after DECA competition</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <main>
-        <!-- About Section -->
-        <section id="about">
-            <h2>About</h2>
-            <div class="about-content" style="display: flex; gap: 3rem; align-items: flex-start; max-width: 1000px;">
-                <div style="flex: 1;">
-                    <p>Exploring, creating, and iterating solutions is what started my love for engineering. I'm motivated by projects that challenge me to think critically, collaborate effectively, and push the boundaries of what's possible. Aside from engineering, I enjoy drinking hot teas, playing tennis with my little sister, and taking walks with my dog Tofu!</p>
-                </div>
-                <div style="flex: 1;">
-                    <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Yippie.PNG" alt="Celebrating with Rizwan after DECA" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                    <p style="font-size: 0.9rem; color: #999; margin-top: 0.5rem; text-align: center;">Celebrating with Rizwan after DECA competition</p>
-                </div>
-            </div>
-        </section>
+    <!-- Projects Section -->
+    <div id="projects-section" class="page-section">
+        <main>
+            <section>
+                <h2>Projects</h2>
+                <div class="project-grid">
+                    <!-- NASA SEES -->
+                    <div class="project-item" onclick="openModal('nasa')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Airship.png" alt="Airship">
+                        </div>
+                        <h3>NASA SEES - High-Altitude Airship</h3>
+                        <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation</p>
+                    </div>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <!-- NASA SEES -->
-                <div class="project-item" onclick="openModal('nasa')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Airship.png" alt="Airship">
+                    <!-- Nitinol Claw -->
+                    <div class="project-item" onclick="openModal('nitinol')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Claw.png" alt="Nitinol Claw">
+                        </div>
+                        <h3>Nitinol-Driven Compliant Claw</h3>
+                        <p>Nitinol-driven compliant claw mechanism researching efficiency and strength</p>
                     </div>
-                    <h3>NASA SEES - High-Altitude Airship</h3>
-                    <p>CAD lead for prototype airship with sensors for Titan atmospheric investigation</p>
-                </div>
 
-                <!-- Nitinol Claw -->
-                <div class="project-item" onclick="openModal('nitinol')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Claw.png" alt="Nitinol Claw">
+                    <!-- Dragster -->
+                    <div class="project-item" onclick="openModal('dragster')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Dragster.png" alt="Dragster">
+                        </div>
+                        <h3>Dragster</h3>
+                        <p>Aerodynamic dragster with optimized weight and wheel design</p>
                     </div>
-                    <h3>Nitinol-Driven Compliant Claw</h3>
-                    <p>Nitinol-driven compliant claw mechanism researching efficiency and strength</p>
-                </div>
 
-                <!-- Dragster -->
-                <div class="project-item" onclick="openModal('dragster')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Dragster.png" alt="Dragster">
+                    <!-- Robot Dog -->
+                    <div class="project-item" onclick="openModal('robotdog')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Robodog.png" alt="Robot Dog">
+                        </div>
+                        <h3>Robot Dog</h3>
+                        <p>Quadrupedal robot with autonomous movement capabilities</p>
                     </div>
-                    <h3>Dragster</h3>
-                    <p>Aerodynamic dragster with optimized weight and wheel design</p>
-                </div>
 
-                <!-- Robot Dog -->
-                <div class="project-item" onclick="openModal('robotdog')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Robodog.png" alt="Robot Dog">
+                    <!-- Cell Project -->
+                    <div class="project-item" onclick="openModal('cell')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG" alt="Cell Project">
+                        </div>
+                        <h3>Specialized Cell Project</h3>
+                        <p>Remote-controlled model with gearbox-driven motion</p>
                     </div>
-                    <h3>Robot Dog</h3>
-                    <p>Quadrupedal robot with autonomous movement capabilities</p>
-                </div>
 
-                <!-- Cell Project -->
-                <div class="project-item" onclick="openModal('cell')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Tofu%20Playing.JPG" alt="Cell Project">
+                    <!-- Biology Project -->
+                    <div class="project-item" onclick="openModal('biology')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Packaging.png" alt="Biology Project">
+                        </div>
+                        <h3>Chicken Cannedwich</h3>
+                        <p>Mock product packaging for biology class project</p>
                     </div>
-                    <h3>Specialized Cell Project</h3>
-                    <p>Remote-controlled model with gearbox-driven motion</p>
-                </div>
 
-                <!-- Biology Project -->
-                <div class="project-item" onclick="openModal('biology')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Packaging.png" alt="Biology Project">
+                    <!-- Solar Sprint -->
+                    <div class="project-item" onclick="openModal('solar')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SSS.png" alt="Senior Solar Sprint">
+                        </div>
+                        <h3>Senior Solar Sprint</h3>
+                        <p>Solar-powered RC car with custom 3D-printed components</p>
                     </div>
-                    <h3>Chicken Cannedwich</h3>
-                    <p>Mock product packaging for biology class project</p>
-                </div>
 
-                <!-- Solar Sprint -->
-                <div class="project-item" onclick="openModal('solar')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SSS.png" alt="Senior Solar Sprint">
+                    <!-- Air Filter -->
+                    <div class="project-item" onclick="openModal('filter')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Filter.png" alt="Air Filter Project">
+                        </div>
+                        <h3>2-Stage Carbon Air Filter</h3>
+                        <p>3D printed air filter housing for VOC removal</p>
                     </div>
-                    <h3>Senior Solar Sprint</h3>
-                    <p>Solar-powered RC car with custom 3D-printed components</p>
-                </div>
 
-                <!-- Air Filter -->
-                <div class="project-item" onclick="openModal('filter')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-Filter.png" alt="Air Filter Project">
+                    <!-- 3D Printer Mods -->
+                    <div class="project-item" onclick="openModal('mods')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SideProjects.png" alt="SideProjects">
+                        </div>
+                        <h3>Side Projects</h3>
+                        <p>Projects I made for fun and to learn new skills!</p>
                     </div>
-                    <h3>2-Stage Carbon Air Filter</h3>
-                    <p>3D printed air filter housing for VOC removal</p>
-                </div>
 
-                <!-- 3D Printer Mods -->
-                <div class="project-item" onclick="openModal('mods')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-SideProjects.png" alt="SideProjects">
+                    <!-- Custom Printer -->
+                    <div class="project-item" onclick="openModal('printer')">
+                        <div class="project-image-container">
+                            <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-3DPrinter.png" alt="3D Printer">
+                        </div>
+                        <h3>Custom 3D Printer</h3>
+                        <p>Building from scratch with custom upgrades</p>
                     </div>
-                    <h3>Side Projects</h3>
-                    <p>Projects I made for fun and to learn new skills!</p>
-                </div>
-
-                <!-- Custom Printer -->
-                <div class="project-item" onclick="openModal('printer')">
-                    <div class="project-image-container">
-                        <img src="https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/Thumbnail-3DPrinter.png" alt="3D Printer">
-                    </div>
-                    <h3>Custom 3D Printer</h3>
-                    <p>Building from scratch with custom upgrades</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-cube"></i> CAD</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Fusion360</li>
-                            <li style="margin-bottom: 0.5rem;">• Onshape</li>
-                            <li style="margin-bottom: 0.5rem;">• SOLIDWORKS</li>
-                            <li style="margin-bottom: 0.5rem;">• TinkerCAD</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-print"></i> 3D printing</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• FDM 3D Printing</li>
-                            <li style="margin-bottom: 0.5rem;">• BambuSlicer</li>
-                            <li style="margin-bottom: 0.5rem;">• Ultimaker Cura</li>
-                            <li style="margin-bottom: 0.5rem;">• Material Selection</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-code"></i> Programming</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Arduino</li>
-                            <li style="margin-bottom: 0.5rem;">• ESP32</li>
-                            <li style="margin-bottom: 0.5rem;">• Python</li>
-                            <li style="margin-bottom: 0.5rem;">• Java</li>
-                            <li style="margin-bottom: 0.5rem;">• Swift</li>
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-wrench"></i> Simulation</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">• Autodesk FEA</li>
-                            <li style="margin-bottom: 0.5rem;">• Autodesk CFD</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Awards & Recognition Section -->
-        <section id="awards">
-            <h2>Awards & Recognition</h2>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-rocket"></i> NASA SEES | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">NASA | University of Texas at Austin & Center for Space Research</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-trophy"></i> ICDC | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">HTDM International Qualifier</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">3rd at Regionals & State Champion (Top 5)</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-medal"></i> Future Cities | 2022</h3>
-                        <p style="color: #666; font-size: 0.95rem;">2nd Place at Internationals</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">Team Engineering - Future Renewable City Model</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-award"></i> Kalbach Award | 2024</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Best Essay (top essay out of 100+ students)</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">High Honor Roll (2×) | Downingtown STEM Academy</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-star"></i> TSA Regionals Finalist | 2024</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Senior Solar Sprint Event</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">Technology Student Association</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-graduation-cap"></i> College Board | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">National Recognition for First-Generation Students</p>
-                        <p style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">National Recognition Award</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificates Section -->
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> NASA SEES | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">Earth & Space Science and Python Certificate</p>
-                    </div>
-                    <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #000;"><i class="fas fa-certificate"></i> Onshape | 2025</h3>
-                        <p style="color: #666; font-size: 0.95rem;">CAD Fundamentals</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="about-content">
-                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Email Addresses</h3>
-                <div style="background: #f5f5f5; padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <p style="margin-bottom: 1rem;"><strong>Primary (Preferred):</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;"><a href="mailto:james2009329@gmail.com" style="color: #000; text-decoration: underline;">james2009329@gmail.com</a></p>
-                    
-                    <p style="margin-bottom: 1rem;"><strong>School Email:</strong></p>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="mailto:Jlin02@student.dasd.org" style="color: #000; text-decoration: underline;">Jlin02@student.dasd.org</a></p>
-                    <p style="font-size: 0.9rem; color: #666; font-style: italic;">Note: Some emails may be blocked if sent to my school email due to school filtering. Please use my personal email above for reliable contact.</p>
                 </div>
                 
-                <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank">LinkedIn</a>
-                    <a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;">Resume</a>
+                <div style="background: #f5f5f5; padding: 1.5rem 2rem; border-radius: 12px; margin-top: 3rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: #000;"><i class="fas fa-cube"></i> View my downloadable 3D models</h3>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #000; margin-bottom: 0.5rem;">2,000+ Downloads</p>
+                    <p style="font-size: 1.1rem; font-weight: 600; color: #666; margin-bottom: 1.5rem;">Found in 100+ collections</p>
+                    <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://www.printables.com/@JamesLin_317773" target="_blank" style="color: #0066cc; text-decoration: none; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+                            <i class="fas fa-external-link-alt"></i> Printables.com
+                        </a>
+                        <a href="https://www.thingiverse.com/ImAPotato5260/designs" target="_blank" style="color: #0066cc; text-decoration: none; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+                            <i class="fas fa-external-link-alt"></i> Thingiverse
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
+    </div>
+
+    <!-- Skills & Awards Section -->
+    <div id="skills-section" class="page-section">
+        <main>
+            <section>
+                <h2>Skills</h2>
+                <div class="grid-layout">
+                    <div class="grid-item">
+                        <h3><i class="fas fa-cube"></i> CAD</h3>
+                        <ul>
+                            <li>• Fusion360</li>
+                            <li>• Onshape</li>
+                            <li>• SOLIDWORKS</li>
+                            <li>• TinkerCAD</li>
+                        </ul>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-print"></i> 3D printing</h3>
+                        <ul>
+                            <li>• FDM 3D Printing</li>
+                            <li>• BambuSlicer</li>
+                            <li>• Ultimaker Cura</li>
+                            <li>• Material Selection</li>
+                        </ul>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <ul>
+                            <li>• Arduino</li>
+                            <li>• ESP32</li>
+                            <li>• Python</li>
+                            <li>• Java</li>
+                            <li>• Swift</li>
+                        </ul>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-wrench"></i> Simulation</h3>
+                        <ul>
+                            <li>• Autodesk FEA</li>
+                            <li>• Autodesk CFD</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Awards & Recognition</h2>
+                <div class="grid-layout">
+                    <div class="grid-item">
+                        <h3><i class="fas fa-rocket"></i> NASA SEES | 2025</h3>
+                        <p>Earth & Space Science and Python Certificate</p>
+                        <p>NASA | University of Texas at Austin & Center for Space Research</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-trophy"></i> ICDC | 2025</h3>
+                        <p>HTDM International Qualifier</p>
+                        <p>3rd at Regionals & State Champion (Top 5)</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-medal"></i> Future Cities | 2022</h3>
+                        <p>2nd Place at Internationals</p>
+                        <p>Team Engineering - Future Renewable City Model</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-award"></i> Kalbach Award | 2024</h3>
+                        <p>Best Essay (top essay out of 100+ students)</p>
+                        <p>High Honor Roll (2×) | Downingtown STEM Academy</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-star"></i> TSA Regionals Finalist | 2024</h3>
+                        <p>Senior Solar Sprint Event</p>
+                        <p>Technology Student Association</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-graduation-cap"></i> College Board | 2025</h3>
+                        <p>National Recognition for First-Generation Students</p>
+                        <p>National Recognition Award</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Certificates</h2>
+                <div class="grid-layout">
+                    <div class="grid-item">
+                        <h3><i class="fas fa-certificate"></i> NASA SEES | 2025</h3>
+                        <p>Earth & Space Science and Python Certificate</p>
+                    </div>
+                    <div class="grid-item">
+                        <h3><i class="fas fa-certificate"></i> Onshape | 2025</h3>
+                        <p>CAD Fundamentals</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-section" class="page-section">
+        <main>
+            <section>
+                <h2>Contact</h2>
+                <div class="contact-section">
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Email Addresses</h3>
+                    <div class="contact-box">
+                        <p style="margin-bottom: 1rem;"><strong>Primary (Preferred):</strong></p>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem;"><a href="mailto:james2009329@gmail.com">james2009329@gmail.com</a></p>
+                        
+                        <p style="margin-bottom: 1rem;"><strong>School Email:</strong></p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem;"><a href="mailto:Jlin02@student.dasd.org">Jlin02@student.dasd.org</a></p>
+                        <p style="font-size: 0.9rem; color: #666; font-style: italic;">Note: Some emails may be blocked if sent to my school email due to school filtering. Please use my personal email above for reliable contact.</p>
+                    </div>
+                    
+                    <h3 style="font-size: 1.3rem; margin-bottom: 1rem; margin-top: 2rem;">Links</h3>
+                    <div class="contact-links" style="flex-wrap: wrap;">
+                        <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#" onclick="openResumeViewer('https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/James-Lin-Resume.pdf'); return false;"><i class="fas fa-file-pdf"></i> Resume</a>
+                        <a href="https://www.printables.com/@JamesLin_317773" target="_blank"><i class="fas fa-cube"></i> Printables.com</a>
+                        <a href="https://www.thingiverse.com/ImAPotato5260/designs" target="_blank"><i class="fas fa-cube"></i> Thingiverse</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <footer>
         <p>&copy; 2024 James Lin. All rights reserved.</p>
         <p style="margin-top: 0.5rem;">Site layout assisted by AI, all projects and insights are my own.</p>
-        <button id="theme-toggle" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
+        <button id="theme-toggle">
             <i class="fas fa-sun"></i> Light Mode
         </button>
     </footer>
@@ -1098,6 +1345,35 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // Section Navigation
+        function showSection(sectionName) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.getElementById(sectionName + '-section').classList.add('active');
+            
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the clicked link
+            const activeLink = Array.from(navLinks).find(link => 
+                link.textContent.toLowerCase().includes(sectionName) ||
+                (sectionName === 'skills' && link.textContent.includes('Skills'))
+            );
+            
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         const projectData = {
             'nasa': {
                 title: 'NASA SEES - High-Altitude Airship',
@@ -1355,7 +1631,6 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Initialize lightbox after modal content is rendered
             setTimeout(initImageLightbox, 100);
         }
 
@@ -1552,21 +1827,6 @@
             }
         });
 
-        // Hero fade on scroll
-        window.addEventListener('scroll', () => {
-            const heroSection = document.getElementById('hero-section');
-            const heroContent = document.getElementById('hero-content');
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
-            
-            const opacity = Math.max(0, 1 - (scrollPosition / (windowHeight * 0.5)));
-            
-            if (heroSection && heroContent) {
-                heroSection.style.opacity = opacity;
-                heroContent.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-            }
-        });
-
         // Image Lightbox Functionality
         let currentImageIndex = 0;
         let currentImageArray = [];
@@ -1638,7 +1898,6 @@
             const iframe = document.getElementById('resume-iframe');
             const downloadLink = document.getElementById('resume-download-link');
             
-            // Use PDF.js viewer to display the PDF
             const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(resumeUrl)}`;
             
             iframe.src = pdfViewerUrl;
