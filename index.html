@@ -27,6 +27,10 @@
             color: #e0e0e0;
         }
 
+        body.dark-mode .page-section {
+            background: #1a1a1a;
+        }
+
         body.dark-mode nav {
             background: rgba(26, 26, 26, 0.9);
             border-bottom: 1px solid #333;
@@ -51,6 +55,10 @@
             color: #fff;
         }
 
+        body.dark-mode .project-item {
+            background: transparent;
+        }
+
         body.dark-mode .project-item p,
         body.dark-mode p {
             color: #aaa;
@@ -63,6 +71,7 @@
         body.dark-mode .project-image-container {
             background: #2a2a2a;
             border-color: #444;
+            border-style: solid;
         }
 
         body.dark-mode .about-content,
@@ -207,6 +216,7 @@
             display: none;
             min-height: 100vh;
             animation: fadeIn 0.4s ease;
+            padding-top: 120px;
         }
 
         .page-section.active {
@@ -308,10 +318,20 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 3rem;
+            background: transparent;
+        }
+
+        body.dark-mode main {
+            background: transparent;
         }
 
         section {
             margin-bottom: 4rem;
+            background: transparent;
+        }
+
+        body.dark-mode section {
+            background: transparent;
         }
 
         h2 {
@@ -328,7 +348,7 @@
         }
 
         .about-content p {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: #555;
             margin-bottom: 1.5rem;
             line-height: 1.9;
@@ -1035,7 +1055,7 @@
     </nav>
 
     <!-- Home/About Section -->
-    <div id="home-section" class="page-section active">
+    <div id="home-section" class="page-section active" style="padding-top: 0;">
         <div class="hero">
             <div class="hero-content">
                 <h1>James Lin | Engineering & Design Portfolio</h1>
