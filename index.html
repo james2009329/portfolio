@@ -1983,11 +1983,10 @@
             const downloadLink = document.getElementById('resume-download-link');
             const headerTitle = document.querySelector('.resume-viewer-header h3');
             
-            const certUrl = `https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/${nasaCerts[currentCertIndex]}`;
-            const pdfViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(certUrl)}&embedded=true`;
+            const certUrl = `https://github.com/james2009329/portfolio/raw/refs/heads/main/${nasaCerts[currentCertIndex]}`;
             
             headerTitle.textContent = `NASA SEES Certificate ${currentCertIndex + 1} of ${nasaCerts.length}`;
-            iframe.src = pdfViewerUrl;
+            iframe.src = certUrl;
             downloadLink.href = certUrl;
             downloadLink.style.display = 'inline-flex';
             downloadLink.download = nasaCerts[currentCertIndex];
