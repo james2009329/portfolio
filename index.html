@@ -1965,77 +1965,35 @@
             document.body.style.overflow = 'hidden';
         }
 
-        let currentCertIndex = 0;
-        const nasaCerts = [
-            'SEES24-Certificate-LIM2-Lin-James.pdf',
-            'SEES24-Certificate-LIM4-Lin-James.pdf',
-            'SEES25-Certificate-Python-Basic-Lin-James.pdf'
-        ];
-
         function openNASACertificates() {
-            currentCertIndex = 0;
-            showNASACertificate();
-        }
-
-        function showNASACertificate() {
-            const viewer = document.getElementById('resume-viewer');
-            const iframe = document.getElementById('resume-iframe');
-            const downloadLink = document.getElementById('resume-download-link');
-            const headerTitle = document.querySelector('.resume-viewer-header h3');
+            const modal = document.getElementById('project-modal');
+            const modalBody = document.getElementById('modal-body');
             
-            const certUrl = `https://github.com/james2009329/portfolio/raw/refs/heads/main/${nasaCerts[currentCertIndex]}`;
+            modalBody.innerHTML = `
+                <h2>NASA SEES Certificates</h2>
+                <div class="modal-section">
+                    <p>Click to download each certificate:</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="https://github.com/james2009329/portfolio/raw/refs/heads/main/SEES24-Certificate-LIM2-Lin-James.pdf" 
+                           download="SEES24-Certificate-LIM2-Lin-James.pdf"
+                           style="display: inline-block; padding: 1rem 1.5rem; background: #0066cc; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 500; transition: background 0.3s;">
+                            <i class="fas fa-download"></i> Certificate 1 - Earth & Space Science (LIM2)
+                        </a>
+                        <a href="https://github.com/james2009329/portfolio/raw/refs/heads/main/SEES24-Certificate-LIM4-Lin-James.pdf" 
+                           download="SEES24-Certificate-LIM4-Lin-James.pdf"
+                           style="display: inline-block; padding: 1rem 1.5rem; background: #0066cc; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 500; transition: background 0.3s;">
+                            <i class="fas fa-download"></i> Certificate 2 - Earth & Space Science (LIM4)
+                        </a>
+                        <a href="https://github.com/james2009329/portfolio/raw/refs/heads/main/SEES25-Certificate-Python-Basic-Lin-James.pdf" 
+                           download="SEES25-Certificate-Python-Basic-Lin-James.pdf"
+                           style="display: inline-block; padding: 1rem 1.5rem; background: #0066cc; color: white; text-decoration: none; border-radius: 8px; text-align: center; font-weight: 500; transition: background 0.3s;">
+                            <i class="fas fa-download"></i> Certificate 3 - Python Basic
+                        </a>
+                    </div>
+                </div>
+            `;
             
-            headerTitle.textContent = `NASA SEES Certificate ${currentCertIndex + 1} of ${nasaCerts.length}`;
-            iframe.src = certUrl;
-            downloadLink.href = certUrl;
-            downloadLink.style.display = 'inline-flex';
-            downloadLink.download = nasaCerts[currentCertIndex];
-            
-            // Add navigation buttons if they don't exist
-            let navButtons = document.querySelector('.cert-nav-buttons');
-            if (!navButtons && nasaCerts.length > 1) {
-                navButtons = document.createElement('div');
-                navButtons.className = 'cert-nav-buttons';
-                navButtons.style.cssText = 'display: flex; gap: 0.5rem;';
-                
-                const prevBtn = document.createElement('button');
-                prevBtn.textContent = '← Previous';
-                prevBtn.className = 'resume-close-btn';
-                prevBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    if (currentCertIndex > 0) {
-                        currentCertIndex--;
-                        showNASACertificate();
-                    }
-                };
-                
-                const nextBtn = document.createElement('button');
-                nextBtn.textContent = 'Next →';
-                nextBtn.className = 'resume-close-btn';
-                nextBtn.onclick = (e) => {
-                    e.stopPropagation();
-                    if (currentCertIndex < nasaCerts.length - 1) {
-                        currentCertIndex++;
-                        showNASACertificate();
-                    }
-                };
-                
-                navButtons.appendChild(prevBtn);
-                navButtons.appendChild(nextBtn);
-                document.querySelector('.resume-viewer-actions').appendChild(navButtons);
-            }
-            
-            // Update button states
-            if (navButtons) {
-                const prevBtn = navButtons.children[0];
-                const nextBtn = navButtons.children[1];
-                prevBtn.disabled = currentCertIndex === 0;
-                nextBtn.disabled = currentCertIndex === nasaCerts.length - 1;
-                prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
-                nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
-            }
-            
-            viewer.classList.add('active');
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
