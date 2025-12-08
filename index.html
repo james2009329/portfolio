@@ -1242,7 +1242,7 @@
             <section>
                 <h2>Awards & Recognition</h2>
                 <div class="grid-layout">
-                    <div class="grid-item">
+                    <div class="grid-item" onclick="openNASACertificates()" style="cursor: pointer;">
                         <h3><i class="fas fa-rocket"></i> NASA SEES | 2025</h3>
                         <p>Earth & Space Science and Python Certificate</p>
                         <p>NASA | University of Texas at Austin & Center for Space Research</p>
@@ -1257,7 +1257,7 @@
                         <p>2nd Place at Internationals</p>
                         <p>Team Engineering - Future Renewable City Model</p>
                     </div>
-                    <div class="grid-item">
+                    <div class="grid-item" onclick="openKalbachEssay()" style="cursor: pointer;">
                         <h3><i class="fas fa-award"></i> Kalbach Award | 2024</h3>
                         <p>Best Essay (top essay out of 100+ students)</p>
                         <p>High Honor Roll (2×) | Downingtown STEM Academy</p>
@@ -1936,9 +1936,101 @@
             document.body.style.overflow = 'auto';
         }
 
+        function openKalbachEssay() {
+            const viewer = document.getElementById('resume-viewer');
+            const iframe = document.getElementById('resume-iframe');
+            const downloadLink = document.getElementById('resume-download-link');
+            const headerTitle = document.querySelector('.resume-viewer-header h3');
+            
+            headerTitle.textContent = 'Kalbach Award Essay';
+            iframe.src = 'https://docs.google.com/document/d/1HgsDF1kwyklHpq8lD5N_elUgXcKDn37m1V8FltLQVs0/preview';
+            downloadLink.style.display = 'none';
+            
+            viewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        let currentCertIndex = 0;
+        const nasaCerts = [
+            'SEES24-Certificate-LIM2-Lin-James.pdf',
+            'SEES24-Certificate-LIM4-Lin-James.pdf',
+            'SEES25-Certificate-Python-Basic-Lin-James.pdf'
+        ];
+
+        function openNASACertificates() {
+            currentCertIndex = 0;
+            showNASACertificate();
+        }
+
+        function showNASACertificate() {
+            const viewer = document.getElementById('resume-viewer');
+            const iframe = document.getElementById('resume-iframe');
+            const downloadLink = document.getElementById('resume-download-link');
+            const headerTitle = document.querySelector('.resume-viewer-header h3');
+            
+            const certUrl = `https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/${nasaCerts[currentCertIndex]}`;
+            const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(certUrl)}`;
+            
+            headerTitle.textContent = `NASA SEES Certificate ${currentCertIndex + 1} of ${nasaCerts.length}`;
+            iframe.src = pdfViewerUrl;
+            downloadLink.href = certUrl;
+            downloadLink.style.display = 'inline-flex';
+            downloadLink.download = nasaCerts[currentCertIndex];
+            
+            // Add navigation buttons if they don't exist
+            let navButtons = document.querySelector('.cert-nav-buttons');
+            if (!navButtons && nasaCerts.length > 1) {
+                navButtons = document.createElement('div');
+                navButtons.className = 'cert-nav-buttons';
+                navButtons.style.cssText = 'display: flex; gap: 0.5rem;';
+                
+                const prevBtn = document.createElement('button');
+                prevBtn.textContent = '← Previous';
+                prevBtn.className = 'resume-close-btn';
+                prevBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (currentCertIndex > 0) {
+                        currentCertIndex--;
+                        showNASACertificate();
+                    }
+                };
+                
+                const nextBtn = document.createElement('button');
+                nextBtn.textContent = 'Next →';
+                nextBtn.className = 'resume-close-btn';
+                nextBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    if (currentCertIndex < nasaCerts.length - 1) {
+                        currentCertIndex++;
+                        showNASACertificate();
+                    }
+                };
+                
+                navButtons.appendChild(prevBtn);
+                navButtons.appendChild(nextBtn);
+                document.querySelector('.resume-viewer-actions').appendChild(navButtons);
+            }
+            
+            // Update button states
+            if (navButtons) {
+                const prevBtn = navButtons.children[0];
+                const nextBtn = navButtons.children[1];
+                prevBtn.disabled = currentCertIndex === 0;
+                nextBtn.disabled = currentCertIndex === nasaCerts.length - 1;
+                prevBtn.style.opacity = prevBtn.disabled ? '0.5' : '1';
+                nextBtn.style.opacity = nextBtn.disabled ? '0.5' : '1';
+            }
+            
+            viewer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         document.getElementById('resume-viewer').addEventListener('click', (e) => {
             if (e.target.id === 'resume-viewer') {
                 closeResumeViewer();
+                // Reset title and show download button
+                document.querySelector('.resume-viewer-header h3').textContent = 'James Lin - Resume';
+                document.getElementById('resume-download-link').style.display = 'inline-flex';
             }
         });
 
@@ -1946,6 +2038,9 @@
             const viewer = document.getElementById('resume-viewer');
             if (viewer.classList.contains('active') && e.key === 'Escape') {
                 closeResumeViewer();
+                // Reset title and show download button
+                document.querySelector('.resume-viewer-header h3').textContent = 'James Lin - Resume';
+                document.getElementById('resume-download-link').style.display = 'inline-flex';
             }
         });
     </script>
