@@ -1917,11 +1917,20 @@
             const viewer = document.getElementById('resume-viewer');
             const iframe = document.getElementById('resume-iframe');
             const downloadLink = document.getElementById('resume-download-link');
+            const headerTitle = document.querySelector('.resume-viewer-header h3');
+            
+            // Remove nav buttons if they exist
+            const navButtons = document.querySelector('.cert-nav-buttons');
+            if (navButtons) {
+                navButtons.remove();
+            }
             
             const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(resumeUrl)}`;
             
+            headerTitle.textContent = 'James Lin - Resume';
             iframe.src = pdfViewerUrl;
             downloadLink.href = resumeUrl;
+            downloadLink.style.display = 'inline-flex';
             
             viewer.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1930,6 +1939,12 @@
         function closeResumeViewer() {
             const viewer = document.getElementById('resume-viewer');
             const iframe = document.getElementById('resume-iframe');
+            
+            // Remove nav buttons if they exist
+            const navButtons = document.querySelector('.cert-nav-buttons');
+            if (navButtons) {
+                navButtons.remove();
+            }
             
             viewer.classList.remove('active');
             iframe.src = '';
@@ -1969,7 +1984,7 @@
             const headerTitle = document.querySelector('.resume-viewer-header h3');
             
             const certUrl = `https://raw.githubusercontent.com/james2009329/portfolio/refs/heads/main/${nasaCerts[currentCertIndex]}`;
-            const pdfViewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(certUrl)}`;
+            const pdfViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(certUrl)}&embedded=true`;
             
             headerTitle.textContent = `NASA SEES Certificate ${currentCertIndex + 1} of ${nasaCerts.length}`;
             iframe.src = pdfViewerUrl;
@@ -2028,9 +2043,6 @@
         document.getElementById('resume-viewer').addEventListener('click', (e) => {
             if (e.target.id === 'resume-viewer') {
                 closeResumeViewer();
-                // Reset title and show download button
-                document.querySelector('.resume-viewer-header h3').textContent = 'James Lin - Resume';
-                document.getElementById('resume-download-link').style.display = 'inline-flex';
             }
         });
 
@@ -2038,9 +2050,6 @@
             const viewer = document.getElementById('resume-viewer');
             if (viewer.classList.contains('active') && e.key === 'Escape') {
                 closeResumeViewer();
-                // Reset title and show download button
-                document.querySelector('.resume-viewer-header h3').textContent = 'James Lin - Resume';
-                document.getElementById('resume-download-link').style.display = 'inline-flex';
             }
         });
     </script>
