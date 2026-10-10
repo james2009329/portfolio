@@ -305,12 +305,37 @@ dialog::backdrop { background: rgb(10 12 15 / 0.72); }
 .model-hint { position: absolute; left: 16px; bottom: 12px; color: #8b939c; font-size: 0.85rem; pointer-events: none; }
 
 /* ---------- Sponsors ---------- */
-.sponsors { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
-.sponsors a { display: flex; align-items: center; gap: 14px; padding: 18px 26px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); text-decoration: none; min-height: 84px; }
-.sponsors a:hover { border-color: var(--dykem); }
-.sponsor-name { font-weight: 750; font-stretch: 112%; font-size: 1.25rem; }
-.logo { display: block; width: 44px; height: 44px; background: currentColor; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
-.logo-bambu { --src: url("media/sponsors/bambu-lab.svg"); }
+/* sponsor collage: two photos and two logo tiles, set like prints pinned to a board */
+.sponsor-collage {
+  display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.1fr; grid-template-rows: auto auto;
+  gap: 14px; align-items: center; max-width: 980px; padding: 12px 0 24px;
+}
+.sc-photo { margin: 0; border: 1.5px solid var(--ink); background: var(--sheet); padding: 8px 8px 26px; box-shadow: 4px 4px 0 var(--ink); }
+.sc-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.sc-bambu-photo { grid-column: 1; grid-row: 1 / span 2; transform: rotate(-2.5deg); }
+.sc-ldo-photo { grid-column: 4; grid-row: 1 / span 2; transform: rotate(2deg); }
+.sc-logo {
+  display: grid; justify-items: center; gap: 10px; padding: 26px 18px;
+  border: 1.5px solid var(--ink); background: #fff; color: #1a1d21; text-decoration: none; text-align: center;
+  transition: transform .15s ease;
+}
+.sc-logo:hover { transform: translateY(-3px); }
+.sc-bambu { grid-column: 2 / span 2; grid-row: 1; grid-template-columns: auto auto; align-items: center; justify-content: center; column-gap: 14px; transform: rotate(1deg); }
+.sc-ldo { grid-column: 2 / span 2; grid-row: 2; transform: rotate(-1deg); }
+.sc-mark { width: 54px; height: 54px; }
+.sc-word { font-weight: 800; font-stretch: 108%; font-size: 2rem; letter-spacing: -0.01em; }
+.sc-wordmark { width: min(280px, 100%); height: auto; }
+.sc-what { grid-column: 1 / -1; font-size: 0.95rem; color: #59616c; font-weight: 600; }
+@media (max-width: 760px) {
+  .sponsor-collage { grid-template-columns: 1fr 1fr; }
+  .sc-bambu-photo { grid-column: 1; grid-row: 1; }
+  .sc-bambu { grid-column: 2; grid-row: 1; }
+  .sc-ldo { grid-column: 1; grid-row: 2; }
+  .sc-ldo-photo { grid-column: 2; grid-row: 2; }
+  .sc-bambu { grid-template-columns: 1fr; }
+  .sc-word { font-size: 1.35rem; white-space: nowrap; }
+  .sc-mark { width: 40px; height: 40px; }
+}
 
 /* ---------- Footnotes ---------- */
 sup { font-size: 0.65em; line-height: 0; }

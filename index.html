@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
   <script>
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
@@ -110,10 +110,18 @@
       </dl>
 
       <h3 class="sub">Sponsors</h3>
-      <ul class="sponsors" aria-label="Sponsors">
-        <li><a href="https://bambulab.com/" target="_blank" rel="noopener"><span class="logo logo-bambu" role="img" aria-label="Bambu Lab"></span><span class="sponsor-name">Bambu Lab</span></a></li>
-        <li><a href="https://ldomotors.com/" target="_blank" rel="noopener"><span class="sponsor-name">LDO Motors</span></a></li>
-      </ul>
+      <div class="sponsor-collage">
+        <figure class="sc-photo sc-bambu-photo"><img src="media/sponsors/bambu-box.sm.webp" alt="Bambu Lab box delivered to James's front walk" loading="lazy"></figure>
+        <a class="sc-logo sc-bambu" href="https://bambulab.com/" target="_blank" rel="noopener">
+          <img src="media/sponsors/bambu-lab.svg" alt="" class="sc-mark"><span class="sc-word">Bambu Lab</span>
+          <span class="sc-what">3D printer</span>
+        </a>
+        <a class="sc-logo sc-ldo" href="https://ldomotors.com/" target="_blank" rel="noopener">
+          <img src="media/sponsors/ldo-motors.svg" alt="LDO Motors" class="sc-wordmark">
+          <span class="sc-what">NEMA17 stepper motors</span>
+        </a>
+        <figure class="sc-photo sc-ldo-photo"><img src="media/sponsors/ldo-box.sm.webp" alt="A box of LDO Motors stepper motors" loading="lazy"></figure>
+      </div>
 
       <h3 class="sub">Skills</h3>
       <dl class="skills">
@@ -202,7 +210,7 @@
     </button>
   </dialog>
 
-  <script src="projects.js?v=7"></script>
-  <script src="app.js?v=7"></script>
+  <script src="projects.js?v=9"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>

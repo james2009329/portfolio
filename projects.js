@@ -73,6 +73,59 @@ window.PROJECTS = [
     ],
   },
   {
+    id: 'diffy-swerve',
+    title: 'Differential Swerve Drive',
+    summary: 'Diffy swerve drivetrain with 8 NEMA17 stepper motors — started by Ethan Gao',
+    cover: 'cad.jpg',
+    media: ['driving.mp4', 'phone-control.mp4', 'module-test.mp4', 'module-close-up.mp4', 'cad.jpg'],
+    sections: [
+      { h: 'Overview', p: 'A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors. Ethan Gao started the project.' },
+      { h: 'Key Features', list: ['ESP32 + DRV stepper drivers', 'Controlled from a phone over WiFi', '290 mm wheelbase'] },
+    ],
+  },
+  {
+    id: 'eye-switch',
+    title: 'Eye-Operated Switch',
+    summary: 'Cause-and-effect switch for students with multiple disabilities',
+    cover: 'eye-switch.jpg',
+    media: ['eye-switch.jpg', 'eye-switch-demo.mp4'],
+    sections: [
+      { h: 'Overview', p: 'An eye-operated cause-and-effect switch for students with multiple disabilities who have limited hand and foot function. It sits on a wheelchair tabletop and lets students use their eyes to turn on a toy.' },
+      { h: 'Key Features', list: ['Repurposed Android phone for the camera, screen, speaker, and battery', 'ESP32 + relay powered from the phone over USB', 'Drives one toy'] },
+    ],
+  },
+  {
+    id: 'integrator',
+    title: 'Mechanical Integrator',
+    summary: 'Disk-and-wheel mechanical integrator — Summer 2026',
+    cover: 'build.jpg',
+    media: ['build.jpg', 'belt-path.jpg'],
+    sections: [
+      { h: 'Overview', p: 'A disk-and-wheel mechanical integrator I built over summer 2026. A belt-driven differential keeps both stepper motors stationary while the disk rotates and translates, which cuts carriage weight.' },
+      { h: 'Materials', list: ['Almost fully 3D printed, including TPU belts, the disk, and the wheel', '2020 aluminum extrusion reused from my old Ender 3'] },
+    ],
+  },
+  {
+    id: 'printer',
+    title: 'Custom 3D Printers',
+    summary: 'Building from scratch with custom upgrades',
+    cover: 'folding-printer-iso.jpg',
+    fit: 'contain',
+    model: 'model.stl',
+    media: [
+      'folding-printer-iso.jpg', 'folding-printer-top.jpg', 'folding-printer-bottom.jpg',
+      'folding-printer-z-axis.jpg', 'folding-printer-belts.jpg',
+      'frame-build.jpg', 'frame-motion-test.mp4', 'thumbnail.png',
+    ],
+    sections: [
+      { h: 'Overview', p: 'Building and modifying 3D printers from scratch with upgraded mechanical components.' },
+      { h: 'Folding 3D Printer', p: 'Working with gao.lab.' },
+    ],
+    links: [
+      { label: 'gao.lab on Instagram', url: 'https://www.instagram.com/gao.lab/' },
+    ],
+  },
+  {
     id: 'dragster',
     title: 'Dragster',
     summary: 'Aerodynamic dragster with optimized weight and wheel design',
@@ -168,18 +221,6 @@ window.PROJECTS = [
         'CNC machine - In progress, tolerances were off',
         'Bi-Stable Point Absorber - Also in progress',
       ] },
-    ],
-  },
-  {
-    id: 'printer',
-    title: 'Custom 3D Printer',
-    summary: 'Building from scratch with custom upgrades',
-    cover: 'thumbnail.png',
-    fit: 'contain',
-    model: 'model.stl',
-    media: ['thumbnail.png'],
-    sections: [
-      { h: 'Overview', p: 'Building and modifying a 3D printer from scratch with upgraded mechanical components.' },
     ],
   },
 ];

@@ -12,6 +12,8 @@
   const web = (p, file, small) => PHOTO.test(file) ? path(p, file.replace(PHOTO, small ? '.sm.webp' : '.webp')) : path(p, file);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const item = m => typeof m === 'string' ? { file: m } : m;
+  // every video has a still frame next to it: clip.mp4 -> clip.poster.webp / clip.poster.sm.webp
+  const poster = (p, file, small) => path(p, file.replace(VIDEO, small ? '.poster.sm.webp' : '.poster.webp'));
 
   function blockTable(block) {
     if (!block) return '';
@@ -23,7 +25,7 @@
   function tile(p) {
     const fit = p.fit === 'contain' ? ' contain' : '';
     return `<button class="tile" type="button" data-open="${p.id}" aria-label="Open ${esc(p.title)}">
-      <div class="tile-img${fit}"><img src="${web(p, p.cover, true)}" alt="" loading="lazy" decoding="async"></div>
+      <div class="tile-img${fit}"><img src="${VIDEO.test(p.cover) ? poster(p, p.cover, true) : web(p, p.cover, true)}" alt="" loading="lazy" decoding="async"></div>
       <div class="tile-text"><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div>
       ${p.featured ? blockTable(p.block) : ''}
     </button>`;
@@ -43,7 +45,7 @@
     const m = item(current.media[index]);
     const stage = $('#stage');
     if (VIDEO.test(m.file)) {
-      stage.innerHTML = `<video controls playsinline preload="metadata" src="${path(current, m.file)}#t=0.1"></video>`;
+      stage.innerHTML = `<video controls playsinline preload="metadata" poster="${poster(current, m.file)}" src="${path(current, m.file)}"></video>`;
     } else {
       stage.innerHTML = `<img src="${web(current, m.file)}" alt="${esc(m.caption || current.title)}">`;
     }
@@ -61,11 +63,10 @@
     $('#thumbs').innerHTML = media.length > 1 ? media.map((m, i) => {
       const isVid = VIDEO.test(m.file);
       const inner = isVid
-        ? `<video muted preload="metadata" src="${path(p, m.file)}#t=0.1" tabindex="-1"></video><span class="play"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5l8 5-8 5z" fill="currentColor"/></svg></span>`
+        ? `<img src="${poster(p, m.file, true)}" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5l8 5-8 5z" fill="currentColor"/></svg></span>`
         : `<img src="${web(p, m.file, true)}" alt="" loading="lazy">`;
       return `<button type="button" role="listitem" data-i="${i}" aria-label="${esc((isVid ? 'Video: ' : 'Photo: ') + (m.caption || i + 1))}">${inner}</button>`;
     }).join('') : '';
-    $('#thumbs').querySelectorAll('video').forEach(v => { v.style.cssText = 'width:100%;height:100%;object-fit:cover;pointer-events:none'; });
 
     const sections = (p.sections || []).map(s => `<div>${s.h ? `<h3>${esc(s.h)}</h3>` : ""}${s.p ? `<p>${esc(s.p)}</p>` : ''}${s.list ? `<ul>${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}</div>`).join('');
     const links = (p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('');
