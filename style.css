@@ -301,15 +301,15 @@ dialog::backdrop { background: rgb(10 12 15 / 0.72); }
 .model-status { position: absolute; inset: 0; display: grid; place-items: center; color: #d6dade; pointer-events: none; }
 .model-hint { position: absolute; left: 16px; bottom: 12px; color: #8b939c; font-size: 0.85rem; pointer-events: none; }
 
-/* ---------- Now building ---------- */
-.now {
-  display: grid; gap: 10px;
-  padding: 22px 24px; margin-bottom: 20px;
-  border: 1.5px solid var(--ink);
-  background: var(--dykem-soft);
-}
-.now-tag { display: flex; align-items: center; gap: 10px; color: var(--dykem); font-weight: 650; font-size: 0.95rem; }
-.now h3 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-stretch: 115%; font-weight: 800; }
-.now p { max-width: 68ch; }
-.now-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 4px; }
-.sponsors { font-size: 1.15rem; max-width: 60ch; }
+/* ---------- Sponsors ---------- */
+.sponsors { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
+.sponsors a { display: flex; align-items: center; gap: 14px; padding: 18px 26px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); text-decoration: none; min-height: 84px; }
+.sponsors a:hover { border-color: var(--dykem); }
+.sponsor-name { font-weight: 750; font-stretch: 112%; font-size: 1.25rem; }
+.logo { display: block; width: 44px; height: 44px; background: currentColor; -webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat; }
+.logo-bambu { --src: url("media/sponsors/bambu-lab.svg"); }
+
+/* ---------- Footnotes ---------- */
+sup { font-size: 0.65em; line-height: 0; }
+sup a { text-decoration: none; padding: 0 1px; }
+.fn { width: 100%; }
