@@ -122,7 +122,7 @@
   $('#stage').addEventListener('click', e => {
     if (e.target.tagName !== 'IMG') return;
     const m = item(current.media[index]);
-    $('#zoom-img').src = path(current, m.file);          // the original file
+    $('#zoom-img').src = web(current, m.file);          // the full-size, cropped copy
     $('#zoom-img').alt = m.caption || current.title;
     zoom.showModal();
   });
