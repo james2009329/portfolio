@@ -250,4 +250,138 @@
   modelDlg.addEventListener('click', e => { if (e.target.closest('[data-close]') || e.target === modelDlg) modelDlg.close(); });
   modelDlg.addEventListener('close', () => { if (stop) stop(); stop = null; });
   zoom.addEventListener('cancel', e => { e.stopPropagation(); });
+
+  /* ---------- Hero: print the drone, layer by layer ---------- */
+  (function printer() {
+    const fig = $('#printer'), canvas = $('#print-canvas');
+    if (!fig || !canvas || !canvas.getContext) return;
+    const status = $('#print-status'), again = $('#print-again');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const load = src => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+    let photo, lines, raf = 0, ran = false;
+
+    // geometry for the current canvas size
+    let W, H, dpr, layerH, layers, tinted;
+    function setup() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = Math.round(canvas.clientWidth * dpr); H = Math.round(canvas.clientHeight * dpr);
+      canvas.width = W; canvas.height = H;
+      // the photo at canvas size, to find where each layer has material
+      const off = document.createElement('canvas'); off.width = W; off.height = H;
+      const o = off.getContext('2d'); o.drawImage(photo, 0, 0, W, H);
+      const alpha = o.getImageData(0, 0, W, H).data;
+      layerH = Math.max(3, Math.round(H / 110));
+      layers = [];
+      for (let top = H - layerH; top > -layerH; top -= layerH) {
+        let min = W, max = -1;
+        const y0 = Math.max(0, top), y1 = Math.min(H, top + layerH);
+        for (let y = y0; y < y1; y += 2) for (let x = 0; x < W; x += 2) {
+          if (alpha[(y * W + x) * 4 + 3] > 24) { if (x < min) min = x; if (x > max) max = x; }
+        }
+        if (max >= 0) layers.push({ top, min, max });
+      }
+      // the line drawing, tinted with the page's accent color so it works in both themes
+      tinted = document.createElement('canvas'); tinted.width = W; tinted.height = H;
+      const t = tinted.getContext('2d');
+      t.drawImage(lines, 0, 0, W, H);
+      t.globalCompositeOperation = 'source-in';
+      t.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--dykem').trim() || '#2346a8';
+      t.fillRect(0, 0, W, H);
+    }
+
+    const ctx = canvas.getContext('2d');
+    function ink() { return getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#1a1d21'; }
+
+    // draw the scene with the print finished up to layer index `k`, nozzle at fraction `f` across it
+    function draw(k, f, texture) {
+      ctx.clearRect(0, 0, W, H);
+      const done = k >= layers.length;
+      const L = layers[Math.min(k, layers.length - 1)];
+      const front = done ? -1 : L.top + layerH;          // everything below this line is printed
+      const noz = done ? 0 : L.min + (L.max - L.min) * f;
+
+      // 1. line drawing, only above the print front
+      if (!done) { ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W, Math.max(0, front - layerH)); ctx.rect(noz, front - layerH, W, layerH); ctx.clip(); ctx.globalAlpha = 0.85; ctx.drawImage(tinted, 0, 0); ctx.restore(); }
+
+      // 2. printed photo: finished layers, plus the current layer up to the nozzle
+      ctx.save(); ctx.beginPath();
+      if (done) ctx.rect(0, 0, W, H); else { ctx.rect(0, front, W, H - front); ctx.rect(0, front - layerH, noz, layerH); }
+      ctx.clip();
+      ctx.drawImage(photo, 0, 0, W, H);
+      // layer lines on the fresh print, fading once it's done
+      if (texture > 0) {
+        ctx.globalCompositeOperation = 'source-atop';
+        ctx.globalAlpha = 0.22 * texture;
+        ctx.fillStyle = '#000';
+        for (let y = H - layerH; y > 0; y -= layerH) ctx.fillRect(0, y, W, Math.max(1, dpr * 0.75));
+      }
+      ctx.restore();
+
+      // 3. gantry and hotend
+      if (!done) {
+        const c = ink(), y = front - layerH;
+        ctx.fillStyle = c;
+        ctx.globalAlpha = 0.35; ctx.fillRect(0, y - 15 * dpr, W, 2 * dpr); ctx.globalAlpha = 1;   // X rail
+        const w = 18 * dpr, h = 12 * dpr;
+        ctx.fillRect(noz - w / 2, y - h - 6 * dpr, w, h);                                      // heater block
+        ctx.beginPath(); ctx.moveTo(noz - 5 * dpr, y - 6 * dpr); ctx.lineTo(noz + 5 * dpr, y - 6 * dpr); ctx.lineTo(noz, y); ctx.closePath(); ctx.fill(); // nozzle
+      }
+    }
+
+    function finish() {
+      draw(layers.length, 1, 0);
+      status.textContent = `Printed in ${layers.length} layers. Drone frame, arms by generative design`;
+      if (!reduce) { fig.classList.add('flying'); again.hidden = false; }
+    }
+
+    function run() {
+      cancelAnimationFrame(raf);
+      fig.classList.remove('flying');
+      again.hidden = true;
+      // time per layer scales with how much material it has, plus a little travel
+      const cost = layers.map(l => (l.max - l.min) / W + 0.08);
+      const total = cost.reduce((a, b) => a + b, 0), DURATION = 4200;
+      const ends = []; cost.reduce((acc, c, i) => (ends[i] = acc + c / total * DURATION), 0);
+      let t0 = null, k = 0;
+      const tick = now => {
+        if (t0 === null) t0 = now;
+        const t = now - t0;
+        while (k < layers.length && t > ends[k]) k++;
+        if (k >= layers.length) {
+          // fade the layer lines out over 700ms
+          const fade = Math.min(1, (t - DURATION) / 700);
+          draw(layers.length, 1, 1 - fade);
+          if (fade < 1) { raf = requestAnimationFrame(tick); return; }
+          return finish();
+        }
+        const start = k ? ends[k - 1] : 0, f = (t - start) / (ends[k] - start);
+        // alternate direction each layer, like a real toolpath
+        draw(k, k % 2 ? 1 - f : f, 1);
+        status.textContent = `Printing layer ${k + 1} of ${layers.length}`;
+        raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    }
+
+    Promise.all([load('media/drone/print-hero.webp'), load('media/drone/print-hero-lines.webp')]).then(([p, l]) => {
+      photo = p; lines = l;
+      setup();
+      fig.classList.add('live');
+      if (reduce) { finish(); return; }
+      draw(0, 0, 1);
+      const io = new IntersectionObserver(es => {
+        if (es[0].isIntersecting && !ran) { ran = true; io.disconnect(); setTimeout(run, 350); }
+      }, { threshold: 0.4 });
+      io.observe(canvas);
+    }).catch(() => {});
+
+    again.addEventListener('click', run);
+    let rt;
+    window.addEventListener('resize', () => {
+      clearTimeout(rt);
+      rt = setTimeout(() => { if (!photo) return; const busy = !again.hidden || reduce; setup(); if (busy || fig.classList.contains('flying')) draw(layers.length, 1, 0); else if (ran) run(); else draw(0, 0, 1); }, 150);
+    });
+    // redraw with the new colors when the theme changes
+    new MutationObserver(() => { if (!photo) return; setup(); if (fig.classList.contains('flying') || reduce) draw(layers.length, 1, 0); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
 })();

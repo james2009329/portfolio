@@ -36,28 +36,48 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-name">
-      <h1 id="hero-name">James Lin</h1>
-      <div class="hero-row">
-        <p class="lede">I design, print, and test mechanical things: drones, robot arms, an airship for Titan, and one chicken sandwich in a can.</p>
-        <table class="block hero-block">
-          <caption class="sr">About James</caption>
-          <tr><th scope="row">School</th><td>Downingtown STEM Academy</td></tr>
-          <tr><th scope="row">Class of</th><td>2027</td></tr>
-          <tr><th scope="row">Focus</th><td>Mechanical engineering</td></tr>
-          <tr><th scope="row">Works in</th><td>Fusion 360, Onshape, SolidWorks</td></tr>
-        </table>
-      </div>
-      <div class="strip" aria-label="Recent builds">
-        <a href="#project/drone"><img src="media/drone/hook-render.sm.webp" alt="Drone with generatively designed arms in flight" width="632" height="630"></a>
-        <a href="#project/claw"><img src="media/claw/arm-photo.sm.webp" alt="3D printed robot arm with nitinol claw" width="707" height="720"></a>
-        <a href="#project/airship"><img src="media/airship/team.sm.webp" alt="The NASA SEES airship team with the airship" width="720" height="537"></a>
-        <a href="#project/robot-dog"><img src="media/robot-dog/robot-dog.sm.webp" alt="Robot dog prototype" width="578" height="432"></a>
-        <a href="#project/dragster"><img src="media/dragster/cfd.sm.webp" alt="CFD flow study of the CO2 dragster" width="720" height="509"></a>
+      <div class="frame">
+        <div class="zones zones-x" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+        <div class="zones zones-y" aria-hidden="true"><span>A</span><span>B</span><span>C</span></div>
+        <div class="sheet-area">
+          <h1 id="hero-name">James Lin</h1>
+          <figure class="printer" id="printer">
+            <div class="print-bed">
+              <canvas id="print-canvas" role="img" aria-label="Animation: James's drone, with arms shaped by generative design, being 3D printed layer by layer from a line drawing"></canvas>
+              <img class="print-fallback" src="media/drone/print-hero.webp" alt="" width="966" height="615">
+            </div>
+            <figcaption>
+              <span id="print-status">Drone frame, arms by generative design</span>
+              <button type="button" class="link-btn" id="print-again" hidden>Print it again</button>
+            </figcaption>
+          </figure>
+          <div class="hero-text">
+            <p class="lede">I design, print, and test mechanical things: drones, robot arms, an airship for Titan, and one chicken sandwich in a can.</p>
+            <p class="now-line"><span class="dot" aria-hidden="true"></span><span>Now building <a href="#now">a folding 3D printer</a> with Ethan Gao.</span></p>
+          </div>
+          <table class="block hero-block">
+            <caption class="sr">About James</caption>
+            <tr><th scope="row">School</th><td>Downingtown STEM Academy</td></tr>
+            <tr><th scope="row">Class of</th><td>2027</td></tr>
+            <tr><th scope="row">Focus</th><td>Mechanical engineering</td></tr>
+            <tr><th scope="row">Sponsors</th><td>Bambu Lab, LDO Motors</td></tr>
+            <tr><th scope="row">Builds on</th><td><a href="https://www.instagram.com/jameslarpsandmakescoolstuff/" target="_blank" rel="noopener">@jameslarpsandmakescoolstuff</a></td></tr>
+          </table>
+        </div>
       </div>
     </section>
 
     <section id="projects" class="section" aria-labelledby="projects-h">
       <h2 id="projects-h">Projects</h2>
+      <article class="now" id="now" aria-labelledby="now-h">
+        <p class="now-tag"><span class="dot" aria-hidden="true"></span>Now building</p>
+        <h3 id="now-h">Folding 3D printer, with Ethan Gao</h3>
+        <p>A portable FDM printer that folds up, for people who live in small spaces or need to print on the go. It runs on H-bot kinematics. Ethan designed the first version, and we're building version 2 together. It will be open source.</p>
+        <p class="now-links">
+          <a href="https://www.instagram.com/gao.lab/" target="_blank" rel="noopener">Ethan on Instagram, @gao.lab</a>
+          <a href="https://www.instagram.com/jameslarpsandmakescoolstuff/" target="_blank" rel="noopener">Follow the build, @jameslarpsandmakescoolstuff</a>
+        </p>
+      </article>
       <div class="featured" id="featured"></div>
       <div class="grid" id="grid"></div>
 
@@ -71,7 +91,7 @@
     </section>
 
     <section id="awards" class="section" aria-labelledby="awards-h">
-      <h2 id="awards-h">Awards and certificates</h2>
+      <h2 id="awards-h">Awards, sponsors, and skills</h2>
       <table class="awards">
         <thead><tr><th scope="col">Year</th><th scope="col">Award</th><th scope="col">Result</th></tr></thead>
         <tbody>
@@ -93,6 +113,9 @@
             <td><ul><li>2nd place at internationals</li></ul></td></tr>
         </tbody>
       </table>
+
+      <h3 class="sub">Sponsors</h3>
+      <p class="sponsors">I’ve been sponsored by <a href="https://bambulab.com/" target="_blank" rel="noopener">Bambu Lab</a> and <a href="https://ldomotors.com/" target="_blank" rel="noopener">LDO Motors</a>.</p>
 
       <h3 class="sub">Skills</h3>
       <dl class="skills">
@@ -120,6 +143,7 @@
       <p class="contact-main"><a href="mailto:james2009329@gmail.com">james2009329@gmail.com</a></p>
       <p class="contact-note">My school email, <a href="mailto:Jlin02@student.dasd.org">Jlin02@student.dasd.org</a>, filters some outside mail, so the address above is the reliable one.</p>
       <p class="contact-links">
+        <a href="https://www.instagram.com/jameslarpsandmakescoolstuff/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.linkedin.com/in/james-lin-72927a278/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="James-Lin-Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
         <a href="https://www.printables.com/@JamesLin_317773" target="_blank" rel="noopener">Printables</a>
