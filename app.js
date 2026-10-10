@@ -22,10 +22,11 @@
   }
 
   /* ---------- Grid ---------- */
+  const coverSrc = p => VIDEO.test(p.cover) ? poster(p, p.cover, true) : web(p, p.cover, true);
   function tile(p) {
     const fit = p.fit === 'contain' ? ' contain' : '';
     return `<button class="tile" type="button" data-open="${p.id}" aria-label="Open ${esc(p.title)}">
-      <div class="tile-img${fit}"><img src="${VIDEO.test(p.cover) ? poster(p, p.cover, true) : web(p, p.cover, true)}" alt="" loading="lazy" decoding="async"></div>
+      <div class="tile-img${fit}">${fit ? '' : `<img class="fill" src="${coverSrc(p)}" alt="" loading="lazy" aria-hidden="true">`}<img src="${coverSrc(p)}" alt="" loading="lazy" decoding="async"></div>
       <div class="tile-text"><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div>
       ${p.featured ? blockTable(p.block) : ''}
     </button>`;
@@ -46,6 +47,9 @@
     const stage = $('#stage');
     if (VIDEO.test(m.file)) {
       stage.innerHTML = `<video controls playsinline preload="metadata" poster="${poster(current, m.file)}" src="${path(current, m.file)}"></video>`;
+      const v = stage.querySelector('video');
+      v.addEventListener('loadedmetadata', () => v.classList.toggle('tall', v.videoHeight > v.videoWidth));
+      const pi = new Image(); pi.onload = () => v.classList.toggle('tall', pi.naturalHeight > pi.naturalWidth); pi.src = poster(current, m.file, true);
     } else {
       stage.innerHTML = `<img src="${web(current, m.file)}" alt="${esc(m.caption || current.title)}">`;
     }
