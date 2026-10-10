@@ -54,7 +54,7 @@ window.PROJECTS = [
   },
   {
     id: 'claw',
-    title: 'Nitinol-Driven Compliant Claw',
+    title: 'Robot Arm & Nitinol Claw',
     summary: 'Nitinol-driven compliant claw mechanism researching efficiency and strength',
     featured: true,
     block: {
@@ -76,7 +76,8 @@ window.PROJECTS = [
     id: 'diffy-swerve',
     title: 'Differential Swerve Drive',
     summary: 'Diffy swerve drivetrain with 8 NEMA17 stepper motors',
-    cover: 'cad.jpg',
+    cover: 'driving-loop.mp4',
+    coverClip: true,
     media: ['driving.mp4', 'phone-control.mp4', 'module-test.mp4', 'module-close-up.mp4', 'cad.jpg'],
     sections: [
       { h: 'Overview', p: 'A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors.' },

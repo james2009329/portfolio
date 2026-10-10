@@ -26,7 +26,7 @@
   function tile(p) {
     const fit = p.fit === 'contain' ? ' contain' : '';
     return `<button class="tile" type="button" data-open="${p.id}" aria-label="Open ${esc(p.title)}">
-      <div class="tile-img${fit}">${fit ? '' : `<img class="fill" src="${coverSrc(p)}" alt="" loading="lazy" aria-hidden="true">`}<img src="${coverSrc(p)}" alt="" loading="lazy" decoding="async"></div>
+      <div class="tile-img${fit}">${fit ? '' : `<img class="fill" src="${coverSrc(p)}" alt="" loading="lazy" aria-hidden="true">`}${p.coverClip ? `<video class="clip" src="${path(p, p.cover)}" poster="${coverSrc(p)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>` : `<img src="${coverSrc(p)}" alt="" loading="lazy" decoding="async">`}</div>
       <div class="tile-text"><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div>
       ${p.featured ? blockTable(p.block) : ''}
     </button>`;
@@ -335,7 +335,7 @@
 
     function finish() {
       draw(layers.length, 1, 0);
-      status.textContent = `Ultralight Drone Prototype, printed in ${layers.length} layers`;
+      status.textContent = 'Ultralight Drone Prototype';
       if (!reduce) { fig.classList.add('flying'); again.hidden = false; }
     }
 
@@ -414,4 +414,10 @@
     const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) start(); }, { threshold: 0.5 });
     io.observe(el);
   });
+
+  /* ---------- Card video clips play while on screen ---------- */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const clipIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }), { threshold: 0.25 });
+    document.querySelectorAll('video.clip').forEach(v => clipIO.observe(v));
+  }
 })();

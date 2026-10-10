@@ -187,6 +187,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .tile:hover { transform: translate(-3px, -3px); box-shadow: 3px 3px 0 var(--ink); }
 .tile-img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--sheet); border-bottom: 1px solid var(--rule); position: relative; }
 /* the whole photo always shows; a blurred copy fills the empty space around tall or wide shots */
+.tile-img video.clip { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; }
 .tile-img img { position: relative; width: 100%; height: 100%; object-fit: contain; }
 .tile-img img.fill { position: absolute; inset: -12%; width: 124%; height: 124%; object-fit: cover; filter: blur(18px) saturate(1.1); opacity: 0.55; }
 .tile-img.contain { background: var(--well); }
