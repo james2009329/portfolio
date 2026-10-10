@@ -386,23 +386,27 @@
   })();
 
   /* ---------- Count up to the view total ---------- */
+  // The real number is in the HTML, so it shows even if the animation never runs.
   document.querySelectorAll('.count').forEach(el => {
     const to = +el.dataset.to, fmt = n => Math.round(n).toLocaleString('en-US');
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { el.textContent = fmt(to); return; }
-    el.textContent = '0';
-    const io = new IntersectionObserver(es => {
-      if (!es[0].isIntersecting) return;
-      io.disconnect();
-      const D = 2400; let t0;
-      const ease = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);   // fast start, slow finish
-      const tick = now => {
-        t0 = t0 || now;
-        const t = Math.min(1, (now - t0) / D);
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    let started = false;
+    const start = () => {
+      if (started) return; started = true; io.disconnect();
+      const D = 2400, ease = t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      const t0 = performance.now();
+      const tick = () => {
+        const t = Math.min(1, (performance.now() - t0) / D);
         el.textContent = fmt(to * ease(t));
-        if (t < 1) requestAnimationFrame(tick);
+        if (t < 1) requestAnimationFrame(tick); else el.textContent = fmt(to);
       };
+      el.style.display = 'inline-block'; el.style.textAlign = 'right';
+      el.style.minWidth = el.getBoundingClientRect().width + 'px';   // keep the layout still while it counts
+      el.textContent = '0';
       requestAnimationFrame(tick);
-    }, { threshold: 0.6 });
+      setTimeout(() => { el.textContent = fmt(to); }, D + 500);   // never leave it mid-count
+    };
+    const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) start(); }, { threshold: 0.5 });
     io.observe(el);
   });
 })();

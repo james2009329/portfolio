@@ -317,17 +317,18 @@ sup a { text-decoration: none; padding: 0 1px; }
 .kicker { grid-area: kick; margin-top: 14px; font-size: clamp(1rem, 1.6vw, 1.25rem); font-stretch: 115%; font-weight: 600; color: var(--graphite); }
 
 /* ---------- Views counter ---------- */
-.reach {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px;
-  padding: clamp(48px, 8vw, 96px) 0 0;
-}
+.reach { padding: clamp(48px, 8vw, 96px) 0 0; }
+.reach-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; color: var(--ink); text-decoration: none; width: fit-content; max-width: 100%; }
+.reach-link:hover .reach-num { text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 0.12em; }
+.reach-link:hover .reach-label span { color: var(--dykem); }
 .reach-num {
+  display: block; white-space: nowrap;
   font-size: clamp(3.4rem, 13vw, 11rem);
   font-weight: 850; font-stretch: 125%; letter-spacing: -0.03em; line-height: 0.9;
   font-variant-numeric: tabular-nums;
   color: var(--dykem);
 }
-.reach-label { font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 700; font-stretch: 112%; }
+.reach-label { display: block; font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 700; font-stretch: 112%; }
 .reach-label span { display: block; font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--graphite); margin-top: 4px; }
 
 .contact-label { font-weight: 600; margin-top: 20px; color: var(--graphite); }
