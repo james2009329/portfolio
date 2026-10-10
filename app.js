@@ -67,14 +67,14 @@
     }).join('') : '';
     $('#thumbs').querySelectorAll('video').forEach(v => { v.style.cssText = 'width:100%;height:100%;object-fit:cover;pointer-events:none'; });
 
-    const sections = (p.sections || []).map(s => `<div><h3>${esc(s.h)}</h3>${s.p ? `<p>${esc(s.p)}</p>` : ''}${s.list ? `<ul>${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}</div>`).join('');
+    const sections = (p.sections || []).map(s => `<div>${s.h ? `<h3>${esc(s.h)}</h3>` : ""}${s.p ? `<p>${esc(s.p)}</p>` : ''}${s.list ? `<ul>${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}</div>`).join('');
     const links = (p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('');
     $('#notes').innerHTML = `
       <p class="lead">${esc(p.summary)}</p>
       ${blockTable(p.block)}
       ${sections}
       ${links ? `<div class="links">${links}</div>` : ''}
-      ${p.model ? `<button class="btn" type="button" data-model="${p.id}">View the 3D model</button>` : ''}`;
+      ${p.model ? `<button class="btn" type="button" data-model="${p.id}">View 3D Model</button>` : ''}`;
 
     $('.viewer').hidden = media.length === 0;
     if (media.length) renderStage();
@@ -330,7 +330,7 @@
 
     function finish() {
       draw(layers.length, 1, 0);
-      status.textContent = `Printed in ${layers.length} layers. Drone frame, arms by generative design`;
+      status.textContent = `Ultralight Drone Prototype, printed in ${layers.length} layers`;
       if (!reduce) { fig.classList.add('flying'); again.hidden = false; }
     }
 
@@ -384,4 +384,25 @@
     // redraw with the new colors when the theme changes
     new MutationObserver(() => { if (!photo) return; setup(); if (fig.classList.contains('flying') || reduce) draw(layers.length, 1, 0); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();
+
+  /* ---------- Count up to the view total ---------- */
+  document.querySelectorAll('.count').forEach(el => {
+    const to = +el.dataset.to, fmt = n => Math.round(n).toLocaleString('en-US');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { el.textContent = fmt(to); return; }
+    el.textContent = '0';
+    const io = new IntersectionObserver(es => {
+      if (!es[0].isIntersecting) return;
+      io.disconnect();
+      const D = 2400; let t0;
+      const ease = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);   // fast start, slow finish
+      const tick = now => {
+        t0 = t0 || now;
+        const t = Math.min(1, (now - t0) / D);
+        el.textContent = fmt(to * ease(t));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.6 });
+    io.observe(el);
+  });
 })();

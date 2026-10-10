@@ -1,279 +1,185 @@
 /*
   Every project on the site lives in this file.
-
-  To add photos or videos to a project:
-    1. Put the files in media/<project id>/ (for example media/drone/).
-    2. Run `python tools/optimize_images.py` so photos get web-sized copies.
-    3. Add the file names to that project's `media` list below, in the order
-       they should appear. Use the original name (photo.png, clip.mp4).
-       Add a caption with { file: 'photo.png', caption: 'What it shows' }.
-
-  To add a project, copy one block, give it a new id, and make a matching
-  folder in media/. `featured: true` puts it in the large row at the top.
-  `cover` is the image shown on the project grid. `fit: 'contain'` keeps a
-  CAD render or drawing from being cropped.
+  Photos and videos go in media/<project id>/ and are listed in `media`.
+  Run `python tools/optimize_images.py` after adding photos.
 */
 window.PROJECTS = [
   {
     id: 'drone',
-    title: 'Ultralight drone',
-    summary: 'Drone arms shaped with Fusion 360 generative design, then checked against stress studies.',
+    title: 'Ultralight Drone Prototype',
+    summary: 'Generative design & stress analysis using Fusion 360 — Updated 2/24/2026',
     featured: true,
     block: {
-      Role: 'Solo build',
-      Tools: 'Fusion 360 generative design, FEA',
-      Status: 'In progress, updated Feb 2026',
+      Tools: 'Fusion 360',
+      Updated: '2/24/2026',
     },
     cover: 'hook-render.png',
     media: [
-      { file: 'real-drone.png', caption: 'Printed frame' },
-      { file: 'hook-render.png', caption: 'Render with grabber hook' },
-      { file: 'flush-render.png', caption: 'Render, flush configuration' },
-      { file: 'generative-setup.png', caption: 'Obstacle, preserve, and starting geometries for the generative study' },
-      { file: 'topology-optimization.png', caption: 'Topology optimization result' },
-      { file: 'study-comparison.png', caption: 'Comparing generated arm designs' },
-      { file: 'stress-analysis.png', caption: 'Stress analysis' },
-      { file: 'assembly.png', caption: 'Assembly' },
-      { file: 'arm.png', caption: 'Generated arm' },
-      { file: 'wiring.png', caption: 'Wiring' },
-      { file: 'stryfe-drawing.png', caption: 'Drawing' },
+      'real-drone.png', 'hook-render.png', 'flush-render.png', 'study-comparison.png', 'wiring.png',
+      'generative-setup.png', 'assembly.png', 'topology-optimization.png', 'stress-analysis.png',
+      'stryfe-drawing.png', 'arm.png',
     ],
     sections: [
-      { h: 'Overview', p: "I'm using Fusion's generative design tools to optimize topology, and used them to make the arms of this drone. I run multiple stress studies and compare them to understand where each design is strong and where it isn't." },
+      { h: 'Overview', p: "Currently, I am working on optimizing topology using Fusion's generative design tools. I used this tool to make the arms of this drone! I compare and try to make sense of stress analysis through multiple studies." },
     ],
     links: [
-      { label: 'Video: 3D printed grabber', url: 'https://drive.google.com/file/d/1vxcKaUo88aQQ7Kzf-58znjH3LZNbvcAy/view?usp=sharing' },
-      { label: 'Video: CAD grabber', url: 'https://drive.google.com/file/d/1lUCOVfm7Q1u4oQNq61dfDUat938u98jP/view?usp=sharing' },
-      { label: 'Video: assembly instructions', url: 'https://drive.google.com/file/d/1MNhp6VxVKHo0xSadOMz7RimyR1EPa50m/view?usp=sharing' },
+      { label: 'Video of 3D Printed Grabber', url: 'https://drive.google.com/file/d/1vxcKaUo88aQQ7Kzf-58znjH3LZNbvcAy/view?usp=sharing' },
+      { label: 'Video of CAD Grabber', url: 'https://drive.google.com/file/d/1lUCOVfm7Q1u4oQNq61dfDUat938u98jP/view?usp=sharing' },
+      { label: 'Video of Assembly Instructions', url: 'https://drive.google.com/file/d/1MNhp6VxVKHo0xSadOMz7RimyR1EPa50m/view?usp=sharing' },
     ],
   },
   {
     id: 'airship',
-    title: 'NASA SEES high-altitude airship',
-    summary: 'CAD lead on a sensor-carrying prototype airship built to study Titan’s atmosphere.',
+    title: 'NASA SEES - High-Altitude Airship',
+    summary: 'CAD lead for prototype airship with sensors for Titan atmospheric investigation',
     featured: true,
     block: {
       Role: 'CAD lead',
-      Tools: 'Fusion 360, CFD',
-      Program: 'NASA SEES, 2025',
+      Program: 'NASA SEES 2025',
     },
     cover: 'team.png',
-    media: [
-      { file: 'flight.mp4', caption: 'Flight test' },
-      { file: 'swift-turn.mp4', caption: 'Turning maneuver' },
-      { file: 'motor-test.mp4', caption: 'Rear vectoring propeller test' },
-      { file: 'team.png', caption: 'The airship team' },
-      { file: 'gondola-drawing.png', caption: 'Gondola assembly drawing' },
-      { file: 'research-poster.png', caption: 'Research poster' },
-    ],
+    media: ['flight.mp4', 'motor-test.mp4', 'research-poster.png', 'gondola-drawing.png', 'swift-turn.mp4', 'team.png'],
     sections: [
-      { h: 'What I did', list: [
-        'Designed the main gondola, rear vectoring propeller, and skis in Fusion 360',
-        'Made sure the electronics fit, and made the animations for our presentation',
-        'Ran CFD simulations of Earth and Titan conditions with a teammate',
+      { h: 'Project Role', p: 'CAD lead for prototype airship with sensors for Titan atmospheric investigation.' },
+      { h: 'Responsibilities', list: [
+        'Designed main gondola, rear vectoring propeller, and skis in Fusion360',
+        'Ensured electronics fit and created presentation animations',
+        'Conducted CFD modeling simulating Earth and Titan conditions with teammate',
       ] },
-      { h: 'Testing and results', p: 'We tested the rear vectoring propeller motor system and flew multiple flight tests, including turns. Onboard sensors collected air pressure, gas concentration, magnetic field strength, and altitude.' },
+      { h: 'Testing & Results', p: 'Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: airpressure, gas concentration, magnetosphere field strength, and altitude.' },
     ],
     links: [
-      { label: 'Watch the full presentation', url: 'https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15' },
+      { label: 'Watch Full Presentation', url: 'https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15' },
     ],
   },
   {
     id: 'claw',
-    title: 'Nitinol-driven compliant claw',
-    summary: 'A robot arm with a compliant claw, testing how efficient and strong nitinol actuation can be.',
+    title: 'Nitinol-Driven Compliant Claw',
+    summary: 'Nitinol-driven compliant claw mechanism researching efficiency and strength',
     featured: true,
     block: {
-      Role: 'Collaborative research',
-      Tools: 'Onshape, ESP32, servos, stepper',
+      Electronics: 'ESP 32 + Servos',
+      CAD: 'Onshape',
     },
     cover: 'arm-photo.png',
-    media: [
-      { file: 'arm-photo.png', caption: 'The arm' },
-      { file: 'proto-claw.mp4', caption: 'Prototype claw' },
-      { file: 'claw-test.mp4', caption: 'Claw test' },
-      { file: 'nitinol-claw-render.png', caption: 'Render' },
-      { file: 'exploded-claw.png', caption: 'Exploded view' },
-      { file: 'gears.png', caption: 'Shoulder gear system on the underside of the arm' },
-      { file: 'evo-13.png', caption: 'Claw iteration 13' },
-      { file: 'evo-14.png', caption: 'Claw iteration 14' },
-      { file: 'evo-15.png', caption: 'Claw iteration 15' },
-      { file: 'evo-16.png', caption: 'Claw iteration 16' },
-    ],
+    media: ['arm-photo.png', 'exploded-claw.png', 'evo-13.png', 'evo-14.png', 'evo-15.png', 'evo-16.png', 'gears.png', 'proto-claw.mp4', 'claw-test.mp4', 'nitinol-claw-render.png'],
     sections: [
-      { h: 'Overview', p: 'A collaboration on a nitinol-driven compliant claw, researching its efficiency and strength. The project bridges mechanical and electrical engineering.' },
-      { h: 'Mechanical design', p: "A gear system on the underside of the arm drives the shoulder axis, giving precise control and mechanical advantage for the nitinol actuators." },
-      { h: 'Key features', list: ['Compliant claw', 'Gear-driven stepper motor for direction control', 'ESP32 and servos'] },
+      { h: 'Overview', p: 'Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.' },
+      { h: 'Mechanical Design', p: "The underside of the arm features a gear system that drives the claw's shoulder axis. The gears provide precise control and mechanical advantage for the nitinol actuators." },
+      { h: 'Key Features', list: ['Compliant claw', 'Gear-driven stepper motor directional control system', 'ESP 32 + Servos'] },
     ],
     links: [
-      { label: 'Open the Onshape CAD', url: 'https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b' },
+      { label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/e8d27c91940cf73a51db02f1/w/dc132d4c80c148c2bfdc9d62/e/7f1896d8a926cbb8048dab3b' },
     ],
   },
   {
     id: 'dragster',
-    title: 'CO₂ dragster',
-    summary: 'An aerodynamic dragster tuned in CFD, with all four wheels cut to the weight of the original one.',
-    block: {
-      Tools: 'Onshape, Autodesk CFD',
-      Material: 'Glass-fiber PETG, steel axles',
-    },
+    title: 'Dragster',
+    summary: 'Aerodynamic dragster with optimized weight and wheel design',
     cover: 'side.png',
     fit: 'contain',
     model: 'model.stl',
-    media: [
-      { file: 'side.png', caption: 'Finished body' },
-      { file: 'underside.png', caption: 'Underside' },
-      { file: 'views.png', caption: 'Drawing views' },
-      { file: 'cfd.png', caption: 'CFD flow study' },
-      { file: 'body-weight.png', caption: 'Body weight' },
-      { file: 'wheel-weight.png', caption: 'Weight of all four optimized wheels' },
-      { file: 'single-wheel-weight.png', caption: 'Weight of one original wheel' },
-    ],
+    media: ['wheel-weight.png', 'single-wheel-weight.png', 'views.png', 'cfd.png', 'body-weight.png', 'side.png', 'underside.png'],
     sections: [
-      { h: 'Materials', list: ['Steel axles with graphite lubricant', 'Glass-fiber-filled PETG body and wheels', 'Clear spray paint finish'] },
-      { h: 'Design', p: 'I minimized drag: the front wheels are recessed, the rear is tapered, and the wheels are fully enclosed. Internal ribs and changes to the axle holes added stiffness and cut friction.' },
-      { h: 'Weight', p: 'Currently 70 g, with a target of 50 g. I lowered infill and wall width in the slicer, and made the wheels smaller and thinner without losing strength. All four wheels now weigh as much as one of the original wheels did.' },
+      { h: 'Materials', list: ['Steel axles with graphite lubricant', 'Glass fiber impregnated PETG body and wheels', 'Clear spray paint finish'] },
+      { h: 'Design', p: 'Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.' },
+      { h: 'Weight Optimization', p: 'Current: 70 grams | Target: 50 grams' },
+      { p: 'Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.' },
     ],
     links: [
-      { label: 'Open the Onshape CAD', url: 'https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c' },
+      { label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c' },
     ],
   },
   {
     id: 'robot-dog',
-    title: 'Robot dog',
-    summary: 'A quadruped robot combining mechanical design, electronics, and code for walking on its own.',
-    block: {
-      Tools: 'Onshape, servos',
-      Status: 'In progress',
-    },
+    title: 'Robot Dog',
+    summary: 'Quadrupedal robot with autonomous movement capabilities',
     cover: 'robot-dog.png',
     fit: 'contain',
     model: 'model.stl',
-    media: [
-      { file: 'robot-dog.png', caption: 'The robot dog' },
-      { file: 'leg-jump.mp4', caption: 'Leg jump test' },
-      { file: 'front-test.mp4', caption: 'Front legs test' },
-      { file: 'leg-test.mp4', caption: 'Single leg test' },
-    ],
+    media: ['robot-dog.png', 'leg-jump.mp4', 'front-test.mp4', 'leg-test.mp4'],
     sections: [
-      { h: 'Overview', p: "I'm developing a quadruped robot that brings together mechanical design, electrical systems, and programming for autonomous movement." },
+      { h: 'Overview', p: 'Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.' },
     ],
     links: [
-      { label: 'Open the Onshape CAD', url: 'https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad' },
-    ],
-  },
-  {
-    id: 'solar-sprint',
-    title: 'Senior Solar Sprint',
-    summary: 'A solar-powered RC car. I reverse-engineered a missing SPDT switch and printed a replacement.',
-    block: {
-      Result: '1st place, TSA 2026',
-      Tools: 'CAD, 3D printing',
-    },
-    cover: 'spdt-switch.png',
-    fit: 'contain',
-    media: [
-      { file: 'drawing.png', caption: 'Car drawing' },
-      { file: 'spdt-switch.png', caption: 'Printed SPDT switch: a screw head makes contact with aluminum foil tape' },
-    ],
-    sections: [
-      { h: 'Overview', p: 'I engineered a solar-powered RC car. When the SPDT switch was missing, I reverse-engineered it, then designed and 3D printed a replacement.' },
-    ],
-  },
-  {
-    id: 'air-filter',
-    title: 'Two-stage carbon air filter',
-    summary: 'A printed housing for activated charcoal pellets that traps VOCs.',
-    block: {
-      Tools: 'CAD, 3D printing',
-      Status: 'Version 2 in progress',
-    },
-    cover: 'exploded.png',
-    fit: 'contain',
-    media: [
-      { file: 'exploded.png', caption: 'V1 carbon pellet attachment and V2 full housing' },
-    ],
-    sections: [
-      { h: 'Overview', p: "I designed and 3D printed a housing for activated charcoal pellets to trap VOCs and improve air quality. I'm now designing a separate filtration system with carbon and HEPA filters." },
-    ],
-  },
-  {
-    id: 'printer',
-    title: 'Custom 3D printer',
-    summary: 'A 3D printer I’m building from scratch, with upgraded mechanical parts.',
-    block: {
-      Status: 'In progress',
-    },
-    cover: 'thumbnail.png',
-    fit: 'contain',
-    model: 'model.stl',
-    media: [
-      { file: 'thumbnail.png', caption: 'Black parts are printed; blue parts still need to be printed' },
-    ],
-    sections: [
-      { h: 'Overview', p: "I'm building and modifying a 3D printer from scratch with upgraded mechanical components." },
+      { label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad' },
     ],
   },
   {
     id: 'cell',
-    title: 'Specialized cell model',
-    summary: 'A remote-controlled sperm cell with a gearbox that spins the flagellum.',
-    block: {
-      Class: 'Biology',
-    },
+    title: 'Specialized Cell Project',
+    summary: 'Remote-controlled model with gearbox-driven motion',
     cover: 'model-photo.jpg',
-    media: [
-      { file: 'model-photo.jpg', caption: 'The model' },
-      { file: 'signs-of-life.mp4', caption: 'Driving' },
-      { file: 'spin.mp4', caption: 'Spinning' },
-    ],
+    media: ['model-photo.jpg', 'signs-of-life.mp4', 'spin.mp4'],
     sections: [
-      { h: 'Overview', p: 'A remote-controlled sperm cell model. A gearbox rotates the flagellum realistically, and hidden wheels and motors steer it.' },
-      { h: 'Features', list: ['Custom gearbox for flagellum rotation', 'Hidden wheel and motor system for steering', 'Remote control', 'Spins and drives in any direction'] },
+      { h: 'Overview', p: 'Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.' },
+      { h: 'Technical Features', list: ['Custom gearbox for flagellum rotation mechanism', 'Hidden wheel and motor system for navigation', 'Remote control integration', 'Spinning and directional movement capabilities'] },
     ],
   },
   {
     id: 'packaging',
     title: 'Chicken Cannedwich',
-    summary: 'A chicken sandwich in a can for truckers, with modular printed packaging.',
-    block: {
-      Class: 'Biology',
-      Tools: 'CAD, 3D printing',
-    },
+    summary: 'Mock product packaging for biology class project',
     cover: 'porta-grill.png',
-    media: [
-      { file: 'porta-grill.png', caption: 'Porta-Grill mock ad' },
-      { file: 'cannedwich.png', caption: 'The Cannedwich' },
-      { file: 'instagram-post.png', caption: 'Mock Instagram post' },
-    ],
+    media: ['porta-grill.png', 'cannedwich.png', 'instagram-post.png'],
     sections: [
-      { h: 'Overview', p: 'The Chicken Cannedwich is a chicken sandwich in a can, made for truckers. The chicken is preserved in pickle juice, and the modular packaging has a print-in-place drying mechanism that keeps the buns and chicken fresh.' },
-      { h: 'What I made', list: ['Mock Instagram promotional posts', '3D printed packaging prototypes', 'Several flavors, including a grilled version'] },
+      { h: 'Overview', p: 'Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project. Chicken is preserved in pickle juice, with a print-in-place drying mechanism. Modular packaging to keep buns and chicken fresh and tasty!' },
+      { h: 'Product Design', list: ['Mock Instagram promotional posts', '3D printed packaging prototypes', 'Multiple flavor variants including grilled version'] },
+    ],
+  },
+  {
+    id: 'solar-sprint',
+    title: 'Senior Solar Sprint',
+    summary: 'Solar-powered RC car with custom 3D-printed components',
+    cover: 'spdt-switch.png',
+    fit: 'contain',
+    media: ['spdt-switch.png', 'drawing.png'],
+    sections: [
+      { h: 'Overview', p: 'Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.' },
+    ],
+  },
+  {
+    id: 'air-filter',
+    title: '2-Stage Carbon Air Filter',
+    summary: '3D printed air filter housing for VOC removal',
+    cover: 'exploded.png',
+    fit: 'contain',
+    media: ['exploded.png'],
+    sections: [
+      { h: 'Overview', p: 'Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a separate air filtration system with carbon and HEPA filters.' },
     ],
   },
   {
     id: 'side-projects',
-    title: 'Side projects',
-    summary: 'Things I made for fun and to learn new skills.',
+    title: 'Side Projects',
+    summary: 'Projects I made for fun and to learn new skills!',
     cover: 'gear-phone-stand.png',
     fit: 'contain',
-    media: [
-      { file: 'thumbnail.png', caption: 'A few of them together' },
-      { file: 'vise-phone-stand.png', caption: 'Vise-inspired phone stand' },
-      { file: 'gear-phone-stand.png', caption: 'Gear-driven phone stand' },
-    ],
+    media: ['vise-phone-stand.png', 'gear-phone-stand.png', 'thumbnail.png'],
     sections: [
-      { h: 'The list', list: [
-        'Gear-driven phone stand',
-        'Vise-inspired phone stand',
+      { h: 'Overview', p: 'Here are some projects I made for fun and to learn new skills!', list: [
+        'Gear driven phone stand',
+        'Vise inspired phone stand',
         'CFD flight tests',
-        'Sheet metal stamp holder',
-        'Marble maze',
+        'Sheet metal design - stamp holder',
+        'Marble Maze',
         'Galactide Keychain, a 3D printing business I cofounded',
-        'Passive speaker, freshman year engineering',
-        'CNC machine, in progress (tolerances were off)',
-        'Bi-stable point absorber, in progress',
+        'Passive speaker project - Freshman year engineering',
+        'CNC machine - In progress, tolerances were off',
+        'Bi-Stable Point Absorber - Also in progress',
       ] },
+    ],
+  },
+  {
+    id: 'printer',
+    title: 'Custom 3D Printer',
+    summary: 'Building from scratch with custom upgrades',
+    cover: 'thumbnail.png',
+    fit: 'contain',
+    model: 'model.stl',
+    media: ['thumbnail.png'],
+    sections: [
+      { h: 'Overview', p: 'Building and modifying a 3D printer from scratch with upgraded mechanical components.' },
     ],
   },
 ];
