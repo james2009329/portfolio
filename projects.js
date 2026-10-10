@@ -75,12 +75,16 @@ window.PROJECTS = [
   {
     id: 'diffy-swerve',
     title: 'Differential Swerve Drive',
-    summary: 'Diffy swerve drivetrain with 8 NEMA17 stepper motors — started by Ethan Gao',
+    summary: 'Diffy swerve drivetrain with 8 NEMA17 stepper motors',
     cover: 'cad.jpg',
     media: ['driving.mp4', 'phone-control.mp4', 'module-test.mp4', 'module-close-up.mp4', 'cad.jpg'],
     sections: [
-      { h: 'Overview', p: 'A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors. Ethan Gao started the project.' },
+      { h: 'Overview', p: 'A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors.' },
+      { p: 'Worked with gao.lab.' },
       { h: 'Key Features', list: ['ESP32 + DRV stepper drivers', 'Controlled from a phone over WiFi', '290 mm wheelbase'] },
+    ],
+    links: [
+      { label: 'gao.lab on Instagram', url: 'https://www.instagram.com/gao.lab/' },
     ],
   },
   {
