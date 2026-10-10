@@ -26,7 +26,7 @@
   function tile(p) {
     const fit = p.fit === 'contain' ? ' contain' : '';
     return `<button class="tile" type="button" data-open="${p.id}" aria-label="Open ${esc(p.title)}">
-      <div class="tile-img${fit}">${fit ? '' : `<img class="fill" src="${coverSrc(p)}" alt="" loading="lazy" aria-hidden="true">`}${p.coverClip ? `<video class="clip" src="${path(p, p.cover)}" poster="${coverSrc(p)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>` : `<img src="${coverSrc(p)}" alt="" loading="lazy" decoding="async">`}</div>
+      <div class="tile-img${fit}">${fit ? '' : `<img class="fill" src="${coverSrc(p)}" alt="" loading="lazy" aria-hidden="true">`}${p.coverClip ? `<video class="clip" src="${path(p, p.cover)}" poster="${coverSrc(p)}" muted loop playsinline ${matchMedia('(prefers-reduced-motion: reduce)').matches ? '' : 'autoplay'} preload="metadata" aria-hidden="true"></video>` : `<img src="${coverSrc(p)}" alt="" loading="lazy" decoding="async">`}</div>
       <div class="tile-text"><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p></div>
       ${p.featured ? blockTable(p.block) : ''}
     </button>`;
