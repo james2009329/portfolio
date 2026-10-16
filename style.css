@@ -364,7 +364,9 @@ sup a { text-decoration: none; padding: 0 1px; }
   color: var(--dykem);
 }
 .reach-label { display: block; font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 700; font-stretch: 112%; }
-.reach-label span { display: block; font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--graphite); margin-top: 4px; }
+.reach-followers { color: var(--ink) !important; font-weight: 700 !important; }
+.reach-followers[hidden] { display: none !important; }
+.reach-label > span { display: block; font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--graphite); margin-top: 4px; }
 
 .contact-label { font-weight: 600; margin-top: 20px; color: var(--graphite); }
 .contact-label + .contact-main { margin-top: 4px; }

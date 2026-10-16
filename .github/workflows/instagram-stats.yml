@@ -1,0 +1,52 @@
+name: Update Instagram stats
+
+on:
+  schedule:
+    - cron: "17 10 * * *"   # once a day, ~6am Eastern
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      HAS_PAT: ${{ secrets.GH_PAT != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch followers and views
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python3 tools/instagram_stats.py
+
+      # Instagram tokens expire after ~60 days. If a GH_PAT secret exists
+      # (a GitHub token allowed to edit this repo's secrets), swap in a fresh
+      # Instagram token every run so it never expires.
+      - name: Refresh Instagram token
+        if: ${{ env.HAS_PAT == 'true' }}
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          NEW=$(curl -sf "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${IG_TOKEN}" | python3 -c "import sys,json; print(json.load(sys.stdin).get('access_token',''))") || NEW=""
+          if [ -n "$NEW" ]; then
+            echo "::add-mask::$NEW"
+            gh secret set IG_TOKEN --body "$NEW" --repo "$GITHUB_REPOSITORY"
+            echo "Token refreshed."
+          else
+            echo "Token not refreshed (it may be less than a day old)."
+          fi
+
+      - name: Save if changed
+        run: |
+          if [ -n "$(git status --porcelain stats.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+            git add stats.json
+            git commit -m "Update Instagram stats"
+            git push
+          else
+            echo "No change."
+          fi

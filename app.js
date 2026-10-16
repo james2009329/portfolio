@@ -391,29 +391,45 @@
   })();
 
   /* ---------- Count up to the view total ---------- */
-  // The real number is in the HTML, so it shows even if the animation never runs.
-  document.querySelectorAll('.count').forEach(el => {
-    const to = +el.dataset.to, fmt = n => Math.round(n).toLocaleString('en-US');
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
-    let started = false;
+  // The number in the HTML is the fallback. stats.json (updated daily by a
+  // GitHub Action from Instagram) replaces it when it's available.
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const counters = [...document.querySelectorAll('.count')].map(el => {
+    const c = { el, started: false, done: false };
+    c.set = n => { el.dataset.to = n; if (!c.started || c.done) el.textContent = fmt(n); };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return c;
     const start = () => {
-      if (started) return; started = true; io.disconnect();
+      if (c.started) return; c.started = true; io.disconnect();
       const D = 2400, ease = t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
       const t0 = performance.now();
+      const finish = () => { c.done = true; el.textContent = fmt(+el.dataset.to); };
       const tick = () => {
         const t = Math.min(1, (performance.now() - t0) / D);
-        el.textContent = fmt(to * ease(t));
-        if (t < 1) requestAnimationFrame(tick); else el.textContent = fmt(to);
+        el.textContent = fmt(+el.dataset.to * ease(t));
+        if (t < 1) requestAnimationFrame(tick); else finish();
       };
       el.style.display = 'inline-block'; el.style.textAlign = 'right';
       el.style.minWidth = el.getBoundingClientRect().width + 'px';   // keep the layout still while it counts
       el.textContent = '0';
       requestAnimationFrame(tick);
-      setTimeout(() => { el.textContent = fmt(to); }, D + 500);   // never leave it mid-count
+      setTimeout(finish, D + 500);   // never leave it mid-count
     };
     const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) start(); }, { threshold: 0.5 });
     io.observe(el);
+    return c;
   });
+
+  fetch('stats.json?d=' + new Date().toISOString().slice(0, 10), { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : null)
+    .then(s => {
+      if (!s) return;
+      if (s.views > 0 && counters[0]) counters[0].set(s.views);
+      if (s.followers > 0) {
+        $('#followers').textContent = fmt(s.followers);
+        $('.reach-followers').hidden = false;
+      }
+    })
+    .catch(() => {});
 
   /* ---------- Card video clips play while on screen ---------- */
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
