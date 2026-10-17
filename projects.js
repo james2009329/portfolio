@@ -7,11 +7,10 @@ window.PROJECTS = [
   {
     id: 'drone',
     title: 'Ultralight Drone Prototype',
-    summary: 'Generative design & stress analysis using Fusion 360 — Updated 2/24/2026',
+    summary: 'Generative design & stress analysis using Fusion 360',
     featured: true,
     block: {
       Tools: 'Fusion 360',
-      Updated: '2/24/2026',
     },
     cover: 'hook-render.png',
     media: [
@@ -35,7 +34,7 @@ window.PROJECTS = [
     featured: true,
     block: {
       Role: 'CAD lead',
-      Program: 'NASA SEES 2025',
+      Program: 'NASA SEES',
     },
     cover: 'team.png',
     media: ['flight.mp4', 'motor-test.mp4', 'research-poster.png', 'gondola-drawing.png', 'swift-turn.mp4', 'team.png'],
@@ -102,11 +101,11 @@ window.PROJECTS = [
   {
     id: 'integrator',
     title: 'Mechanical Integrator',
-    summary: 'Disk-and-wheel mechanical integrator — Summer 2026',
+    summary: 'Disk-and-wheel mechanical integrator',
     cover: 'build.jpg',
     media: ['build.jpg', 'belt-path.jpg'],
     sections: [
-      { h: 'Overview', p: 'A disk-and-wheel mechanical integrator I built over summer 2026. A belt-driven differential keeps both stepper motors stationary while the disk rotates and translates, which cuts carriage weight.' },
+      { h: 'Overview', p: 'A disk-and-wheel mechanical integrator I built. A belt-driven differential keeps both stepper motors stationary while the disk rotates and translates, which cuts carriage weight.' },
       { h: 'Materials', list: ['Almost fully 3D printed, including TPU belts, the disk, and the wheel', '2020 aluminum extrusion reused from my old Ender 3'] },
     ],
   },
