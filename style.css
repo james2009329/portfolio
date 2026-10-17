@@ -375,3 +375,7 @@ sup a { text-decoration: none; padding: 0 1px; }
 .note-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; }
 .note p + p { margin-top: 8px; }
 .btn-sm { margin-top: 10px; padding: 7px 12px; font-size: 0.9rem; }
+
+.aside-note { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--rule); display: grid; gap: 10px; font-size: 0.95rem; }
+.aside-note p { color: var(--graphite); }
+.aside-note img { width: 100%; max-width: 360px; border: 1px solid var(--rule); }

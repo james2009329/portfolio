@@ -79,7 +79,8 @@
       ${blockTable(p.block)}
       ${sections}
       ${links ? `<div class="links">${links}</div>` : ''}
-      ${p.model ? `<button class="btn" type="button" data-model="${p.id}">View 3D Model</button>` : ''}`;
+      ${p.model ? `<button class="btn" type="button" data-model="${p.id}">View 3D Model</button>` : ''}
+      ${p.aside ? `<aside class="aside-note"><p>${esc(p.aside.p)}</p>${p.aside.img ? `<img src="${web(p, p.aside.img)}" alt="${esc(p.aside.alt || '')}" loading="lazy">` : ''}${p.aside.link ? `<a href="${esc(p.aside.link.url)}" target="_blank" rel="noopener">${esc(p.aside.link.label)}</a>` : ''}</aside>` : ''}`;
 
     $('.viewer').hidden = media.length === 0;
     if (media.length) renderStage();

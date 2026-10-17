@@ -47,8 +47,13 @@ window.PROJECTS = [
         'Conducted CFD modeling simulating Earth and Titan conditions with teammate',
       ] },
       { h: 'Testing & Results', p: ['Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: air pressure, gas concentration, magnetosphere field strength, and altitude.', 'Our research was presented at the AGU Fall Meeting in New Orleans.'] },
-      { h: 'Microgravity Filtration Proposal', p: 'I also co-wrote a research proposal with my SEES roommate on filtering 0.3 μm particles in microgravity using graphene-modified HEPA and laser-induced graphene filters. It placed 3rd out of about 100 proposals, which made me the alternate for the zero-g research team.' },
     ],
+    aside: {
+      p: 'Side note: my SEES roommate Oliver Karam and I were runners-up for the 2026 SEES Microgravity Research Team with our air filtration proposal.',
+      img: 'microgravity-team.png',
+      alt: '2026 SEES Microgravity Research Team announcement, with Oliver Karam and James Lin as the alternate team',
+      link: { label: 'See the announcement', url: 'https://www.linkedin.com/posts/nasa-sees_congratulationsto-the-2026-sees-microgravity-activity-7480644995478183936-sa-E' },
+    },
     links: [
       { label: 'Watch Full Presentation', url: 'https://youtu.be/NFG9HDeTTIg?si=Bp6K-PbthUrTKI15' },
     ],
