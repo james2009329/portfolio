@@ -36,7 +36,8 @@ window.PROJECTS = [
       Role: 'CAD lead',
       Program: 'NASA SEES',
     },
-    cover: 'team.png',
+    cover: 'flight-loop.mp4',
+    coverClip: true,
     media: ['flight.mp4', 'motor-test.mp4', 'research-poster.png', 'gondola-drawing.png', 'swift-turn.mp4', 'team.png'],
     sections: [
       { h: 'Project Role', p: 'CAD lead for prototype airship with sensors for Titan atmospheric investigation.' },

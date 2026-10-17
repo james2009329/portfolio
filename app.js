@@ -394,8 +394,11 @@
   /* ---------- Count up to the view total ---------- */
   // The number in the HTML is the fallback. stats.json (updated daily by a
   // GitHub Action from Instagram) replaces it when it's available.
-  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const fmtFull = n => Math.round(n).toLocaleString('en-US');
+  // data-format="k" shows 1500 as 1.5k
+  const fmtK = n => n >= 1000 ? (Math.round(n / 100) / 10).toFixed(1).replace(/\.0$/, '') + 'k' : String(Math.round(n));
   const counters = [...document.querySelectorAll('.count')].map(el => {
+    const fmt = el.dataset.format === 'k' ? fmtK : fmtFull;
     const c = { el, started: false, done: false };
     c.set = n => { el.dataset.to = n; if (!c.started || c.done) el.textContent = fmt(n); };
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return c;
@@ -424,11 +427,9 @@
     .then(r => r.ok ? r.json() : null)
     .then(s => {
       if (!s) return;
+      const byEl = id => counters.find(c => c.el.id === id);
       if (s.views > 0 && counters[0]) counters[0].set(s.views);
-      if (s.followers > 0) {
-        $('#followers').textContent = fmt(s.followers);
-        $('.reach-followers').hidden = false;
-      }
+      if (s.followers > 0 && byEl('followers')) byEl('followers').set(s.followers);
     })
     .catch(() => {});
 
