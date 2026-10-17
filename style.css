@@ -371,3 +371,7 @@ sup a { text-decoration: none; padding: 0 1px; }
 .contact-label { font-weight: 600; margin-top: 20px; color: var(--graphite); }
 .contact-label + .contact-main { margin-top: 4px; }
 .about-block td a { color: var(--ink); }
+
+.note-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 8px; }
+.note p + p { margin-top: 8px; }
+.btn-sm { margin-top: 10px; padding: 7px 12px; font-size: 0.9rem; }

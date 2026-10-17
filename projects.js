@@ -130,92 +130,62 @@ window.PROJECTS = [
       { label: 'gao.lab on Instagram', url: 'https://www.instagram.com/gao.lab/' },
     ],
   },
-  {
-    id: 'dragster',
-    title: 'Dragster',
-    summary: 'Aerodynamic dragster with optimized weight and wheel design',
-    cover: 'side.png',
-    fit: 'contain',
-    model: 'model.stl',
-    media: ['wheel-weight.png', 'single-wheel-weight.png', 'views.png', 'cfd.png', 'body-weight.png', 'side.png', 'underside.png'],
-    sections: [
-      { h: 'Materials', list: ['Steel axles with graphite lubricant', 'Glass fiber impregnated PETG body and wheels', 'Clear spray paint finish'] },
-      { h: 'Design', p: 'Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.' },
-      { h: 'Weight Optimization', p: 'Current: 70 grams | Target: 50 grams' },
-      { p: 'Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. Currently reprinting to meet target weight. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.' },
-    ],
-    links: [
-      { label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c' },
-    ],
-  },
-  {
-    id: 'robot-dog',
-    title: 'Robot Dog',
-    summary: 'Quadrupedal robot with autonomous movement capabilities',
-    cover: 'robot-dog.png',
-    fit: 'contain',
-    model: 'model.stl',
-    media: ['robot-dog.png', 'leg-jump.mp4', 'front-test.mp4', 'leg-test.mp4'],
-    sections: [
-      { h: 'Overview', p: 'Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.' },
-    ],
-    links: [
-      { label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad' },
-    ],
-  },
-  {
-    id: 'cell',
-    title: 'Specialized Cell Project',
-    summary: 'Remote-controlled model with gearbox-driven motion',
-    cover: 'model-photo.jpg',
-    media: ['model-photo.jpg', 'signs-of-life.mp4', 'spin.mp4'],
-    sections: [
-      { h: 'Overview', p: 'Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.' },
-      { h: 'Technical Features', list: ['Custom gearbox for flagellum rotation mechanism', 'Hidden wheel and motor system for navigation', 'Remote control integration', 'Spinning and directional movement capabilities'] },
-    ],
-  },
-  {
-    id: 'packaging',
-    title: 'Chicken Cannedwich',
-    summary: 'Mock product packaging for biology class project',
-    cover: 'porta-grill.png',
-    media: ['porta-grill.png', 'cannedwich.png', 'instagram-post.png'],
-    sections: [
-      { h: 'Overview', p: 'Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project. Chicken is preserved in pickle juice, with a print-in-place drying mechanism. Modular packaging to keep buns and chicken fresh and tasty!' },
-      { h: 'Product Design', list: ['Mock Instagram promotional posts', '3D printed packaging prototypes', 'Multiple flavor variants including grilled version'] },
-    ],
-  },
-  {
-    id: 'solar-sprint',
-    title: 'Senior Solar Sprint',
-    summary: 'Solar-powered RC car with custom 3D-printed components',
-    cover: 'spdt-switch.png',
-    fit: 'contain',
-    media: ['spdt-switch.png', 'drawing.png'],
-    sections: [
-      { h: 'Overview', p: 'Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.' },
-    ],
-  },
-  {
-    id: 'air-filter',
-    title: '2-Stage Carbon Air Filter',
-    summary: '3D printed air filter housing for VOC removal',
-    cover: 'exploded.png',
-    fit: 'contain',
-    media: ['exploded.png'],
-    sections: [
-      { h: 'Overview', p: 'Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a separate air filtration system with carbon and HEPA filters.' },
-    ],
-  },
+
+
+
+
+
+
+
   {
     id: 'side-projects',
     title: 'Side Projects',
     summary: 'Projects I made for fun and to learn new skills!',
-    cover: 'gear-phone-stand.png',
-    fit: 'contain',
-    media: ['vise-phone-stand.png', 'gear-phone-stand.png', 'thumbnail.png'],
+    aliases: ['dragster', 'robot-dog', 'cell', 'packaging', 'solar-sprint', 'air-filter'],
+    cover: 'collage.jpg',
+    media: [
+      { file: 'dragster/side.png', caption: 'Dragster' },
+      { file: 'dragster/underside.png', caption: 'Dragster' },
+      { file: 'dragster/views.png', caption: 'Dragster' },
+      { file: 'dragster/cfd.png', caption: 'Dragster — CFD' },
+      { file: 'dragster/body-weight.png', caption: 'Dragster — body weight' },
+      { file: 'dragster/wheel-weight.png', caption: 'Dragster — all four optimized wheels' },
+      { file: 'dragster/single-wheel-weight.png', caption: 'Dragster — one original wheel' },
+      { file: 'robot-dog/robot-dog.png', caption: 'Robot Dog' },
+      { file: 'robot-dog/leg-jump.mp4', caption: 'Robot Dog — leg jump' },
+      { file: 'robot-dog/front-test.mp4', caption: 'Robot Dog — front legs' },
+      { file: 'robot-dog/leg-test.mp4', caption: 'Robot Dog — leg test' },
+      { file: 'cell/model-photo.jpg', caption: 'Specialized Cell Project' },
+      { file: 'cell/signs-of-life.mp4', caption: 'Specialized Cell Project' },
+      { file: 'cell/spin.mp4', caption: 'Specialized Cell Project' },
+      { file: 'packaging/porta-grill.png', caption: 'Chicken Cannedwich' },
+      { file: 'packaging/cannedwich.png', caption: 'Chicken Cannedwich' },
+      { file: 'packaging/instagram-post.png', caption: 'Chicken Cannedwich' },
+      { file: 'solar-sprint/spdt-switch.png', caption: 'Senior Solar Sprint' },
+      { file: 'solar-sprint/drawing.png', caption: 'Senior Solar Sprint' },
+      { file: 'air-filter/exploded.png', caption: '2-Stage Carbon Air Filter' },
+      { file: 'side-projects/gear-phone-stand.png', caption: 'Gear driven phone stand' },
+      { file: 'side-projects/vise-phone-stand.png', caption: 'Vise inspired phone stand' },
+      { file: 'side-projects/thumbnail.png', caption: 'Side projects' },
+    ],
     sections: [
-      { h: 'Overview', p: 'Here are some projects I made for fun and to learn new skills!', list: [
+      { h: 'Dragster', p: [
+          'Aerodynamic dragster with optimized weight and wheel design. Maximized aerodynamic efficiency by minimizing drag. Front wheels recessed, rear tapered, fully enclosed wheels. Internal ribs and hole modifications increased stiffness and minimized friction.',
+          'Current: 70 grams | Target: 50 grams. Optimized slicing by decreasing infill and wall width. Made wheels smaller and thinner while maintaining structural integrity. The weight of all four wheels were optimized to weigh as much as the starting weight of one wheel.',
+        ],
+        list: ['Steel axles with graphite lubricant', 'Glass fiber impregnated PETG body and wheels', 'Clear spray paint finish'],
+        links: [{ label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/6e3e76040f1aba262571c647/w/0225a9de05ecfe290eec82e6/e/948efcbc3e1bf7e9b1a49d6f?renderMode=0&uiState=690578fd2d91d89ebd4ffd2c' }],
+        model: 'dragster/model.stl' },
+      { h: 'Robot Dog', p: 'Developing a quadrupedal robot integrating mechanical design, electrical systems, and programming for autonomous movement.',
+        links: [{ label: 'View Onshape CAD', url: 'https://cad.onshape.com/documents/01445f028ef126d7a850e4fd/w/a7c096875dc126659fe4673b/e/7d0db1c893811f7578f3510d?renderMode=0&uiState=69057933d3a77ba7bcac98ad' }],
+        model: 'robot-dog/model.stl' },
+      { h: 'Specialized Cell Project', p: 'Created a remote-controlled sperm model with a gearbox for realistic flagellum rotation, using hidden wheels and motors for directional movement.',
+        list: ['Custom gearbox for flagellum rotation mechanism', 'Hidden wheel and motor system for navigation', 'Remote control integration', 'Spinning and directional movement capabilities'] },
+      { h: 'Chicken Cannedwich', p: 'Created the "Chicken Cannedwich" - a chicken sandwich in a can designed for truckers. Designed custom modular packaging using CAD and 3D printing for a biology class project. Chicken is preserved in pickle juice, with a print-in-place drying mechanism. Modular packaging to keep buns and chicken fresh and tasty!',
+        list: ['Mock Instagram promotional posts', '3D printed packaging prototypes', 'Multiple flavor variants including grilled version'] },
+      { h: 'Senior Solar Sprint', p: 'Engineered a solar-powered RC car and reverse-engineered a missing SPDT switch by designing and 3D-printing a replacement.' },
+      { h: '2-Stage Carbon Air Filter', p: 'Designed and 3D printed housing for activated charcoal pellets to trap VOCs and improve air quality. Currently designing a separate air filtration system with carbon and HEPA filters.' },
+      { h: 'More', p: 'Here are some projects I made for fun and to learn new skills!', list: [
         'Gear driven phone stand',
         'Vise inspired phone stand',
         'CFD flight tests',

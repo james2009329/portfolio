@@ -2,13 +2,13 @@
   'use strict';
 
   const projects = window.PROJECTS || [];
-  const byId = Object.fromEntries(projects.map(p => [p.id, p]));
+  const byId = Object.fromEntries(projects.flatMap(p => [[p.id, p], ...(p.aliases || []).map(a => [a, p])]));
   const $ = sel => document.querySelector(sel);
   const VIDEO = /\.(mp4|webm|mov)$/i;
   const PHOTO = /\.(png|jpe?g)$/i;
 
   // media/<project>/<file> plus its web-sized copies
-  const path = (p, file) => `media/${p.id}/${file}`;
+  const path = (p, file) => file.includes('/') ? `media/${file}` : `media/${p.id}/${file}`;
   const web = (p, file, small) => PHOTO.test(file) ? path(p, file.replace(PHOTO, small ? '.sm.webp' : '.webp')) : path(p, file);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const item = m => typeof m === 'string' ? { file: m } : m;
@@ -72,7 +72,7 @@
       return `<button type="button" role="listitem" data-i="${i}" aria-label="${esc((isVid ? 'Video: ' : 'Photo: ') + (m.caption || i + 1))}">${inner}</button>`;
     }).join('') : '';
 
-    const sections = (p.sections || []).map(s => `<div>${s.h ? `<h3>${esc(s.h)}</h3>` : ""}${s.p ? `<p>${esc(s.p)}</p>` : ''}${s.list ? `<ul>${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}</div>`).join('');
+    const sections = (p.sections || []).map((s, si) => `<div class="note">${s.h ? `<h3>${esc(s.h)}</h3>` : ''}${[].concat(s.p || []).map(t => `<p>${esc(t)}</p>`).join('')}${s.list ? `<ul>${s.list.map(li => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}${s.links ? `<p class="note-links">${s.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('')}</p>` : ''}${s.model ? `<button class="btn btn-sm" type="button" data-model="${p.id}" data-model-file="${esc(s.model)}">View 3D Model</button>` : ''}</div>`).join('');
     const links = (p.links || []).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join('');
     $('#notes').innerHTML = `
       <p class="lead">${esc(p.summary)}</p>
@@ -114,7 +114,7 @@
     if (e.target === sheet) closeProject();          // click on the backdrop
     if (e.target.closest('[data-close]')) closeProject();
     const mb = e.target.closest('[data-model]');
-    if (mb) openModel(byId[mb.dataset.model]);
+    if (mb) openModel(byId[mb.dataset.model], mb.dataset.modelFile);
   });
 
   /* ---------- Full-size photo ---------- */
@@ -187,13 +187,14 @@
     return geo;
   }
 
-  async function openModel(p) {
+  async function openModel(p, file) {
+    file = file || p.model;
     const status = $('#model-status');
     status.textContent = 'Loading model…';
     status.hidden = false;
     modelDlg.showModal();
     try {
-      const [THREE, buf] = await Promise.all([loadThree(), fetch(path(p, p.model)).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })]);
+      const [THREE, buf] = await Promise.all([loadThree(), fetch(path(p, file)).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })]);
       if (!modelDlg.open) return;
       const canvas = $('#model-canvas');
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
