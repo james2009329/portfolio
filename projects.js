@@ -19,7 +19,7 @@ window.PROJECTS = [
       'stryfe-drawing.png', 'arm.png',
     ],
     sections: [
-      { h: 'Overview', p: "Currently, I am working on optimizing topology using Fusion's generative design tools. I used this tool to make the arms of this drone! I compare and try to make sense of stress analysis through multiple studies." },
+      { h: 'Overview', p: ["Currently, I am working on optimizing topology using Fusion's generative design tools. I used this tool to make the arms of this drone! I compare and try to make sense of stress analysis through multiple studies.", 'It runs on a SoloGood flight controller with 2207.5 motors, and I tuned it in Betaflight using DShot.'] },
     ],
     links: [
       { label: 'Video of 3D Printed Grabber', url: 'https://drive.google.com/file/d/1vxcKaUo88aQQ7Kzf-58znjH3LZNbvcAy/view?usp=sharing' },
@@ -46,7 +46,7 @@ window.PROJECTS = [
         'Ensured electronics fit and created presentation animations',
         'Conducted CFD modeling simulating Earth and Titan conditions with teammate',
       ] },
-      { h: 'Testing & Results', p: ['Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: air pressure, gas concentration, magnetosphere field strength, and altitude.', 'Our research was accepted for presentation at the AGU Fall Meeting in New Orleans.'] },
+      { h: 'Testing & Results', p: ['Successfully tested the rear vectoring propeller motor system and conducted multiple flight tests, including turning maneuvers. Sensors were also integrated to collect data, including: air pressure, gas concentration, magnetosphere field strength, and altitude.', 'Our research was presented at the AGU Fall Meeting in New Orleans.'] },
       { h: 'Microgravity Filtration Proposal', p: 'I also co-wrote a research proposal with my SEES roommate on filtering 0.3 μm particles in microgravity using graphene-modified HEPA and laser-induced graphene filters. It placed 3rd out of about 100 proposals, which made me the alternate for the zero-g research team.' },
     ],
     links: [
@@ -65,7 +65,7 @@ window.PROJECTS = [
     cover: 'arm-photo.png',
     media: ['arm-photo.png', 'exploded-claw.png', 'evo-13.png', 'evo-14.png', 'evo-15.png', 'evo-16.png', 'gears.png', 'proto-claw.mp4', 'claw-test.mp4', 'nitinol-claw-render.png'],
     sections: [
-      { h: 'Overview', p: ['Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.', 'The claw was my DVSF science fair project with a partner. We ran FEA on the design and tested 3D-printed prototypes. It placed 3rd out of about 50 team projects and won the West Pharmaceuticals Best Team Award ($700).'] },
+      { h: 'Overview', p: ['Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.', 'The claw was my DVSF science fair project with a partner. We ran FEA on the claw and tested 3D-printed prototypes. It placed 3rd out of about 50 team projects and won the West Pharmaceuticals Best Team Award ($700).'] },
       { h: 'Mechanical Design', p: "The underside of the arm features a gear system that drives the claw's shoulder axis. The gears provide precise control and mechanical advantage for the nitinol actuators." },
       { h: 'Key Features', list: ['Compliant claw', 'Gear-driven stepper motor directional control system', 'ESP 32 + Servos'] },
       { h: 'Design Changes', list: ['Cut a channel in the mount to make installation easier, then reinforced it', 'Resized the arm holes to fit a circular servo horn', 'Added a lip for the electronics tray and screw holes for a bottom lid', 'Added another degree of freedom to the claw'] },
@@ -82,7 +82,7 @@ window.PROJECTS = [
     coverClip: true,
     media: ['driving.mp4', 'phone-control.mp4', 'module-test.mp4', 'module-close-up.mp4', 'cad.jpg'],
     sections: [
-      { h: 'Overview', p: ['A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors.', 'Each of the four modules uses two motors as a differential. Turning both motors the same way drives the wheel, and turning them against each other steers it, so every wheel can drive and point in any direction.', 'The ESP32 hosts a web page with a joystick, so I drive it from my phone over WiFi.'] },
+      { h: 'Overview', p: ['A differential swerve drivetrain driven by 8 NEMA17 stepper motors, sponsored by LDO Motors.', 'Each of the four modules uses two motors as a differential. Turning both motors the same way drives the wheel, and turning them against each other steers it, so every wheel can drive and point in any direction.', 'It drives and steers fully. The ESP32 hosts a web page with a joystick, so I drive it from my phone over WiFi.'] },
       { p: 'Worked with gao.lab.' },
       { h: 'Key Features', list: ['ESP32 + DRV stepper drivers', 'Drive gear ratio 1.969:1, steering ratio 15:128', '327.4 mm wheel circumference, so one motor turn moves the wheel about 166 mm', '290 mm wheelbase'] },
     ],
@@ -97,7 +97,7 @@ window.PROJECTS = [
     cover: 'eye-switch.jpg',
     media: ['eye-switch.jpg', 'eye-switch-demo.mp4'],
     sections: [
-      { h: 'Overview', p: ['An eye-operated cause-and-effect switch for students with multiple disabilities who have limited hand and foot function. It sits on a wheelchair tabletop and lets students use their eyes to turn on a toy.', 'This is my IB Design Technology IA. I\'m designing it with a teacher at a local school, along with the classroom teacher and the students\' occupational and physical therapists. A speech teacher suggested having students look left or right to trigger it instead of blinking, so that\'s how it works.', 'I picked a budget Android phone over a Raspberry Pi to keep the cost down, since the phone already has a camera, screen, speaker, and battery built in. I tested powering the ESP32 and relay straight from the phone over USB, so the box doesn\'t need a separate battery.'] },
+      { h: 'Overview', p: ['An eye-operated cause-and-effect switch for students with multiple disabilities who have limited hand and foot function. It sits on a wheelchair tabletop and lets students use their eyes to turn on a toy.', 'This is my IB Design Technology IA. I\'m designing it with a teacher at a local school, along with the classroom teacher and the students\' occupational and physical therapists. A speech teacher suggested having students look left or right to trigger it instead of blinking, so that\'s how it works.', 'I picked a budget Android phone over a Raspberry Pi to keep the cost down, since the phone already has a camera, screen, speaker, and battery built in. I tested powering the ESP32 and relay straight from the phone over USB, so the box doesn\'t need a separate battery.', 'It\'s still being built.'] },
       { h: 'Key Features', list: ['Repurposed Android phone for the camera, screen, speaker, and battery', 'ESP32 + relay powered from the phone over USB', 'Drives one toy'] },
     ],
   },
