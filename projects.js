@@ -71,7 +71,7 @@ window.PROJECTS = [
     media: ['arm-photo.png', 'exploded-claw.png', 'evo-13.png', 'evo-14.png', 'evo-15.png', 'evo-16.png', 'gears.png', 'proto-claw.mp4', 'claw-test.mp4', 'nitinol-claw-render.png'],
     sections: [
       { h: 'Overview', p: ['Collaborating on a nitinol-driven compliant claw mechanism, researching efficiency and strength, bridging mechanical and electrical engineering.', 'The claw was my DVSF science fair project with a partner. We ran FEA on the claw and tested 3D-printed prototypes. It placed 3rd out of about 50 team projects and won the West Pharmaceuticals Best Team Award ($700).'] },
-      { h: 'Mechanical Design', p: "The underside of the arm features a gear system that drives the claw's shoulder axis. The gears provide precise control and mechanical advantage for the nitinol actuators." },
+      { h: 'Mechanical Design', p: "A gear system on the underside of the arm drives the shoulder axis, which gives the stepper motor more precise control and mechanical advantage. The nitinol is only in the claw. The rest of the arm runs on the stepper and servos." },
       { h: 'Key Features', list: ['Compliant claw', 'Gear-driven stepper motor directional control system', 'ESP 32 + Servos'] },
       { h: 'Design Changes', list: ['Cut a channel in the mount to make installation easier, then reinforced it', 'Resized the arm holes to fit a circular servo horn', 'Added a lip for the electronics tray and screw holes for a bottom lid', 'Added another degree of freedom to the claw'] },
     ],
