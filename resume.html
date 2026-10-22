@@ -8,9 +8,9 @@
   <link rel="icon" type="image/png" href="media/site/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20">
-  <link rel="stylesheet" href="resume.css?v=1">
+  <link rel="stylesheet" href="resume.css?v=2">
   <script>
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
@@ -24,110 +24,103 @@
     </nav>
   </header>
 
-  <main class="resume">
-    <header class="r-head">
-      <div>
+  <main class="paper">
+    <article class="cv">
+      <header class="cv-head">
         <h1>James Lin</h1>
-        <p class="r-tag">Mechanical engineering · Downingtown STEM Academy, class of 2027</p>
-      </div>
-      <ul class="r-contact">
-        <li><a href="mailto:james2009329@gmail.com">james2009329@gmail.com</a></li>
-        <li><a href="https://james2009329.github.io/portfolio/">james2009329.github.io/portfolio</a></li>
-        <li><a href="https://www.linkedin.com/in/james-lin-72927a278/">LinkedIn</a> · <a href="https://www.instagram.com/jameslarpsandmakescoolstuff/">Instagram</a> · <a href="https://x.com/JamesMakes29">X</a></li>
-        <li>Chester County, PA</li>
-      </ul>
-    </header>
+        <p class="cv-contact">
+          Chester County, PA
+          <span>|</span> <a href="mailto:james2009329@gmail.com">james2009329@gmail.com</a>
+          <span>|</span> <a href="https://james2009329.github.io/portfolio/">james2009329.github.io/portfolio</a>
+          <span>|</span> <a href="https://www.linkedin.com/in/james-lin-72927a278/">LinkedIn</a>
+        </p>
+      </header>
 
-    <section class="r-sec">
-      <h2>Education</h2>
-      <div class="r-item">
-        <div class="r-line"><h3>Downingtown STEM Academy</h3><span class="r-date">Class of 2027</span></div>
-        <p class="r-sub">IB Diploma Programme · HL Physics, Design Technology, Math AA, Economics</p>
-        <p class="r-sub">GPA 3.93 (unweighted) · SAT 1550 (790 Math)</p>
-      </div>
-    </section>
+      <section>
+        <h2>Education</h2>
+        <div class="cv-entry">
+          <div class="cv-row"><strong>Downingtown STEM Academy</strong><span>Downingtown, PA</span></div>
+          <div class="cv-row"><em>IB Diploma Programme candidate</em><span>Expected June 2027</span></div>
+          <ul>
+            <li>GPA: 3.93 (unweighted) &nbsp;|&nbsp; SAT: 1550 (790 Math)</li>
+            <li>Higher Level: Physics, Design Technology, Mathematics: Analysis and Approaches, Economics</li>
+          </ul>
+        </div>
+      </section>
 
-    <section class="r-sec">
-      <h2>Experience</h2>
-      <div class="r-item">
-        <div class="r-line"><h3>Engineering Intern, Nth Solutions</h3><span class="r-date">2026 to present</span></div>
-        <p class="r-sub">Coatesville, PA</p>
-        <ul>
-          <li>Work on vibration-analysis software using FFTs and signal processing; taught myself the FFT math from Gilbert Strang's MIT OpenCourseWare lectures</li>
-          <li>Designed CAD jigs, wrote an analysis script comparing FFT and OLS methods, and optimized VKF bandwidth</li>
-          <li>Explain the analysis software to new interns</li>
+      <section>
+        <h2>Experience</h2>
+        <div class="cv-entry">
+          <div class="cv-row"><strong>NASA SEES, UT Austin Center for Space Research</strong><span>Austin, TX</span></div>
+          <div class="cv-row"><em>High School Research Intern</em><span>Summer 2025</span></div>
+          <ul>
+            <li>Selected as 1 of about 80 students from more than 3,000 applicants nationwide</li>
+            <li>Led CAD for a proof-of-concept Titan airship; designed the gondola, rear vectoring propeller, and skis in Fusion 360</li>
+            <li>Modeled airflow in Earth and Titan conditions with Autodesk CFD</li>
+            <li>Presented the team's research at the AGU Fall Meeting in New Orleans</li>
+            <li>Co-wrote a microgravity air filtration proposal; named runner-up out of about 100 and selected as the alternate team</li>
+          </ul>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-row"><strong>Engineering Content Creator</strong><span>Instagram @jameslarpsandmakescoolstuff &nbsp;|&nbsp; X @JamesMakes29</span></div>
+          <div class="cv-row"><em>Independent</em><span>Ongoing</span></div>
+          <ul>
+            <li>Document my engineering builds for 10,000+ followers across platforms, with 4M+ total views</li>
+            <li>Followed by Jeff Bezos on X</li>
+            <li>Sponsored by Bambu Lab, LDO Motors, and Cytron Technologies with parts and equipment</li>
+          </ul>
+        </div>
+        <div class="cv-entry">
+          <div class="cv-row"><strong>Zwei Restaurant</strong><span>Exton, PA</span></div>
+          <div class="cv-row"><em>Front Desk, Server, Busser</em><span>2019 &ndash; 2026</span></div>
+          <ul>
+            <li>Worked about 20 hours a week at the family restaurant taking orders, running the front desk, and bussing tables</li>
+            <li>Designed and 3D printed fixes for the restaurant and handled small repairs and printer issues</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Awards</h2>
+        <ul class="cv-list">
+          <li><strong>FIRST Tech Challenge World Championship</strong>: Alliance Captain, Lovelace Division; Sustain Award (Team 7244 Out of the Box Robotics, drive team and CAD)</li>
+          <li><strong>TSA National Conference</strong>: 3rd of 187, Geospatial Technology</li>
+          <li><strong>TSA State Conference</strong>: 3rd of 70+, CAD Engineering</li>
+          <li><strong>Delaware Valley Science Fairs</strong>: 3rd of about 50 team projects; West Pharmaceuticals Best Team Award ($700)</li>
         </ul>
-      </div>
-      <div class="r-item">
-        <div class="r-line"><h3>High School Intern, NASA SEES</h3><span class="r-date">2025</span></div>
-        <p class="r-sub">UT Austin Center for Space Research</p>
-        <ul>
-          <li>Selected as 1 of about 80 students from more than 3,000 applicants nationwide</li>
-          <li>CAD lead for a proof-of-concept Titan airship: designed the gondola, rear vectoring propeller, and skis in Fusion 360, and modeled flow in Earth and Titan conditions with Autodesk CFD</li>
-          <li>Presented our research at the AGU Fall Meeting in New Orleans</li>
-          <li>Co-wrote a microgravity air filtration proposal that was runner-up out of about 100, making us the alternate team</li>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+        <ul class="cv-list">
+          <li><strong>Differential Swerve Drive</strong>: Four-module drivetrain on 8 NEMA17 steppers, driven from a phone over WiFi</li>
+          <li><strong>Robot Arm and Nitinol Claw</strong>: Gear-driven stepper arm with a shape-memory-alloy claw, validated with FEA</li>
+          <li><strong>Mechanical Integrator</strong>: Disk-and-wheel integrator with a belt-driven differential, plus a math write-up</li>
+          <li><strong>Eye-Operated Switch</strong>: IB Design Technology IA for students with multiple disabilities (in progress)</li>
+          <li><strong>Ultralight Drone</strong>: Generatively designed arms checked with FEA; flight controller tuned in Betaflight</li>
         </ul>
-      </div>
-      <div class="r-item">
-        <div class="r-line"><h3>Content Creator</h3><span class="r-date">Ongoing</span></div>
-        <p class="r-sub"><a href="https://www.instagram.com/jameslarpsandmakescoolstuff/">@jameslarpsandmakescoolstuff</a> on Instagram · <a href="https://x.com/JamesMakes29">@JamesMakes29</a> on X</p>
-        <ul>
-          <li>Document my engineering builds for 10,000+ followers across platforms, with 4M+ total views</li>
-          <li>Followed by Jeff Bezos on X</li>
-          <li>Sponsored by Bambu Lab, LDO Motors, and Cytron Technologies for parts and equipment</li>
+      </section>
+
+      <section>
+        <h2>Leadership and Service</h2>
+        <ul class="cv-list">
+          <li><strong>Class Council</strong>, Vice President (Grades 11&ndash;12)</li>
+          <li><strong>stemHACKs</strong>, Vice President; CAD workshops helped 3 students qualify for TSA States</li>
+          <li><strong>Campfire Chester County Hackathon</strong>, Organizer of a 6-hour game jam with 25+ participants</li>
+          <li><strong>Chester County Library Makerspace</strong>, Weekly Volunteer; teach CAD, slicing, and 3D printing, maintain the Ender 5 and Voron 2.4, and built a machine that turns plastic bottles into filament</li>
+          <li><strong>National Honor Society</strong>, Member (Grades 11&ndash;12)</li>
         </ul>
-      </div>
-      <div class="r-item">
-        <div class="r-line"><h3>Front Desk, Server, Busser, Zwei Restaurant</h3><span class="r-date">2019 to 2026</span></div>
-        <p class="r-sub">Exton, PA · family restaurant, about 20 hours a week</p>
-        <ul>
-          <li>Took orders, ran the front desk, and bussed tables in a fast-paced restaurant</li>
-          <li>3D printed fixes for the restaurant and handled small repairs and printer issues</li>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <ul class="cv-list cv-skills">
+          <li><strong>CAD and Simulation:</strong> Fusion 360 (including generative design), Onshape, SolidWorks, Autodesk FEA and CFD</li>
+          <li><strong>Fabrication:</strong> FDM 3D printing (Bambu, Voron, Ender), 3D printer building and maintenance</li>
+          <li><strong>Electronics and Programming:</strong> ESP32, Arduino, stepper drivers, Betaflight, Python, Java, Swift</li>
         </ul>
-      </div>
-    </section>
-
-    <section class="r-sec">
-      <h2>Awards</h2>
-      <ul class="r-awards">
-        <li><b>FTC World Championship</b>, Alliance Captain (Lovelace Division) and Sustain Award, team 7244 Out of the Box Robotics; drive team and CAD</li>
-        <li><b>TSA Nationals</b>, 3rd of 187 in Geospatial Technology</li>
-        <li><b>TSA States</b>, 3rd of 70+ in CAD Engineering</li>
-        <li><b>Delaware Valley Science Fairs</b>, 3rd of about 50 team projects and West Pharmaceuticals Best Team Award ($700), nitinol robotic claw</li>
-      </ul>
-    </section>
-
-    <section class="r-sec">
-      <h2>Projects</h2>
-      <ul class="r-awards">
-        <li><b>Differential swerve drive</b>, 8 NEMA17 steppers on an ESP32, driven from a phone over WiFi</li>
-        <li><b>Robot arm and nitinol claw</b>, gear-driven stepper arm with a shape-memory-alloy compliant claw</li>
-        <li><b>Mechanical integrator</b>, disk-and-wheel integrator with a belt-driven differential, plus a math write-up</li>
-        <li><b>Eye-operated switch</b>, IB Design Technology IA for students with multiple disabilities (in progress)</li>
-        <li><b>Ultralight drone</b>, generatively designed arms checked with FEA, tuned in Betaflight</li>
-      </ul>
-    </section>
-
-    <section class="r-sec">
-      <h2>Leadership and service</h2>
-      <ul class="r-awards">
-        <li><b>Class Council</b>, Vice President, 11th and 12th grade</li>
-        <li><b>stemHACKs</b>, Vice President; my CAD workshops helped 3 students qualify for TSA States</li>
-        <li><b>Campfire Chester County Hackathon</b>, organizer of a 6-hour game jam with 25+ participants</li>
-        <li><b>Chester County Library Makerspace</b>, weekly volunteer; teach CAD, slicing, and 3D printing, maintain the Ender 5 and Voron 2.4, and built a machine that turns plastic bottles into filament</li>
-        <li><b>National Honor Society</b>, member since 11th grade</li>
-      </ul>
-    </section>
-
-    <section class="r-sec">
-      <h2>Skills</h2>
-      <dl class="r-skills">
-        <div><dt>CAD and simulation</dt><dd>Fusion 360 (incl. generative design), Onshape, SolidWorks, Autodesk FEA and CFD</dd></div>
-        <div><dt>Fabrication</dt><dd>FDM 3D printing (Bambu, Voron, Ender), printer building and maintenance</dd></div>
-        <div><dt>Electronics and code</dt><dd>ESP32, Arduino, stepper drivers, Betaflight, Python, Java, Swift</dd></div>
-        <div><dt>Analysis</dt><dd>FFT and signal processing for vibration data</dd></div>
-      </dl>
-    </section>
+      </section>
+    </article>
   </main>
 </body>
 </html>
