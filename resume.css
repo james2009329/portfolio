@@ -1,0 +1,54 @@
+/* Resume page: reads like a spec sheet on screen, prints to one Letter page */
+.resume { max-width: 860px; margin: 0 auto; padding: clamp(28px, 5vw, 56px) var(--gutter) 72px; }
+.r-head > div { flex: 1 1 320px; min-width: 0; }
+.r-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px; padding-bottom: 16px; border-bottom: 2px solid var(--ink); }
+.r-head h1 { font-size: clamp(2.6rem, 7vw, 4rem); font-weight: 850; font-stretch: 125%; letter-spacing: -0.03em; line-height: 0.9; }
+.r-tag { margin-top: 10px; color: var(--graphite); font-weight: 600; font-stretch: 108%; }
+.resume .r-contact { list-style: none; margin: 0; padding: 0; display: block; text-align: right; font-size: 0.92rem; line-height: 1.55; }
+.r-contact a { color: var(--ink); }
+.r-sec { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0 28px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.r-sec > h2 { font-size: 0.95rem; font-weight: 750; font-stretch: 112%; color: var(--dykem); padding-top: 3px; }
+.r-sec > :not(h2) { grid-column: 2; }
+.r-item + .r-item { margin-top: 14px; }
+.r-line { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.r-line h3 { font-size: 1.02rem; font-weight: 700; font-stretch: 104%; line-height: 1.3; }
+.r-date { color: var(--graphite); font-size: 0.88rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.r-sub { color: var(--graphite); font-size: 0.92rem; margin-top: 2px; }
+.r-sub a { color: inherit; }
+.resume ul { margin: 6px 0 0; padding-left: 1.1em; display: grid; gap: 3px; font-size: 0.95rem; line-height: 1.45; }
+.resume ul.r-awards { margin-top: 0; }
+.r-awards b { font-weight: 700; }
+.r-skills { margin: 0; display: grid; gap: 4px; font-size: 0.95rem; }
+.r-skills div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; }
+.r-skills dt { font-weight: 700; }
+.r-skills dd { margin: 0; color: var(--graphite); }
+@media (max-width: 640px) {
+  .r-sec { grid-template-columns: 1fr; }
+  .r-sec > :not(h2) { grid-column: 1; }
+  .r-sec > h2 { margin-bottom: 8px; }
+  .resume .r-contact { text-align: left; }
+  .r-line { flex-wrap: wrap; }
+  .r-skills div { grid-template-columns: 1fr; gap: 0; }
+}
+
+@page { size: Letter; margin: 0.4in 0.5in; }
+@media print {
+  :root, :root[data-theme="dark"] { --paper: #fff; --sheet: #fff; --ink: #111; --graphite: #444; --rule: #ccc; --dykem: #2346a8; color-scheme: light; }
+  body { background: #fff; font-size: 9.6pt; }
+  .bar, .skip { display: none !important; }
+  .resume { max-width: none; padding: 0; }
+  .r-head { padding-bottom: 8px; }
+  .r-head h1 { font-size: 26pt; }
+  .r-tag { margin-top: 4px; }
+  .resume .r-contact { font-size: 8.6pt; line-height: 1.4; }
+  .r-sec { grid-template-columns: 1.15in minmax(0, 1fr); gap: 0 16px; padding: 5px 0; }
+  .r-sec > h2 { font-size: 9pt; }
+  .r-item + .r-item { margin-top: 5px; }
+  .r-sub { margin-top: 0; }
+  .r-line h3 { font-size: 10pt; }
+  .r-date, .r-sub { font-size: 8.8pt; }
+  .resume ul { gap: 0; font-size: 9pt; line-height: 1.28; margin-top: 1px; }
+  .r-skills { font-size: 9pt; gap: 0; }
+  .r-skills div { grid-template-columns: 1.3in minmax(0, 1fr); }
+  a { color: inherit; text-decoration: none; }
+}
