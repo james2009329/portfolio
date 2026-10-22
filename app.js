@@ -405,7 +405,7 @@
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return c;
     const start = () => {
       if (c.started) return; c.started = true; io.disconnect();
-      const D = 2400, ease = t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      const D = 4500, ease = t => t >= 1 ? 1 : 1 - Math.pow(1 - t, 3);   // slower, eases in to the final number
       const t0 = performance.now();
       const finish = () => { c.done = true; el.textContent = fmt(+el.dataset.to); };
       const tick = () => {

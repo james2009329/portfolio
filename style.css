@@ -352,21 +352,28 @@ sup a { text-decoration: none; padding: 0 1px; }
 .kicker { grid-area: kick; margin-top: 14px; font-size: clamp(1rem, 1.6vw, 1.25rem); font-stretch: 115%; font-weight: 600; color: var(--graphite); }
 
 /* ---------- Views counter ---------- */
-.reach { padding: clamp(48px, 8vw, 96px) 0 0; }
-.reach-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; color: var(--ink); text-decoration: none; width: fit-content; max-width: 100%; }
-.reach-link:hover .reach-num { text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 0.12em; }
-.reach-link:hover .reach-label span { color: var(--dykem); }
+.reach {
+  padding: clamp(48px, 8vw, 96px) 0 0;
+  display: grid; grid-template-columns: auto minmax(220px, 300px); gap: 16px clamp(20px, 3vw, 40px);
+  align-items: end;
+}
 .reach-num {
-  display: block; white-space: nowrap;
-  font-size: clamp(3.4rem, 13vw, 11rem);
+  display: block; white-space: nowrap; text-decoration: none;
+  font-size: clamp(3.4rem, 11.5vw, 10rem);
   font-weight: 850; font-stretch: 125%; letter-spacing: -0.03em; line-height: 0.9;
   font-variant-numeric: tabular-nums;
   color: var(--dykem);
 }
-.reach-label { display: block; font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 700; font-stretch: 112%; }
-.reach-followers { color: var(--ink) !important; font-weight: 700 !important; }
-.reach-followers[hidden] { display: none !important; }
-.reach-label > span { display: block; font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--graphite); margin-top: 4px; }
+.reach-num:hover { text-decoration: underline; text-decoration-thickness: 6px; text-underline-offset: 0.12em; }
+.reach-meta { display: grid; gap: 10px; padding-bottom: 6px; }
+.reach-label { display: block; color: var(--ink); text-decoration: none; font-size: clamp(1.3rem, 2.6vw, 2rem); font-weight: 700; font-stretch: 112%; line-height: 1.1; }
+.reach-label span { display: block; font-size: 1rem; font-weight: 500; font-stretch: 100%; color: var(--graphite); margin-top: 4px; }
+.reach-label:hover span { color: var(--dykem); }
+.reach-followers { font-weight: 700; font-size: 1rem; }
+@media (max-width: 900px) {
+  .reach { grid-template-columns: 1fr; }
+  .reach-meta { max-width: 340px; }
+}
 
 .contact-label { font-weight: 600; margin-top: 20px; color: var(--graphite); }
 .contact-label + .contact-main { margin-top: 4px; }
@@ -380,7 +387,7 @@ sup a { text-decoration: none; padding: 0 1px; }
 .aside-note p { color: var(--graphite); }
 .aside-note img { width: 100%; max-width: 360px; border: 1px solid var(--rule); }
 
-.reach-x { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 22px; color: var(--graphite); text-decoration: none; font-size: 0.95rem; }
-.reach-x img { width: 300px; max-width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 10px; }
+.reach-x { display: grid; gap: 6px; margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--rule); color: var(--graphite); text-decoration: none; font-size: 0.88rem; }
+.reach-x img { width: 100%; height: auto; border-radius: 10px; }
 .reach-x b { color: var(--ink); font-weight: 650; }
 .reach-x:hover b { color: var(--dykem); text-decoration: underline; }
