@@ -430,7 +430,7 @@
       if (!s) return;
       const byEl = id => counters.find(c => c.el.id === id);
       if (s.views > 0 && counters[0]) counters[0].set(s.views);
-      if (s.followers > 0 && byEl('followers')) byEl('followers').set(s.followers);
+      // followers stays as the hand-entered total across platforms; Instagram's API only knows Instagram
     })
     .catch(() => {});
 
